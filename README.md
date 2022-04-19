@@ -40,16 +40,24 @@ A criação de um MVP para o sistema Busondi se basearia no tipo conhecido como 
 
 ### Do Sprint 2
 
-1. Como usuário do sistema Busondi, quero descobrir quais linhas de ônibus passam por um ponto de ônibus.
+História 1: Como usuário do sistema Busondi, quero descobrir quais linhas de ônibus passam por um ponto de ônibus.
+
+Tarefas:
   - Fazer diagrama da arquitetura do sistema
   - Criar banco de dados sqlite com as entidades do sistema
   - Obter dados de pontos de parada dos ônibus e inseri-los no banco
   - Criar interface de listagem de linhas que passam em um ponto
-2. Como usuário do sistema Busondi, quero descobrir qual o horário agendado para uma dada linha de ônibus passar por um dado ponto.
+
+História 2: Como usuário do sistema Busondi, quero descobrir qual o horário agendado para uma dada linha de ônibus passar por um dado ponto.
+
+Tarefas:
   - Obter dados de horário de partida dos ônibus e inseri-los no banco
   - Implementar algoritmo para calcular, dado o horário de partida e a localização do ponto, quanto tempo o ônibus deve demorar a chegar
   - Adicionar, na interface de listagem de linhas, o horário agendado de chegada do ônibus
-3. Como usuário do sistema Busondi, quero (fazer login para) salvar linhas, pontos de ônibus e endereços que uso frequentemente e ter acesso rápido a eles.
+
+História 3: Como usuário do sistema Busondi, quero (fazer login para) salvar linhas, pontos de ônibus e endereços que uso frequentemente e ter acesso rápido a eles.
+
+Tarefas:
   - Criar CRUD de usuário
   - Criar lógica de login de usuário
   - Adicionar tabela de favoritos do usuário no banco de dados
@@ -58,10 +66,16 @@ A criação de um MVP para o sistema Busondi se basearia no tipo conhecido como 
     * Login,
     * Informações do usuário,
     * Listagem de favoritos
-4. Como usuário do sistema Busondi, quero salvar um ponto, uma linha e um horário em que, quando o ônibus se aproximar, serei notificado.
+
+História 4: Como usuário do sistema Busondi, quero salvar um ponto, uma linha e um horário em que, quando o ônibus se aproximar, serei notificado.
+
+Tarefas:
   - Criar sistema de notificação do usuário dados seus favoritos
   - Adicionar, na interface de favoritos, a opção de notificação
-5. Como usuário do sistema Busondi, quero descobrir qual a posição atual do ônibus em meio a sua rota.
+
+História 5: Como usuário do sistema Busondi, quero descobrir qual a posição atual do ônibus em meio a sua rota.
+
+Tarefas:
   - Obter dados de posição atual dos ônibus
   - Implementar lógica de atualização dos dados de posição atual dos ônibus
   - Criar interface (mapa) que mostra a posição atual do ônibus

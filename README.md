@@ -40,11 +40,16 @@ A criação de um MVP para o sistema Busondi se basearia no tipo conhecido como 
 
 ### Do Sprint 2
 
-Tarefas técnicas
+Tarefas técnicas back-end
   - Criar Trello para o projeto [Helena]
   - Fazer diagrama da arquitetura do sistema [Helena]
   - Criar banco de dados sqlite com as entidades do sistema [Jackson]
   - Criar projeto Django [Jackson]
+
+Tarefas técnicas front-end
+  - Definir organização do projeto [Pedro]
+  - Definir arquitetura [Arthur]
+  - Definição de bibliotecas e frameworks adicionais [Pedro e Arthur]
 
 História 1: Como usuário do sistema Busondi, quero descobrir quais linhas de ônibus passam por um ponto de ônibus.
 

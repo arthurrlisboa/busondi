@@ -92,3 +92,9 @@ Tarefas:
 ## Modelo das principais telas
 
 Disponível no [Figma](https://www.figma.com/file/hSx4UFs5TYbPq3AHop0nI1/Clickons?node-id=243%3A471).
+
+## Dados
+
+[GTFS Estático do Sistema Convencional](https://dados.pbh.gov.br/dataset/gtfs-estatico-do-sistema-convencional)
+
+[Tempo Real Ônibus - Coordenada atualizada](https://dados.pbh.gov.br/dataset/tempo_real_onibus_-_coordenada)

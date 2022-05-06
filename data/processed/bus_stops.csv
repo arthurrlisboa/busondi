@@ -1,4 +1,4 @@
-id_ponto,endereco,latitude,longitude
+stop_id,stop_name,stop_lat,stop_lon
 10100130600640,Estacao Move  Barreiro ,-19.97477301931237,-44.0220132041767
 10100446100580,Estacao Move Senai ,-19.90639647366688,-43.94348498583775
 10100446100880,Estacao Move Hospital Odilon Behrens ,-19.90394540382196,-43.94459982011109

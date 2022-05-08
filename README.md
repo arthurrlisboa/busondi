@@ -14,7 +14,7 @@ Projeto da disciplina "Prática em desenvolvimento de Software"
 O principal objetivo do sistema é o acompanhamento de linhas de ônibus na cidade de Belo Horizonte, MG. Ele terá as funcionalidades de listar os horários previstos de chegada dos ônibus de acordo com sua grade agendada, além do acompanhamento da posição dos veículos em tempo real, usando [informações da  prefeitura do município](https://dados.pbh.gov.br/dataset/tempo_real_onibus_-_coordenada/resource/d7ce6e9b-343f-4e83-8b46-68fa90a12d59?inner_span=True). O sistema também será capaz de sugerir uma ou mais rotas, dados um endereço de partida e um de destino. As rotas sugeridas poderão envolver mais de uma linha de ônibus que cumpram esse percurso.
 
 ### Tecnológico
-Para a implementação do back-end do projeto serão utilizados a linguagem Python e o framework Django, com o banco de dados sqlite. No caso do front-end, será utilizado o framework Angular, que é baseado na linguagem TypeScript.
+Para a implementação do back-end do projeto serão utilizados a linguagem Python e o framework Flask, com o banco de dados sqlite. No caso do front-end, será utilizado o framework Angular, que é baseado na linguagem TypeScript.
 
 ## MVP (Minimum Viable Product)
 
@@ -44,7 +44,7 @@ Tarefas técnicas back-end
   - Criar Trello para o projeto [Helena]
   - Fazer diagrama da arquitetura do sistema [Helena]
   - Criar banco de dados sqlite com as entidades do sistema [Jackson]
-  - Criar projeto Django [Jackson]
+  - Criar projeto Flask [Jackson]
 
 Tarefas técnicas front-end
   - Definir organização do projeto [Pedro]

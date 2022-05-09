@@ -1,9 +1,9 @@
-from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Column, ForeignKey, Integer, String, Time
 
-db_favorites = SQLAlchemy()
+from backend.database.config.db_base import Base
 
-class Favorites(db_favorites.Model):
+
+class Favorites(Base):
 
     __tablename__ = 'favorites'
 
@@ -14,6 +14,10 @@ class Favorites(db_favorites.Model):
     time = Column(Time)          
     notification = Column(String) 
 
+    def __repr__(self):
+        return f'Favorites {self.favorite_id}'
+
+    '''
     def __init__(self, favorite_id, email, route_id, stop_id, time, notification):
         self.favorite_id = favorite_id
         self.email = email
@@ -21,3 +25,4 @@ class Favorites(db_favorites.Model):
         self.stop_id = stop_id
         self.time = time
         self.notification = notification
+    '''

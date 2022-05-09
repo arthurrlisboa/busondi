@@ -1,9 +1,9 @@
-from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Column, String, ForeignKey
 
-db_routes = SQLAlchemy()
+from backend.database.config.db_base import Base
 
-class Routes(db_routes.Model):
+
+class Routes(Base):
 
     __tablename__ = 'routes'
 
@@ -14,6 +14,10 @@ class Routes(db_routes.Model):
     initial_stop_id = Column(String, ForeignKey('bus_stops.stop_id'))
     final_stop_id = Column(String, ForeignKey('bus_stops.stop_id'))
 
+    def __repr__(self):
+        return f'Route {self.route_short_name}'
+
+    '''
     def __init__(self, route_id, route_short_name, route_long_name, 
                 shape_id, initial_stop_id, final_stop_id):
         self.route_id = route_id
@@ -22,3 +26,4 @@ class Routes(db_routes.Model):
         self.shape_id = shape_id
         self.initial_stop_id = initial_stop_id
         self.final_stop_id = final_stop_id
+    '''

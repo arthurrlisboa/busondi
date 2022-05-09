@@ -1,9 +1,9 @@
-from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Column, String, Float
 
-db_bus_stops = SQLAlchemy()
+from backend.database.config.db_base import Base
 
-class BusStops(db_bus_stops.Model):
+
+class BusStops(Base):
 
     __tablename__ = 'bus_stops'
 
@@ -12,8 +12,13 @@ class BusStops(db_bus_stops.Model):
     stop_lat = Column(Float)
     stop_lon = Column(Float)
 
+    def __repr__(self):
+        return f'BusStop {self.stop_name}'
+
+    '''
     def __init__(self, stop_id, stop_name, stop_lat, stop_lon):
         self.stop_id = stop_id
         self.stop_name = stop_name
         self.stop_lat = stop_lat
         self.stop_lon = stop_lon
+    '''

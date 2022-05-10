@@ -41,8 +41,8 @@ A criação de um MVP para o sistema Busondi se basearia no tipo conhecido como 
 ### Do Sprint 2
 
 Tarefas técnicas back-end
-  - Criar Trello para o projeto [Helena]
   - Fazer diagrama da arquitetura do sistema [Helena]
+  - Fazer esquema relacional do BD [Helena]
   - Criar banco de dados sqlite com as entidades do sistema [Jackson]
   - Criar projeto Flask [Jackson]
 
@@ -54,15 +54,20 @@ Tarefas técnicas front-end
 História 1: Como usuário do sistema Busondi, quero descobrir quais linhas de ônibus passam por um ponto de ônibus.
 
 Tarefas:
-  - Obter dados de pontos de parada dos ônibus e inseri-los no banco [Helena]
-  - Criar interface de listagem de linhas que passam em um ponto [Arthur]
+  - Obter [dados GTFS estáticos](https://dados.pbh.gov.br/dataset/gtfs-estatico-do-sistema-convencional) de ônibus em BH [Helena]
+  - Processar os dados para ficarem no formato condizente com o esquema relacional [Helena]
+  - Inserir os dados no BD [Jackson]
+  - Criar endpoint `GET /stops` que retorna a lista de pontos cadastrados
+  - Criar endpoint `GET /stops/<stop_id>` que retorna a lista de linhas que passam por um dado ponto
+  - Criar interface do endpoint `GET /stops` [Arthur]
+  - Criar interface do endpoint `GET /stops/<stop_id>` [Pedro]
 
 História 2: Como usuário do sistema Busondi, quero descobrir qual o horário agendado para uma dada linha de ônibus passar por um dado ponto.
 
 Tarefas:
-  - Obter dados de horário de partida dos ônibus e inseri-los no banco [Jackson]
   - Implementar algoritmo para calcular, dado o horário de partida e a localização do ponto, quanto tempo o ônibus deve demorar a chegar [Jackson]
-  - Adicionar, na interface de listagem de linhas, o horário agendado de chegada do ônibus [Pedro]
+  - Complementar o endpoint `GET /stops/<stop_id>` com a informação de, dada a hora atual, qual o próximo horário agendado para cada linha passar em dado ponto, usando o algoritmo citado acima [Jackson]
+  - Adicionar, na interfacedo endpoint `GET /stops/<stop_id>`, o horário agendado de chegada de cada linha [Arthur]
 
 História 3: Como usuário do sistema Busondi, quero (fazer login para) salvar linhas, pontos de ônibus e endereços que uso frequentemente e ter acesso rápido a eles.
 
@@ -70,6 +75,7 @@ Tarefas:
   - Criar CRUD de usuário [Helena]
   - Criar lógica de login de usuário [Helena]
   - Adicionar tabela de favoritos do usuário no banco de dados [Jackson]
+  - Criar CRUD de favoritos [Helena]
   - Criar interfaces de:
     * Criação de usuário, [Arthur]
     * Login, [Arthur]
@@ -85,9 +91,10 @@ Tarefas:
 História 5: Como usuário do sistema Busondi, quero descobrir qual a posição atual do ônibus em meio a sua rota.
 
 Tarefas:
-  - Obter dados de posição atual dos ônibus [Helena]
+  - Obter [dados de posição atual dos ônibus](https://dados.pbh.gov.br/dataset/tempo_real_onibus_-_coordenada) [Jackson]
   - Implementar lógica de atualização dos dados de posição atual dos ônibus [Jackson]
-  - Criar interface (mapa) que mostra a posição atual do ônibus [Pedro]
+  - Criar endpoint `GET /current-position/<trip_id>` que retorna a informação de posição atual do ônibus [Helena]
+  - Criar interface com mapa que mostra a posição atual do ônibus em meio à sua rota (shape) [Pedro]
 
 ## Modelo das principais telas
 

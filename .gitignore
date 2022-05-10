@@ -1,5 +1,11 @@
+# Unprocessed data
 data/static/
 
+# Jupyter Notebook checkpoints
 .ipynb_checkpoints
 
+# Cache
 __pycache__/
+
+# Virtual environment
+venv-pds/

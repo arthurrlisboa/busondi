@@ -57,8 +57,8 @@ Tarefas:
   - Obter [dados GTFS estáticos](https://dados.pbh.gov.br/dataset/gtfs-estatico-do-sistema-convencional) de ônibus em BH [Helena]
   - Processar os dados para ficarem no formato condizente com o esquema relacional [Helena]
   - Inserir os dados no BD [Jackson]
-  - Criar endpoint `GET /stops` que retorna a lista de pontos cadastrados
-  - Criar endpoint `GET /stops/<stop_id>` que retorna a lista de linhas que passam por um dado ponto
+  - Criar endpoint `GET /stops` que retorna a lista de pontos cadastrados [Helena]
+  - Criar endpoint `GET /stops/<stop_id>` que retorna a lista de linhas que passam por um dado ponto [Helena]
   - Criar interface do endpoint `GET /stops` [Arthur]
   - Criar interface do endpoint `GET /stops/<stop_id>` [Pedro]
 
@@ -73,7 +73,7 @@ História 3: Como usuário do sistema Busondi, quero (fazer login para) salvar l
 
 Tarefas:
   - Criar CRUD de usuário [Helena]
-  - Criar lógica de login de usuário [Helena]
+  - Criar lógica de login de usuário [Jackson]
   - Adicionar tabela de favoritos do usuário no banco de dados [Jackson]
   - Criar CRUD de favoritos [Helena]
   - Criar interfaces de:

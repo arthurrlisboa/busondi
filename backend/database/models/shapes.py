@@ -9,7 +9,7 @@ class Shapes(Base):
     __tablename__ = 'shapes'
 
     shape_id = Column(String, primary_key=True)
-    polygon = Column(Geometry(geometry_type = 'POLYGON', management = True))
+    polygon = Column(String)
     
 
     def __repr__(self):

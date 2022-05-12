@@ -1,9 +1,10 @@
 from sqlalchemy import Column, String, Float
+from backend.app import busondi_database
 
 from backend.database.config.db_base import Base
 
 
-class BusStops(Base):
+class BusStops(busondi_database.Model):
 
     __tablename__ = 'bus_stops'
 

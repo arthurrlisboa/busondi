@@ -1,6 +1,6 @@
 from flask import render_template
-from context.stops_py import get_stops
-from context.routes_py import get_routes
+from backend.context.stops_py import get_stops
+from backend.context.routes_py import get_routes
 
 
 def home():

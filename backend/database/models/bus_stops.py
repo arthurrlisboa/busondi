@@ -1,4 +1,5 @@
 from sqlalchemy import Column, String, Float
+from backend.app import busondi_database
 
 from backend.database.config.db_base import Base
 

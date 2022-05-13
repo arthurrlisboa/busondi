@@ -4,7 +4,7 @@ from backend.app import busondi_database
 from backend.database.config.db_base import Base
 
 
-class BusStops(busondi_database.Model):
+class BusStops(Base):
 
     __tablename__ = 'bus_stops'
 

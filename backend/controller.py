@@ -1,15 +1,14 @@
 from flask import render_template
-from backend.context.stops_py import get_stops
-from backend.context.routes_py import get_routes
+from backend.context import stops_py, routes_py
 
 
 def home():
     return render_template("home.html")
 
-def stops():
-    stops_json = get_stops()
+def list_stops():
+    stops_json = stops_py.get_all_stops()
     return render_template("stops.html", stops=stops_json)
 
-def stop_id(id):
-    routes_json = get_routes(id)
+def list_routes_from_stop(stop_id):
+    routes_json = routes_py.get_routes_from_stop(stop_id)
     return render_template("stops_id.html", routes=routes_json)

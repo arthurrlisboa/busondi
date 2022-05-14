@@ -1,0 +1,44 @@
+<div>
+    <div>
+        <h1>Localizar linha de ônibus</h1>
+    </div>
+    <form [formGroup]="findForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline">
+            <mat-label>Linha</mat-label>
+            <input
+                id="line"
+                type="text"
+                formControlName="line"
+                required
+                matInput
+            >
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline">
+            <mat-label>Ponto de partida</mat-label>
+            <input 
+                id="departure"
+                type="text"
+                formControlName="departure"
+                required
+                matInput
+            >
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline">
+            <mat-label>Horario</mat-label>
+            <input 
+                id="time"
+                type="time"
+                formControlName="time"
+                ngClass="inpu-horario"
+                required
+                matInput
+            >
+        </mat-form-field>
+        
+        <div ngClass="button-send">
+            <button mat-raised-button color="warn" type="submit" [disabled]="!findForm.valid" >BUSCAR</button>
+        </div>
+    </form>
+</div>

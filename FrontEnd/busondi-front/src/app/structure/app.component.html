@@ -1,0 +1,18 @@
+<div ngClass="main-screen">
+  <p>
+    <mat-toolbar ngClass="toolbar-main">
+      <mat-toolbar-row ngClass="toolbar-row">
+        <mat-button-toggle ngClass="button-menu">
+          <mat-icon ngClass="icon-menu">more_horiz</mat-icon>
+        </mat-button-toggle>
+        <span style="margin-left: 8px;">{{title}}</span>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <mat-divider></mat-divider>
+  </p>
+  <div ngClass="main-component">
+    <app-home></app-home>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,16 @@
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <label for="user-name">Nome</label>
+    <input id="user-name" type="text" formControlName="username" required>
+    
+    <label for="password">Senha</label>
+    <input 
+        id="password"
+        type="text"
+        formControlName="password"
+        required
+    >
+    
+    <div ngClass="button-send">
+        <button type="submit" [disabled]="!userForm.valid" >ENTRAR</button>
+    </div>
+</form>

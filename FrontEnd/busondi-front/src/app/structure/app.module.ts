@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import {MatButtonModule} from '@angular/material/button';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatDividerModule} from '@angular/material/divider';
@@ -34,6 +35,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatSliderModule,
     MatToolbarModule,
     MatIconModule,
+    MatSidenavModule,
     MatButtonModule,
     MatButtonToggleModule,
     MatDividerModule,

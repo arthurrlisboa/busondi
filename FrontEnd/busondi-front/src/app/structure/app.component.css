@@ -12,13 +12,14 @@
     border-radius: 45px !important;
     height: 36px;
     width: 36px;
+    right: 1px;
     display: flex;
     align-items: inherit;
 }
 
 .icon-menu {
     height: 28px;
-    left: -5px;
+    left: -7px;
     position: relative;
 }
 

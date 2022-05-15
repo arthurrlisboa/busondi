@@ -10,7 +10,7 @@ input {
 
 .button-send {
     justify-content: center;
-  align-items: center;
+    align-items: center;
     margin: 8px 0;
-  display: flex;
+    display: flex;
 }

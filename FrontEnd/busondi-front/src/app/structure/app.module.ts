@@ -14,6 +14,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule}  from '@angular/material/button-toggle';
 import { MatDividerModule } from '@angular/material/divider';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ToolbarUnloggedComponent } from '../screens/toolbar-unlogged/toolbar-unlogged.component';
 import { LocalizarLinhaComponent } from '../screens/localizar-linha/localizar-linha.component';
 import { HomeComponent } from '../screens/home/home.component';
 import { MatInputModule } from '@angular/material/input';
@@ -24,6 +25,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     AppComponent,
     LoginComponent,
     LocalizarLinhaComponent,
+    ToolbarUnloggedComponent,
     HomeComponent
   ],
   imports: [

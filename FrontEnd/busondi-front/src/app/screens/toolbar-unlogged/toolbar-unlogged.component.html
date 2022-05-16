@@ -1,0 +1,41 @@
+<mat-toolbar ngClass="toolbar-main">
+    <mat-toolbar-row ngClass="toolbar-row">
+      <button
+        mat-icon-button
+        *ngIf="sidenav.mode === 'over'"
+        (click)="sidenav.toggle()"
+      >
+        <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+        <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+      </button>
+      <img style="margin-left: 8px; margin-top: 1px;" src="assets/images/busondi.png">
+      <div ngClass="login">
+        <button mat-button routerLink="/login" ngClass="login_button">Login / inscrever-se</button>
+      </div>
+    </mat-toolbar-row>
+</mat-toolbar>
+<mat-divider></mat-divider>
+<mat-sidenav-container>
+    <mat-divider></mat-divider>
+    <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+  <!--     <button mat-button class="menu-button" routerLink="/home">
+        <mat-icon style="margin-right: 8px;">home</mat-icon>
+        <span>Home</span>
+      </button> -->
+        <button mat-button class="menu-button" routerLink="/localizar-linha">
+            <mat-icon style="margin-right: 8px;">place</mat-icon>
+            <span>Localizar linha</span>
+        </button>
+        <mat-divider></mat-divider>
+        <button mat-button class="menu-button" routerLink="/calcular-rota">
+            <mat-icon style="margin-right: 8px;">my_location</mat-icon>
+            <span>Calcular rota</span>
+        </button>
+        <mat-divider></mat-divider>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="content mat-elevation-z8">
+            <ng-content></ng-content>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,44 +1,49 @@
-<div>
-    <div>
-        <h1>Localizar linha de ônibus</h1>
+<div style="text-align: center;">
+    <div ngClass="intro_item">
+        <img src="assets/images/location.png">
+        <h2 style="margin-top: 10px;"> Localizar linha de ônibus </h2>
     </div>
     <form [formGroup]="findForm" (ngSubmit)="onSubmit()">
-        <mat-form-field appearance="outline">
-            <mat-label>Linha</mat-label>
-            <input
-                id="line"
-                type="text"
-                formControlName="line"
-                required
-                matInput
-            >
-        </mat-form-field>
-        
-        <mat-form-field appearance="outline">
-            <mat-label>Ponto de partida</mat-label>
-            <input 
-                id="departure"
-                type="text"
-                formControlName="departure"
-                required
-                matInput
-            >
-        </mat-form-field>
-        
-        <mat-form-field appearance="outline">
-            <mat-label>Horario</mat-label>
-            <input 
-                id="time"
-                type="time"
-                formControlName="time"
-                ngClass="inpu-horario"
-                required
-                matInput
-            >
-        </mat-form-field>
-        
+        <div style="margin-top: 35px;">
+            <mat-form-field appearance="outline" style="width: 19%;">
+                <mat-label>Linha</mat-label>
+                <input
+                    id="line"
+                    type="text"
+                    formControlName="line"
+                    required
+                    matInput
+                >
+            </mat-form-field>
+        </div>
+        <div style="margin-top: 10px;">
+            <mat-form-field appearance="outline" style="width: 19%;">
+                <mat-label>Ponto de partida</mat-label>
+                <input 
+                    id="departure"
+                    type="text"
+                    formControlName="departure"
+                    required
+                    matInput
+                >
+            </mat-form-field>
+        </div>
+<!--         <div>
+            <mat-form-field ngIf="true" appearance="outline">
+                <mat-label>Salvar como favorita</mat-label>
+                <input 
+                    id="save"
+                    type="save"
+                    formControlName="save"
+                    required
+                    matInput
+                >
+            </mat-form-field>
+        </div> -->
         <div ngClass="button-send">
-            <button mat-raised-button color="warn" type="submit" [disabled]="!findForm.valid" >BUSCAR</button>
+            <button mat-raised-button color="warn" 
+                style="width: 8%;"
+                type="submit" [disabled]="!findForm.valid" >BUSCAR</button>
         </div>
     </form>
 </div>

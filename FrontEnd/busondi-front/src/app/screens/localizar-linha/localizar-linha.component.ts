@@ -9,8 +9,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class LocalizarLinhaComponent {
   findForm = this.fb.group({
     line: ['', Validators.required],
-    departure: ['', Validators.required],
-    time: ['', Validators.required]
+    departure: ['', Validators.required]
   })
 
   constructor(private fb: FormBuilder) { }

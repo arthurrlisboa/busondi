@@ -11,7 +11,7 @@ class DBConnection:
         return create_engine(self._connection_url)
 
     def __init__(self) -> None:
-        self._connection_url = 'sqlite:///backend/database.db'
+        self._connection_url = 'sqlite:///database.db'
 
     def __enter__(self):
         session = scoped_session(

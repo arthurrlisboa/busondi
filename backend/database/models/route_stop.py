@@ -12,7 +12,7 @@ class RouteStop(Base):
     stop_id = Column(String, ForeignKey('bus_stops.stop_id'))
     stop_sequence = Column(Integer)
     traveled_dist = Column(Float)
-    treveled_time = Column(Float)
+    traveled_time = Column(Float)
 
     def __repr__(self):
         return f'RouteStop {self.route_stop_id}'

@@ -20,9 +20,9 @@ def get_distance(coords):
   res = client.directions(coords)
   #test our response
   try: 
-    return(res['routes'][0]['summary']['distance'])
+    return(res['routes'][0]['summary']['distance'], res['routes'][0]['summary']['duration'])
   except:
-    return 0
+    return 0,0
 
 
 with DBConnection() as connection:
@@ -34,12 +34,19 @@ with DBConnection() as connection:
       for route_stop in route_stops:
         stop_id = route_stop.stop_id
         bus_stop = connection.session.query(BusStops).filter_by(stop_id=stop_id).first()
-        if route_stop.stop_sequence == 1: departure_lat, departure_lon = bus_stop.stop_lat, bus_stop.stop_lon
+        if route_stop.stop_sequence == 1: 
+          departure_lat, departure_lon = bus_stop.stop_lat, bus_stop.stop_lon
+          total_dist = 0
+          total_time = 0
         arrival_lat, arrival_lon = bus_stop.stop_lat, bus_stop.stop_lon
 
-        dist = get_distance(((departure_lon,departure_lat),(arrival_lon, arrival_lat)))
-
+        dist, time = get_distance(((departure_lon,departure_lat),(arrival_lon, arrival_lat)))
+        total_dist += dist
+        total_time += time
+        print('route_id: {}  sequence: {}  dist: {}   time: {}'.format(route_stop.route_id, 
+                                                        route_stop.stop_sequence, 
+                                                        round(total_dist,2), 
+                                                        round(total_time,2)))
         departure_lat, departure_lon = arrival_lat, arrival_lon
-        
-        print(dist)
+
 

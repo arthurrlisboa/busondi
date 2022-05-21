@@ -16,13 +16,3 @@ class Favorites(Base):
 
     def __repr__(self):
         return f'Favorites {self.favorite_id}'
-
-    '''
-    def __init__(self, favorite_id, email, route_id, stop_id, time, notification):
-        self.favorite_id = favorite_id
-        self.email = email
-        self.route_id = route_id
-        self.stop_id = stop_id
-        self.time = time
-        self.notification = notification
-    '''

@@ -1,4 +1,5 @@
-from backend.domain.bus_stops_impl import BusStopsImpl 
+from backend.domain.bus_stops_impl import BusStopsImpl
+from backend.domain.route_stop_impl import get_arrival_time 
 from backend.domain.routes_impl import RoutesImpl
 from flask import jsonify, render_template
 
@@ -31,6 +32,7 @@ def list_routes_from_stop(stop_id):
     }
 
     for entry in routes_list:
-        routes_dict['stop_routes'][entry[0]] = entry[1].route_id
+        arrival_time = get_arrival_time(stop_id, entry[1].route_id)
+        routes_dict['stop_routes'][entry[0]] = [entry[1].route_id, arrival_time]
 
     return render_template("stops_id.html", routes=jsonify(routes_dict))

@@ -16,14 +16,3 @@ class Routes(Base):
 
     def __repr__(self):
         return f'Route {self.route_short_name}'
-
-    '''
-    def __init__(self, route_id, route_short_name, route_long_name, 
-                shape_id, initial_stop_id, final_stop_id):
-        self.route_id = route_id
-        self.route_short_name = route_short_name
-        self.route_long_name = route_long_name
-        self.shape_id = shape_id
-        self.initial_stop_id = initial_stop_id
-        self.final_stop_id = final_stop_id
-    '''

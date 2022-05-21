@@ -7,7 +7,7 @@ from backend.database.models.bus_stops import BusStops
 from backend.database.models.routes import Routes
 
 import csv
-#import geopandas as gpd
+import geopandas as gpd
 from shapely import wkt
 from datetime import datetime
 

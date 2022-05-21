@@ -14,11 +14,3 @@ class BusDepartures(Base):
 
     def __repr__(self):
         return f'BusDeparture {self.trip_id} at {self.departure_time}'
-
-    '''
-    def __init__(self, trip_id, departure_time, stop_id, route_id):
-        self.trip_id = trip_id
-        self.departure_time = departure_time
-        self.stop_id = stop_id
-        self.route_id = route_id
-    '''

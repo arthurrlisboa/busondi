@@ -1,5 +1,4 @@
 from sqlalchemy import Column, String, Float
-from backend.app import busondi_database
 
 from backend.database.config.db_base import Base
 
@@ -15,11 +14,3 @@ class BusStops(Base):
 
     def __repr__(self):
         return f'BusStop {self.stop_name}'
-
-    '''
-    def __init__(self, stop_id, stop_name, stop_lat, stop_lon):
-        self.stop_id = stop_id
-        self.stop_name = stop_name
-        self.stop_lat = stop_lat
-        self.stop_lon = stop_lon
-    '''

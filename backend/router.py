@@ -1,4 +1,3 @@
-from re import A
 from backend import controller
 from backend.app import app
 from flask import request
@@ -23,12 +22,12 @@ def users():
       info_json = request.get_json()
       return controller.create_user(info_json['email'], info_json['password'])
 
-@app.route('/users/<user_id>', methods = ['GET', 'PUT', 'DELETE'])
-def users_user_id(user_id):
+@app.route('/users/<email>/', methods = ['GET', 'PUT', 'DELETE'])
+def users_user_id(email):
    if request.method == 'GET':
-      return controller.return_user(user_id)
+      return controller.return_user(email)
    if request.method == 'PUT':
-      new_password = request.form['new_password']
-      return controller.update_user(user_id, new_password)
+      info_json = request.get_json()
+      return controller.update_user(email, info_json['password'])
    if request.method == 'DELETE':
-      return controller.delete_user(user_id)
+      return controller.delete_user(email)

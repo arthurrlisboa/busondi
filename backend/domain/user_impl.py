@@ -19,3 +19,15 @@ class UserImpl:
         new_user = UserImpl(email, password)
         Repository.add_new_user(new_user)
         return {'success' : 'user created'}
+
+    def get_user_by_email(email):
+        user_repo = Repository.get_user_by_email_repo(email)
+        user = UserImpl(user_repo.email, user_repo.password)
+        return user
+
+    def update_user_password(email, new_password):
+        Repository.update_user_password_repo(email, new_password)
+
+    def delete_user_(email):
+        Repository.delete_user_repo(email)
+        return {'success' : 'user deleted'}

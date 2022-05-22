@@ -11,7 +11,7 @@ class RepositoryImpl:
 
     def get_stop_by_id_repo_(stop_id):
         with DBConnection() as connection:
-            stop = connection.session.query(BusStops).filter_by(stop_id=stop_id).first()
+            stop = connection.session.query(BusStops).get(stop_id)
         return stop
 
     def get_routes_from_stop_repo_(stop_id):
@@ -28,4 +28,21 @@ class RepositoryImpl:
         new_user = User(user.email, user.password)
         with DBConnection() as connection:
             connection.session.add(new_user)
+            connection.session.commit()
+
+    def get_user_by_email_repo_(email):
+        with DBConnection() as connection:
+            user = connection.session.query(User).get(email)
+        return user
+
+    def update_user_password_repo_(email, new_password):
+        with DBConnection() as connection:
+            user = connection.session.query(User).get(email)
+            user.set_password(new_password)
+            connection.session.commit()
+
+    def delete_user_repo_(email):
+        with DBConnection() as connection:
+            user = connection.session.query(User).get(email)
+            connection.session.delete(user)
             connection.session.commit()

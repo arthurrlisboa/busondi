@@ -18,3 +18,12 @@ class Repository:
 
     def add_new_user(user):
         RepositoryImpl.add_new_user_(user)
+
+    def get_user_by_email_repo(email):
+        return RepositoryImpl.get_user_by_email_repo_(email)
+
+    def update_user_password_repo(email, new_password):
+        RepositoryImpl.update_user_password_repo_(email, new_password)
+
+    def delete_user_repo(email):
+        RepositoryImpl.delete_user_repo_(email)

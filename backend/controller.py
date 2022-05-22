@@ -1,9 +1,7 @@
-import json
 from backend.domain.bus_stops_impl import BusStopsImpl 
 from backend.domain.routes_impl import RoutesImpl
-from flask import jsonify, render_template
-
 from backend.domain.user_impl import UserImpl
+from flask import jsonify, render_template
 
 def home():
     return render_template("home.html")
@@ -52,11 +50,17 @@ def create_user(email, password):
     response = UserImpl.create_user_(email, password)
     return jsonify(response)
 
-def return_user(user_id):
-    return 0
+def return_user(email):
+    user = UserImpl.get_user_by_email(email)
+    user_dict = {
+        email : user.password
+    }
+    return render_template("return_user.html", user=jsonify(user_dict))
 
-def update_user(user_id, new_password):
-    return 0
+def update_user(email, new_password):
+    UserImpl.update_user_password(email, new_password)
+    return return_user(email)
 
-def delete_user(user_id):
-    return 0
+def delete_user(email):
+    response = UserImpl.delete_user_(email)
+    return jsonify(response)

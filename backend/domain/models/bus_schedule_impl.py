@@ -1,11 +1,11 @@
-from backend.domain.repository import Repository
+from backend.domain.repositories.routes_repository import RoutesRepository
 
 import datetime
 
 MEAN_BUS_VELOCITY = 5  # velocity in m/s
 
 def get_travel_time_timedelta(stop_id, route_id):
-    route_stop = Repository.get_route_stop_from_ids_repo(stop_id, route_id)
+    route_stop = RoutesRepository.get_route_stop_from_ids_repo(stop_id, route_id)
     if not route_stop.traveled_time: 
         travel_time = route_stop.traveled_dist / MEAN_BUS_VELOCITY
     else:
@@ -26,7 +26,7 @@ def get_timedelta_from_time_obj(time_obj):
 def get_arrival_time(stop_id, route_id):
     travel_time_timedelta = get_travel_time_timedelta(stop_id, route_id)
 
-    trip_list = Repository.get_trips_from_route_repo(route_id)
+    trip_list = RoutesRepository.get_trips_from_route_repo(route_id)
     current_time = get_current_time_timedelta()
     best_arrival_time = None
     for trip in trip_list:

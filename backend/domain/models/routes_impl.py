@@ -1,4 +1,4 @@
-from backend.domain.repository import Repository
+from backend.domain.repositories.routes_repository import RoutesRepository
 
 class RoutesImpl:
 
@@ -39,7 +39,7 @@ class RoutesImpl:
 
     def get_routes_from_stop(stop_id):
         stop_routes_list = []
-        all_routes_from_stop = Repository.get_routes_from_stop_repo(stop_id)
+        all_routes_from_stop = RoutesRepository.get_routes_from_stop_repo(stop_id)
         for entry in all_routes_from_stop:
             stop_routes_list.append([entry.route_stop_id, RoutesImpl(entry.route_id)])
         return stop_routes_list

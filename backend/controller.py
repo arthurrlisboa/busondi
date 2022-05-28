@@ -1,7 +1,7 @@
-from backend.domain.bus_stops_impl import BusStopsImpl
-from backend.domain.bus_schedule_impl import get_arrival_time 
-from backend.domain.routes_impl import RoutesImpl
-from backend.domain.user_impl import UserImpl
+from backend.domain.models.bus_stops_impl import BusStopsImpl
+from backend.domain.models.bus_schedule_impl import get_arrival_time 
+from backend.domain.models.routes_impl import RoutesImpl
+from backend.domain.models.user_impl import UserImpl
 from flask import jsonify, render_template
 
 def home():

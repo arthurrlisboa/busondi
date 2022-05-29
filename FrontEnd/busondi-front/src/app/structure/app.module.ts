@@ -16,6 +16,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToolbarUnloggedComponent } from '../screens/toolbar-unlogged/toolbar-unlogged.component';
 import { LocalizarLinhaComponent } from '../screens/localizar-linha/localizar-linha.component';
+import { LocalizacaoLinhaComponent } from '../screens/localizacao-linha/localizacao-linha.component';
 import { HomeComponent } from '../screens/home/home.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -25,6 +26,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     AppComponent,
     LoginComponent,
     LocalizarLinhaComponent,
+    LocalizacaoLinhaComponent,
     ToolbarUnloggedComponent,
     HomeComponent
   ],

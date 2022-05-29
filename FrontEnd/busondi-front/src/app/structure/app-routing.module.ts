@@ -20,7 +20,7 @@ const routes: Routes = [
     component: LocalizarLinhaComponent,
   },
   {
-    path: '/localizar-linha/resultado',
+    path: 'localizar-linha/resultado',
     component: LocalizacaoLinhaComponent,
   },
   {

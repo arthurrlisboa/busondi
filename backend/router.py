@@ -1,6 +1,6 @@
 from backend import controller
 from backend.app import app
-from flask import request
+from flask import jsonify, request, session
 
 @app.route('/')
 def home():
@@ -31,3 +31,18 @@ def users_user_id(email):
       return controller.update_user(email, info_json['password'])
    if request.method == 'DELETE':
       return controller.delete_user(email)
+   
+@app.route('/favorites/', methods = ['GET'])
+def favorites():
+   if 'email' in session:
+      return jsonify({'message' : 'You are logged in - Here are your favorites'})
+   else:
+      return jsonify({'message' : 'Login required'})
+
+@app.route('/login/', methods = ['POST'])
+def login():
+   info_json = request.get_json()
+   if info_json['email'] and info_json['password']:
+      return controller.user_login(info_json['email'], info_json['password'])
+   else: 
+      return jsonify({'message' : 'Invalid credentials'})

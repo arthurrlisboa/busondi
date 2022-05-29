@@ -2,7 +2,7 @@ from backend.domain.models.bus_stops_impl import BusStopsImpl
 from backend.domain.models.bus_schedule_impl import get_arrival_time 
 from backend.domain.models.routes_impl import RoutesImpl
 from backend.domain.models.user_impl import UserImpl
-from flask import jsonify, render_template
+from flask import jsonify, render_template, session
 
 def home():
     return render_template("home.html")
@@ -66,3 +66,14 @@ def update_user(email, new_password):
 def delete_user(email):
     response = UserImpl.delete_user_(email)
     return jsonify(response)
+
+def user_login(email, password):
+    user = UserImpl.get_user_by_email(email)
+    if user:
+        if user.password == password:
+            session['email'] = email
+            return jsonify({'message' : 'You are logged in'})
+        else:
+            return jsonify({'message' : 'Wrong password'})
+    else:
+        return jsonify({'message' : 'User does not exist'})

@@ -46,3 +46,9 @@ def login():
       return controller.user_login(info_json['email'], info_json['password'])
    else: 
       return jsonify({'message' : 'Invalid credentials'})
+
+@app.route('/logout/', methods = ['POST'])
+def logout():
+   if 'email' in session:
+      session.pop('email')
+   return jsonify({'message' : 'You are logged out'})

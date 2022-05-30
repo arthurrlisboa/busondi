@@ -48,8 +48,8 @@ def list_users():
         user_dict[user.email] = user.password
     return render_template("list_users.html", users=jsonify(user_dict))
 
-def create_user(email, password):
-    response = UserImpl.create_user_(email, password)
+def create_user(email, password, name):
+    response = UserImpl.create_user_(email, password, name)
     return jsonify(response)
 
 def return_user(email):

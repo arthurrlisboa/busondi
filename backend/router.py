@@ -20,7 +20,7 @@ def users():
       return controller.list_users()
    if request.method == 'POST':
       info_json = request.get_json()
-      return controller.create_user(info_json['email'], info_json['password'])
+      return controller.create_user(info_json['email'], info_json['password'], info_json['name'])
 
 @app.route('/users/<email>/', methods = ['GET', 'PUT', 'DELETE'])
 def users_user_id(email):

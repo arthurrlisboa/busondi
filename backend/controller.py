@@ -39,7 +39,6 @@ def list_routes_from_stop(stop_id):
         if arrival_time != 'None':
             routes_dict['stop_routes'][entry[1].route_id] = arrival_time
     routes_dict['stop_routes'] = BusScheduleImpl.order_by_arrival_time(routes_dict['stop_routes'])
-    print(routes_dict['stop_routes'])
 
     return render_template("stops_id.html", routes=jsonify(routes_dict))
 

@@ -10,3 +10,6 @@ class RoutesRepository:
     
     def get_trips_from_route_repo(route_id):
         return RoutesRepositoryImpl.get_trips_from_route_repo_(route_id)
+    
+    def get_route_by_id_repo(route_id):
+        return RoutesRepositoryImpl.get_route_by_id_repo_(route_id)

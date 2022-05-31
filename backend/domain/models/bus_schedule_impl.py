@@ -42,8 +42,8 @@ class BusScheduleImpl:
     
     def order_by_arrival_time(routes_dict):
         # Converte o valor do dicionário de str para timedelta
-        timedelta_dict = dict( (x, datetime.datetime.strptime(routes_dict[x],"%H:%M:%S.%f") ) for x in routes_dict )
+        timedelta_dict = dict( (x, [routes_dict[x][0], datetime.datetime.strptime(routes_dict[x][1],"%H:%M:%S.%f")] ) for x in routes_dict )
         # Ordena dicionário conforme timedelta
-        sorted_dict = dict( sorted( timedelta_dict.items(), key= lambda x: BusScheduleImpl.get_timedelta_from_time_obj(x[1]) ) )
+        sorted_dict = dict( sorted( timedelta_dict.items(), key= lambda x: BusScheduleImpl.get_timedelta_from_time_obj(x[1][1]) ) )
         # Retorna dicionário convertendo timedelta para string novamente
-        return dict( (x, str(sorted_dict[x]) ) for x in sorted_dict )
+        return dict( (x, [sorted_dict[x][0], str(sorted_dict[x][1])] ) for x in sorted_dict )

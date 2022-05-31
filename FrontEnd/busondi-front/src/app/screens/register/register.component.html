@@ -1,1 +1,50 @@
-<p>register works!</p>
+<div ngClass = "register_style">
+    <div ngClass="intro_item">
+        <img src="assets/images/home-location.jpg">
+        <h2 style="margin-top: 5px;">Crie uma conta Busondi</h2>
+        <h4>Faça seu cadastro e salve suas linhas favoritas para localizá-las de forma rápida e fácil</h4>
+    </div>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div>
+            <mat-form-field appearance="outline" style="width: 19%; margin-top: 5px;">
+                <mat-label>Nome</mat-label>
+                <input 
+                    id="username" 
+                    type="text" 
+                    formControlName="username" 
+                    required
+                    matInput
+                >
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="outline" style="width: 19%;">
+                <mat-label>Email</mat-label>
+                <input 
+                    id="e-mail" 
+                    type="text" 
+                    formControlName="email" 
+                    required
+                    matInput
+                >
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="outline" style="width: 19%;">
+                <mat-label>Senha</mat-label>
+                <input 
+                    id="password"
+                    type="password"
+                    formControlName="password"
+                    required
+                    matInput
+                >
+            </mat-form-field>
+        </div>
+        <div ngClass="button-send">
+            <button mat-raised-button color="warn" 
+                style="width: 19%;"
+                type="submit" [disabled]="!registerForm.valid" routerLink="/login" >JUNTE-SE A NÓS</button>
+        </div>
+    </form>
+</div>

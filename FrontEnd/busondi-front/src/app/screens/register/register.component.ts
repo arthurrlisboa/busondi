@@ -1,15 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
 
-  constructor() { }
+  registerForm = this.fb.group({
+    email: ['', Validators.required],
+    username: ['', Validators.required],
+    password: ['', Validators.required]
+  })
 
-  ngOnInit(): void {
+  constructor(private fb: FormBuilder) { }
+
+  onSubmit() {
+    // TODO: Use EventEmitter with form value
+    console.warn(this.registerForm.value);
   }
 
 }

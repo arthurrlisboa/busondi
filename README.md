@@ -82,12 +82,6 @@ Tarefas:
     * Informações do usuário, [Pedro]
     * Listagem de favoritos [Pedro]
 
-História 4: Como usuário do sistema Busondi, quero salvar um ponto, uma linha e um horário em que, quando o ônibus se aproximar, serei notificado.
-
-Tarefas:
-  - Criar sistema de notificação do usuário dados seus favoritos [Jackson]
-  - Adicionar, na interface de favoritos, a opção de notificação [Arthur]
-
 História 5: Como usuário do sistema Busondi, quero descobrir qual a posição atual do ônibus em meio a sua rota.
 
 Tarefas:
@@ -95,6 +89,12 @@ Tarefas:
   - Implementar lógica de atualização dos dados de posição atual dos ônibus [Jackson]
   - Criar endpoint `GET /current-position/<trip_id>` que retorna a informação de posição atual do ônibus [Helena]
   - Criar interface com mapa que mostra a posição atual do ônibus em meio à sua rota (shape) [Pedro]
+
+História 6: Como usuário do sistema Busondi, quero poder ver toda a rota de uma dada linha de ônibus, destacando todas as suas paradas, incluindo seu ponto final.
+
+Tarefas: 
+   - Criar endpoint `GET /complete-path/<route_id>` que retorna a informação de toda a rota do ônibus com seus pontos de parada [Jackson]
+   - Criar interface com mapa que mostra toda a rota do ônibus com seus pontos de parada [Arthur]
 
 ## Modelo das principais telas
 

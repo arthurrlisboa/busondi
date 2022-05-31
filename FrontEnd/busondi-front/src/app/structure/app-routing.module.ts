@@ -4,6 +4,7 @@ import { LocalizarLinhaComponent } from '../screens/localizar-linha/localizar-li
 import { LocalizacaoLinhaComponent } from '../screens/localizacao-linha/localizacao-linha.component';
 import { HomeComponent } from '../screens/home/home.component';
 import { LoginComponent } from '../screens/login/login.component';
+import { RegisterComponent } from '../screens/register/register.component';
 
 const routes: Routes = [
   {
@@ -13,19 +14,23 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomeComponent,
+    component: HomeComponent
   },
   {
     path: 'localizar-linha',
-    component: LocalizarLinhaComponent,
+    component: LocalizarLinhaComponent
   },
   {
     path: 'localizar-linha/resultado',
-    component: LocalizacaoLinhaComponent,
+    component: LocalizacaoLinhaComponent
   },
   {
     path: 'login',
-    component: LoginComponent,
+    component: LoginComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
   }
 ];
 

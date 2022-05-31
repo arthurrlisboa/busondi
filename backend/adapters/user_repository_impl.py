@@ -9,7 +9,7 @@ class UserRepositoryImpl:
         return all_users
 
     def add_new_user_(user):
-        new_user = User(user.email, user.password)
+        new_user = User(user.email, user.password, user.name)
         with DBConnection() as connection:
             connection.session.add(new_user)
             connection.session.commit()

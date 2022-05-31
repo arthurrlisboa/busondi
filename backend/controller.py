@@ -1,5 +1,5 @@
 from backend.domain.models.bus_stops_impl import BusStopsImpl
-from backend.domain.models.bus_schedule_impl import get_arrival_time 
+from backend.domain.models.bus_schedule_impl import BusScheduleImpl
 from backend.domain.models.routes_impl import RoutesImpl
 from backend.domain.models.user_impl import UserImpl
 from flask import jsonify, render_template, session
@@ -35,8 +35,10 @@ def list_routes_from_stop(stop_id):
     }
 
     for entry in routes_list:
-        arrival_time = get_arrival_time(stop_id, entry[1].route_id)
-        routes_dict['stop_routes'][entry[1].route_id] = arrival_time
+        arrival_time = BusScheduleImpl.get_arrival_time(stop_id, entry[1].route_id)
+        if arrival_time != 'None':
+            routes_dict['stop_routes'][entry[1].route_id] = arrival_time
+    routes_dict['stop_routes'] = BusScheduleImpl.order_by_arrival_time(routes_dict['stop_routes'])
 
     return render_template("stops_id.html", routes=jsonify(routes_dict))
 
@@ -48,8 +50,8 @@ def list_users():
         user_dict[user.email] = user.password
     return render_template("list_users.html", users=jsonify(user_dict))
 
-def create_user(email, password):
-    response = UserImpl.create_user_(email, password)
+def create_user(email, password, name):
+    response = UserImpl.create_user_(email, password, name)
     return jsonify(response)
 
 def return_user(email):

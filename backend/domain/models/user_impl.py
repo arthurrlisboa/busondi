@@ -14,7 +14,7 @@ class UserImpl:
         all_users = UserRepository.get_all_users_repo()
         user_list = []
         for user in all_users:
-            user_list.append(UserImpl(user.email, user.password))
+            user_list.append(UserImpl(user.email, user.password, user.name))
         return user_list
 
     def create_user_(email, password, name):

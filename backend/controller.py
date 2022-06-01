@@ -1,5 +1,6 @@
 from backend.domain.models.bus_stops_impl import BusStopsImpl
 from backend.domain.models.bus_schedule_impl import BusScheduleImpl
+from backend.domain.models.favorites_impl import FavoriteImpl
 from backend.domain.models.routes_impl import RoutesImpl
 from backend.domain.models.user_impl import UserImpl
 from flask import jsonify, render_template, session
@@ -47,7 +48,10 @@ def list_users():
     user_list = UserImpl.get_all_users()
     user_dict = {}
     for user in user_list:
-        user_dict[user.email] = user.password
+        user_dict[user.email] = {
+            'name' : user.name,
+            'password' : user.password
+        }
     return render_template("list_users.html", users=jsonify(user_dict))
 
 def create_user(email, password, name):
@@ -69,6 +73,7 @@ def delete_user(email):
     response = UserImpl.delete_user_(email)
     return jsonify(response)
 
+# Login
 def user_login(email, password):
     user = UserImpl.get_user_by_email(email)
     if user:
@@ -79,3 +84,24 @@ def user_login(email, password):
             return jsonify({'message' : 'Wrong password'})
     else:
         return jsonify({'message' : 'User does not exist'})
+
+# Favorites
+
+def list_user_favorites(email):
+    user_favorites = FavoriteImpl.get_all_user_favorites(email)
+    favorites_dict = {}
+    for favorite in user_favorites:
+        favorites_dict[favorite.id] = {
+            'route_id' : favorite.route_id,
+            'stop_id' : favorite.stop_id,
+            'time' : str(favorite.time)
+        }
+    return render_template("list_user_favorites.html", user_favorites=jsonify(favorites_dict))
+
+def create_favorite(email, route_id, stop_id):
+    response = FavoriteImpl.create_favorite_(email, route_id, stop_id)
+    return jsonify(response)
+
+def delete_favorite(email, route_id, stop_id, time):
+    response = FavoriteImpl.delete_favorite_(email, route_id, stop_id, time)
+    return jsonify(response)

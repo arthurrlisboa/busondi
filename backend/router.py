@@ -2,10 +2,12 @@ from backend import controller
 from backend.app import app
 from flask import jsonify, request, session
 
+# Home
 @app.route('/')
 def home():
    return controller.home()
 
+# Stop
 @app.route('/stops/', methods = ['GET'])
 def stops():
    return controller.list_stops()
@@ -14,6 +16,7 @@ def stops():
 def stops_stop_id(stop_id):
    return controller.list_routes_from_stop(stop_id)
 
+# User
 @app.route('/users/', methods = ['GET', 'POST'])
 def users():
    if request.method == 'GET':
@@ -31,14 +34,8 @@ def users_user_id(email):
       return controller.update_user(email, info_json['password'])
    if request.method == 'DELETE':
       return controller.delete_user(email)
-   
-@app.route('/favorites/', methods = ['GET'])
-def favorites():
-   if 'email' in session:
-      return jsonify({'message' : 'You are logged in - Here are your favorites'})
-   else:
-      return jsonify({'message' : 'Login required'})
 
+# Login/logout
 @app.route('/login/', methods = ['POST'])
 def login():
    info_json = request.get_json()
@@ -52,3 +49,18 @@ def logout():
    if 'email' in session:
       session.pop('email')
    return jsonify({'message' : 'You are logged out'})
+
+# Favorites
+@app.route('/favorites/', methods = ['GET', 'POST', 'DELETE'])
+def favorites():
+   if 'email' in session:   
+      if request.method == 'GET':
+         return controller.list_user_favorites(session['email'])
+      if request.method == 'POST':
+         info_json = request.get_json()
+         return controller.create_favorite(session['email'], info_json['route_id'], info_json['stop_id'])
+      if request.method == 'DELETE':
+         info_json = request.get_json()
+         return controller.delete_favorite(session['email'], info_json['route_id'], info_json['stop_id'], info_json['time'])
+   else:
+      return jsonify({'message' : 'Login required'})

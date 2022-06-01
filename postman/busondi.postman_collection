@@ -45,13 +45,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{url}}/stops/{{stop_id}}",
+					"raw": "{{url}}/stops/{{stop-id}}",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"stops",
-						"{{stop_id}}"
+						"{{stop-id}}"
 					]
 				}
 			},
@@ -82,7 +82,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    'email' : 'maria@email.com',\r\n    'password' : '12345'\r\n}",
+					"raw": "{\r\n    \"email\" : \"maria@email.com\",\r\n    \"password\" : \"12345\",\r\n    \"name\" : \"maria\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -167,6 +167,132 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\" : \"maria@email.com\",\r\n    \"password\" : \"12345\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/login/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"login",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\" : \"maria@email.com\",\r\n    \"password\" : \"12345\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/logout/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"logout",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List User favorites",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/favorites/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"favorites",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add favorite",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\" : \"maria@email.com\",\r\n    \"route_id\" : \"609 01\",\r\n    \"stop_id\" : \"104787000120\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/favorites/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"favorites",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete favorite",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\" : \"maria@email.com\",\r\n    \"route_id\" : \"609 01\",\r\n    \"stop_id\" : \"104787000120\",\r\n    \"time\" : \"11:05:05\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/favorites/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"favorites",
+						""
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
@@ -203,6 +329,11 @@
 		{
 			"key": "user-email",
 			"value": "maria@email.com",
+			"type": "default"
+		},
+		{
+			"key": "route-id",
+			"value": "609 03",
 			"type": "default"
 		}
 	]

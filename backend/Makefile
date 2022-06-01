@@ -1,7 +1,7 @@
 run:
 	flask run
 
-install-requirements:
+install:
 	pip3 install -r requirements.txt
 
 lint:

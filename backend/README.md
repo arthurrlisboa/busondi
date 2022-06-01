@@ -2,14 +2,9 @@
 
 ## 1. Instalação
 ```bash
-pip install flask
+make install
 ```
-
+## 2. Inicial aplicação
 ```bash
-pip install flask-sqlalchemy
+make run
 ```
-
-```bash
-pip install GeoAlchemy2
-```
-

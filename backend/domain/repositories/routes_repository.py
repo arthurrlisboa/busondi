@@ -2,14 +2,14 @@ from backend.adapters.routes_repository_impl import RoutesRepositoryImpl
 
 class RoutesRepository:
 
-    def get_routes_from_stop_repo(stop_id):
-        return RoutesRepositoryImpl.get_routes_from_stop_repo_(stop_id)
+    def return_all_routes_from_stop(stop_id):
+        return RoutesRepositoryImpl.return_all_routes_from_stop_impl(stop_id)
       
-    def get_route_stop_from_ids_repo(stop_id, route_id):
-        return RoutesRepositoryImpl.get_route_stop_from_ids_repo_(stop_id, route_id)
+    def return_route_stop_by_id(stop_id, route_id):
+        return RoutesRepositoryImpl.return_route_stop_by_id_impl(stop_id, route_id)
     
-    def get_trips_from_route_repo(route_id):
-        return RoutesRepositoryImpl.get_trips_from_route_repo_(route_id)
+    def return_trips_from_route(route_id):
+        return RoutesRepositoryImpl.return_trips_from_route_impl(route_id)
     
-    def get_route_by_id_repo(route_id):
-        return RoutesRepositoryImpl.get_route_by_id_repo_(route_id)
+    def return_one_route_by_id(route_id):
+        return RoutesRepositoryImpl.return_one_route_by_id_impl(route_id)

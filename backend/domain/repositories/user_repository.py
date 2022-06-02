@@ -2,17 +2,17 @@ from backend.adapters.user_repository_impl import UserRepositoryImpl
 
 class UserRepository:
 
-    def get_all_users_repo():
-        return UserRepositoryImpl.get_all_users_repo_()
+    def return_all_users():
+        return UserRepositoryImpl.return_all_users_impl()
 
-    def add_new_user(user):
-        UserRepositoryImpl.add_new_user_(user)
+    def add_user(user):
+        UserRepositoryImpl.add_user_impl(user)
 
-    def get_user_by_email_repo(email):
-        return UserRepositoryImpl.get_user_by_email_repo_(email)
+    def return_one_user_by_email(email):
+        return UserRepositoryImpl.return_one_user_by_email_impl(email)
 
-    def update_user_password_repo(email, new_password):
-        UserRepositoryImpl.update_user_password_repo_(email, new_password)
+    def change_user_password(email, new_password):
+        UserRepositoryImpl.change_user_password_impl(email, new_password)
 
-    def delete_user_repo(email):
-        UserRepositoryImpl.delete_user_repo_(email)
+    def remove_user(email):
+        UserRepositoryImpl.remove_user_impl(email)

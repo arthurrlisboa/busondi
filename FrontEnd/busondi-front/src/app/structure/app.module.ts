@@ -19,6 +19,7 @@ import { LocalizarLinhaComponent } from '../screens/localizar-linha/localizar-li
 import { HomeComponent } from '../screens/home/home.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { AuthService } from '../screens/login/auth.service';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatInputModule,
     MatFormFieldModule
   ],
-  providers: [],
+  providers: [
+    AuthService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

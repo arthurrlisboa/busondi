@@ -44,7 +44,7 @@
         <div ngClass="button-send">
             <button mat-raised-button color="warn" 
                 style="width: 19%;"
-                type="submit" [disabled]="!registerForm.valid" routerLink="/login" >JUNTE-SE A NÓS</button>
+                type="submit" [disabled]="!registerForm.valid" (click)="openDialog()" >JUNTE-SE A NÓS</button>
         </div>
     </form>
 </div>

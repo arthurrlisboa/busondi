@@ -14,7 +14,7 @@ def stops():
 
 @app.route('/stops/<stop_id>/', methods = ['GET'])
 def stops_stop_id(stop_id):
-   return route_controller.list_routes_from_stop(stop_id)
+   return route_controller.return_stop_and_routes(stop_id)
 
 # User
 @app.route('/users/', methods = ['GET', 'POST'])

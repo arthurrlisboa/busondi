@@ -2,11 +2,11 @@ from backend.domain.user.modify_user_impl import ModifyUserImpl
 
 class ModifyUser:
 
-    def create_user_port(email, password, name):
-        return ModifyUserImpl.create_user_(email, password, name)
+    def new_user(email, password, name):
+        return ModifyUserImpl.new_user_impl(email, password, name)
 
-    def update_user_password_port(email, new_password):
-        ModifyUserImpl.update_user_password(email, new_password)
+    def update_user_password(email, new_password):
+        ModifyUserImpl.update_user_password_impl(email, new_password)
 
-    def delete_user_port(email):
-        return ModifyUserImpl.delete_user_(email)
+    def exclude_user(email):
+        return ModifyUserImpl.exclude_user_impl(email)

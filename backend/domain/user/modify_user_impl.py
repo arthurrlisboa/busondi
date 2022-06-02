@@ -3,14 +3,14 @@ from backend.domain.user.user import User
 
 class ModifyUserImpl:
 
-    def create_user_(email, password, name):
+    def new_user_impl(email, password, name):
         new_user = User(email, password, name)
-        UserRepository.add_new_user(new_user)
+        UserRepository.add_user(new_user)
         return {'message' : 'user created'}
 
-    def update_user_password(email, new_password):
-        UserRepository.update_user_password_repo(email, new_password)
+    def update_user_password_impl(email, new_password):
+        UserRepository.change_user_password(email, new_password)
 
-    def delete_user_(email):
-        UserRepository.delete_user_repo(email)
+    def exclude_user_impl(email):
+        UserRepository.remove_user(email)
         return {'message' : 'user deleted'}

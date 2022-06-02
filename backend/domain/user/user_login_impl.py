@@ -2,8 +2,8 @@ from backend.domain.user.get_user import GetUser
 
 class UserLoginImpl:
 
-    def do_login(email, password):
-        user = GetUser.get_user_by_email_port(email)
+    def do_login_impl(email, password):
+        user = GetUser.get_user_by_email(email)
         if user:
             if user.password == password:
                 return {'message' : 'You are logged in'}

@@ -7,7 +7,7 @@ MEAN_BUS_VELOCITY = 4.7  # velocity in m/s
 class BusScheduleImpl:
 
     def get_travel_time_timedelta(stop_id, route_id):
-        route_stop = RoutesRepository.get_route_stop_from_ids_repo(stop_id, route_id)
+        route_stop = RoutesRepository.return_route_stop_by_id(stop_id, route_id)
         if not route_stop.traveled_time: 
             travel_time = route_stop.traveled_dist / MEAN_BUS_VELOCITY
         else:
@@ -25,10 +25,10 @@ class BusScheduleImpl:
                                 minutes=time_obj.minute, 
                                 seconds=round(time_obj.second,2))
 
-    def get_arrival_time(stop_id, route_id):
+    def get_arrival_time_impl(stop_id, route_id):
         travel_time_timedelta = BusScheduleImpl.get_travel_time_timedelta(stop_id, route_id)
 
-        trip_list = RoutesRepository.get_trips_from_route_repo(route_id)
+        trip_list = RoutesRepository.return_trips_from_route(route_id)
         current_time = BusScheduleImpl.get_current_time_timedelta()
         best_arrival_time = None
         for trip in trip_list:
@@ -40,7 +40,7 @@ class BusScheduleImpl:
                 
         return (str(best_arrival_time) or '')
     
-    def order_by_arrival_time(routes_dict):
+    def order_by_arrival_time_impl(routes_dict):
         # Converte o valor do dicionário de str para timedelta
         timedelta_dict = dict( (x, [routes_dict[x][0], datetime.datetime.strptime(routes_dict[x][1],"%H:%M:%S.%f")] ) for x in routes_dict )
         # Ordena dicionário conforme timedelta

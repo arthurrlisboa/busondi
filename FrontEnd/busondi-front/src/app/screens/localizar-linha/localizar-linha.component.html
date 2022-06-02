@@ -6,11 +6,11 @@
     <form [formGroup]="findForm" (ngSubmit)="onSubmit()">
         <div style="margin-top: 30px;">
             <mat-form-field appearance="outline" style="width: 19%;">
-                <mat-label>Linha</mat-label>
-                <input
-                    id="line"
+                <mat-label>Ponto de partida</mat-label>
+                <input 
+                    id="departure"
                     type="text"
-                    formControlName="line"
+                    formControlName="departure"
                     required
                     matInput
                 >
@@ -18,11 +18,11 @@
         </div>
         <div style="margin-top: 5px;">
             <mat-form-field appearance="outline" style="width: 19%;">
-                <mat-label>Ponto de partida</mat-label>
-                <input 
-                    id="departure"
+                <mat-label>Linha</mat-label>
+                <input
+                    id="line"
                     type="text"
-                    formControlName="departure"
+                    formControlName="line"
                     required
                     matInput
                 >
@@ -42,8 +42,9 @@
         </div> -->
         <div ngClass="button-send">
             <button mat-raised-button color="warn" 
-                style="width: 8%;"
-                type="submit" [disabled]="!findForm.valid" >BUSCAR</button>
+                style="width: 19%; height: 50px;"
+                type="submit" [disabled]="!findForm.valid"
+                routerLink="/localizar-linha/resultado" >BUSCAR</button>
         </div>
     </form>
 </div>

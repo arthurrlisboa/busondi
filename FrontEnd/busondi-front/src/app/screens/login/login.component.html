@@ -30,8 +30,12 @@
         </div>
         <div ngClass="button-send">
             <button mat-raised-button color="warn" 
-                style="width: 8%;"
-                type="submit" [disabled]="!userForm.valid" >ENTRAR</button>
+                style="width: 19%;"
+                type="submit" [disabled]="!userForm.valid" routerLink="/home" >ENTRAR</button>
+        </div>
+        <div ngClass="register-content">
+            <h5>Não está registrado?</h5>
+            <button routerLink="/register" >Junte-se a nós.</button>
         </div>
     </form>
 </div>

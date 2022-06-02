@@ -4,7 +4,7 @@
 ```bash
 make install
 ```
-## 2. Inicial aplicação
+## 2. Iniciar aplicação
 ```bash
 make run
 ```

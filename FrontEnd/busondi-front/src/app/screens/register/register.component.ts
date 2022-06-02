@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-register',
@@ -21,6 +21,8 @@ export class RegisterComponent {
     const dialogRef = this.dialog.open(DialogRegister, {
       width: '250px'
     });
+
+    dialogRef.updatePosition({ top: '10px'});
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
@@ -46,5 +48,5 @@ export class DialogRegister {
   onNoClick(): void {
     this.dialogRef.close();
   }
-
+    
 }

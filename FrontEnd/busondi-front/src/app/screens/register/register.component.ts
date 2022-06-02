@@ -1,13 +1,17 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef} from '@angular/material/dialog';
+import { RegisterService } from './register.service';
+import { first } from 'rxjs';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
+  providers: [RegisterService],
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
+  loading = false;
 
   registerForm = this.fb.group({
     email: ['', Validators.required],
@@ -15,7 +19,11 @@ export class RegisterComponent {
     password: ['', Validators.required]
   })
 
-  constructor(private fb: FormBuilder, private dialog: MatDialog) { }
+  constructor(
+    private fb: FormBuilder,
+    private dialog: MatDialog,
+    private registerService: RegisterService,
+  ) { }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogRegister, {
@@ -30,8 +38,18 @@ export class RegisterComponent {
   }
 
   onSubmit() {
-    // TODO: Use EventEmitter with form value
-    console.warn(this.registerForm.value);
+    this.loading = true;
+
+    this.registerService.createUser(
+      this.registerForm.get('email')?.value,
+      this.registerForm.get('password')?.value,
+      this.registerForm.get('username')?.value
+    )
+      .pipe(first())
+      .subscribe({
+
+        error: (error) => {this.loading = false}
+      });
   }
 
 }

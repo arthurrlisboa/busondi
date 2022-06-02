@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { first } from 'rxjs';
 import { AuthService } from './auth.service';
 
 @Component({
@@ -10,6 +11,7 @@ import { AuthService } from './auth.service';
 })
 export class LoginComponent {
   authorized: boolean = false;
+  loading: boolean = false;
 
   userForm = this.fb.group({
     username: ['', Validators.required],
@@ -22,10 +24,14 @@ export class LoginComponent {
   ) { }
 
   onSubmit() {
-    this.authService.authUser()
-      .subscribe(auth => this.authorized =  auth)
-    // TODO: Use EventEmitter with form value
-    console.warn(this.userForm.value);
+    this.loading = true;
+
+    this.authService.authUser(this.userForm.get('username')?.value, this.userForm.get('password')?.value)
+      .pipe(first())
+      .subscribe({
+        next: (auth) => {this.authorized =  auth},
+        error: (error) => {this.loading = false}
+      });
   }
 
 }

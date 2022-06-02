@@ -27,6 +27,8 @@ import { ToolbarUnloggedComponent } from '../screens/toolbar-unlogged/toolbar-un
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { AuthService } from '../screens/login/auth.service';
+import { HttpClientModule } from '@angular/common/http';
+import { RegisterService } from '../screens/register/register.service';
 
 @NgModule({
   declarations: [
@@ -54,10 +56,12 @@ import { AuthService } from '../screens/login/auth.service';
     MatDividerModule,
     MatInputModule,
     MatFormFieldModule,
-    MatDialogModule
+    MatDialogModule,
+    HttpClientModule
   ],
   providers: [
     AuthService,
+    RegisterService,
   ],
   bootstrap: [AppComponent]
 })

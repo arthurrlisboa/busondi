@@ -1,7 +1,6 @@
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable } from 'rxjs';
-import { SubscriptionLog } from 'rxjs/internal/testing/SubscriptionLog';
 
 
 @Injectable({
@@ -14,7 +13,7 @@ export class AuthService {
     private http: HttpClient
   ) { }
 
-  authUser(): Observable<boolean> {
-    return this.http.get<boolean>(this.authUrl);
+  authUser(email?: string, password?: string): Observable<boolean> {
+    return this.http.post<boolean>(this.authUrl, {email: email, passeord: password});
   }
 }

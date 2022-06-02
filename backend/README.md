@@ -2,14 +2,10 @@
 
 ## 1. Instalação
 ```bash
-pip install flask
+pip install requirements.txt
 ```
 
+## 2. Execução
 ```bash
-pip install flask-sqlalchemy
+flask run
 ```
-
-```bash
-pip install GeoAlchemy2
-```
-

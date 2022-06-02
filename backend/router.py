@@ -46,9 +46,7 @@ def login():
 
 @app.route('/logout/', methods = ['POST'])
 def logout():
-   if 'email' in session:
-      session.pop('email')
-   return jsonify({'message' : 'You are logged out'})
+   return controller.user_logout()
 
 # Favorites
 @app.route('/favorites/', methods = ['GET', 'POST', 'DELETE'])

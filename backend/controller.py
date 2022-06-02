@@ -71,15 +71,15 @@ def delete_user(email):
 
 # Login
 def user_login(email, password):
-    user = port.get_user_by_email_port(email)
-    if user:
-        if user.password == password:
-            session['email'] = email
-            return jsonify({'message' : 'You are logged in'})
-        else:
-            return jsonify({'message' : 'Wrong password'})
-    else:
-        return jsonify({'message' : 'User does not exist'})
+    response = port.do_login_port(email, password)
+    if response == {'message' : 'You are logged in'}:
+        session['email'] = email
+    return jsonify(response)
+
+def user_logout():
+    if 'email' in session:
+        session.pop('email')
+    return jsonify({'message' : 'You are logged out'})
 
 # Favorites
 

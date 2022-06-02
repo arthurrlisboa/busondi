@@ -1,16 +1,12 @@
-from backend.domain.repositories.user_repository import UserRepository
-from backend.domain.user.user import User
+from backend.domain.user.modify_user_impl import ModifyUserImpl
 
 class ModifyUser:
 
-    def create_user_(email, password, name):
-        new_user = User(email, password, name)
-        UserRepository.add_new_user(new_user)
-        return {'message' : 'user created'}
+    def create_user_port(email, password, name):
+        return ModifyUserImpl.create_user_(email, password, name)
 
-    def update_user_password(email, new_password):
-        UserRepository.update_user_password_repo(email, new_password)
+    def update_user_password_port(email, new_password):
+        ModifyUserImpl.update_user_password(email, new_password)
 
-    def delete_user_(email):
-        UserRepository.delete_user_repo(email)
-        return {'message' : 'user deleted'}
+    def delete_user_port(email):
+        return ModifyUserImpl.delete_user_(email)

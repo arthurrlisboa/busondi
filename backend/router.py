@@ -1,5 +1,5 @@
 from backend.controllers import user_controller, route_controller, bus_stop_controller, favorite_controller, current_position_controller
-from flask import jsonify, render_template, request, session
+from flask import jsonify, render_template, request, session, make_response
 from backend.app import app
 
 # Home
@@ -23,7 +23,7 @@ def users():
       return user_controller.list_users()
    if request.method == 'POST':
       info_json = request.get_json()
-      return user_controller.create_user(info_json['email'], info_json['password'], info_json['name'])
+      return user_controller.create_user(info_json)
 
 @app.route('/users/<email>/', methods = ['GET', 'PUT', 'DELETE'])
 def users_user_id(email):
@@ -31,7 +31,7 @@ def users_user_id(email):
       return user_controller.return_user(email)
    if request.method == 'PUT':
       info_json = request.get_json()
-      return user_controller.update_user(email, info_json['password'])
+      return user_controller.update_user(email, info_json)
    if request.method == 'DELETE':
       return user_controller.delete_user(email)
 
@@ -39,10 +39,7 @@ def users_user_id(email):
 @app.route('/login/', methods = ['POST'])
 def login():
    info_json = request.get_json()
-   if info_json['email'] and info_json['password']:
-      return user_controller.user_login(info_json['email'], info_json['password'])
-   else: 
-      return jsonify({'message' : 'Invalid credentials'})
+   return user_controller.user_login(info_json)
 
 @app.route('/logout/', methods = ['POST'])
 def logout():
@@ -56,12 +53,12 @@ def favorites():
          return favorite_controller.list_user_favorites(session['email'])
       if request.method == 'POST':
          info_json = request.get_json()
-         return favorite_controller.create_favorite(session['email'], info_json['route_id'], info_json['stop_id'])
+         return favorite_controller.create_favorite(session['email'], info_json)
       if request.method == 'DELETE':
          info_json = request.get_json()
-         return favorite_controller.delete_favorite(session['email'], info_json['route_id'], info_json['stop_id'], info_json['time'])
+         return favorite_controller.delete_favorite(session['email'], info_json)
    else:
-      return jsonify({'message' : 'Login required'})
+      return make_response(jsonify({'message' : 'Login required'}), 401)
 
 # Current Position
 @app.route('/current-position/<route_id>/', methods = ['GET'])

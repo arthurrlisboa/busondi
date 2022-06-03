@@ -87,7 +87,7 @@ História 5: Como usuário do sistema Busondi, quero descobrir qual a posição 
 Tarefas:
   - Obter [dados de posição atual dos ônibus](https://dados.pbh.gov.br/dataset/tempo_real_onibus_-_coordenada) [Jackson]
   - Implementar lógica de atualização dos dados de posição atual dos ônibus [Jackson]
-  - Criar endpoint `GET /current-position/<trip_id>` que retorna a informação de posição atual do ônibus [Helena]
+  - Criar endpoint `GET /current-position/<route_id>` que retorna a informação de posição atual do ônibus [Helena]
   - Criar interface com mapa que mostra a posição atual do ônibus em meio à sua rota (shape) [Pedro]
 
 História 6: Como usuário do sistema Busondi, quero poder ver toda a rota de uma dada linha de ônibus, destacando todas as suas paradas, incluindo seu ponto final.

@@ -13,3 +13,6 @@ class RoutesRepository:
     
     def return_one_route_by_id(route_id):
         return RoutesRepositoryImpl.return_one_route_by_id_impl(route_id)
+    
+    def return_route_conversion(route_id):
+        return RoutesRepositoryImpl.return_route_conversion_impl(route_id)

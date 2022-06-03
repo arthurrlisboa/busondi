@@ -5,4 +5,5 @@ from flask import jsonify
 def current_position_map(route_id):
     polygon = GetPolygon.get_polygon(route_id)
     bus_coords = GetBusCoords.get_bus_coords(route_id)
+    # DRAW MAP USING polygon and bus_coords
     return jsonify({'message':'success'})

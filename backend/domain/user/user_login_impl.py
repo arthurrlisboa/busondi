@@ -4,10 +4,7 @@ class UserLoginImpl:
 
     def do_login_impl(email, password):
         user = GetUser.get_user_by_email(email)
-        if user:
-            if user.password == password:
-                return {'message' : 'You are logged in'}
-            else:
-                return {'message' : 'Wrong password'}
+        if user.password == password:
+            return {'message' : 'You are logged in'}
         else:
-            return {'message' : 'User does not exist'}
+            return {'message' : 'Wrong password'}

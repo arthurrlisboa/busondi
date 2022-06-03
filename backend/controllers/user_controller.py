@@ -1,6 +1,6 @@
 from backend.domain.user.modify_user import ModifyUser
 from backend.domain.user.user_login import UserLogin
-from flask import jsonify, render_template, session
+from flask import jsonify, session, make_response
 from backend.domain.user.get_user import GetUser
 
 def list_users():
@@ -11,35 +11,60 @@ def list_users():
             'name' : user.name,
             'password' : user.password
         }
-    return render_template("list_users.html", users=jsonify(user_dict))
+    return make_response(jsonify(user_dict), 200)
 
-def create_user(email, password, name):
-    response = ModifyUser.new_user(email, password, name)
-    return jsonify(response)
+def create_user(info_json):
+    if 'email' in info_json and 'password' in info_json and 'name' in info_json:
+        if info_json['email'] and info_json['password'] and info_json['name']:
+            try:
+                response = ModifyUser.new_user(info_json['email'], info_json['password'], info_json['name'])
+                return make_response(jsonify(response), 200)
+            except:
+                return make_response(jsonify({'message' : 'Email already exists'}), 409)
+    return make_response(jsonify({'message' : 'Invalid credentials - email, password and name fields required'}), 400)
 
 def return_user(email):
-    user = GetUser.get_user_by_email(email)
-    user_dict = {
-        email : user.password
-    }
-    return render_template("return_user.html", user=jsonify(user_dict))
+    try:
+        user = GetUser.get_user_by_email(email)
+        user_dict = {
+            email : user.password
+        }
+        return make_response(jsonify(user_dict), 200)
+    except:
+        return make_response(jsonify({'message' : 'User not found'}), 404)
 
-def update_user(email, new_password):
-    ModifyUser.update_user_password(email, new_password)
-    return return_user(email)
+def update_user(email, info_json):
+    if 'password' not in info_json or not info_json['password']:
+        make_response(jsonify({'message' : 'Invalid Credentials - password field required'}), 400)
+    try:
+        ModifyUser.update_user_password(email, info_json['password'])
+        return return_user(email)
+    except: 
+        return make_response(jsonify({'message' : 'User not found'}), 404)
 
 def delete_user(email):
-    response = ModifyUser.exclude_user(email)
-    return jsonify(response)
+    try:
+        response = ModifyUser.exclude_user(email)
+        return make_response(jsonify(response), 200)
+    except:
+        return make_response(jsonify({'message' : 'User not found'}), 404)
 
 # Login
-def user_login(email, password):
-    response = UserLogin.do_login(email, password)
-    if response == {'message' : 'You are logged in'}:
-        session['email'] = email
-    return jsonify(response)
+def user_login(info_json):
+    if 'email' in info_json and 'password' in info_json:
+      if info_json['email'] and info_json['password']:
+        try:
+            response = UserLogin.do_login(info_json['email'], info_json['password'])
+            if response == {'message' : 'You are logged in'}:
+                session['email'] = info_json['email']
+                return make_response(jsonify(response), 200)
+            else:
+                return make_response(jsonify(response), 401)
+        except:
+            return make_response(jsonify({'message' : 'User not found'}), 404)
+    return make_response(jsonify({'message' : 'Invalid credentials - email and password fields required'}), 400)
 
 def user_logout():
     if 'email' in session:
         session.pop('email')
-    return jsonify({'message' : 'You are logged out'})
+    return make_response(jsonify({'message' : 'You are logged out'}), 200)

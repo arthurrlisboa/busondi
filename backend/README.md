@@ -2,10 +2,9 @@
 
 ## 1. Instalação
 ```bash
-pip install requirements.txt
+make install
 ```
-
-## 2. Execução
+## 2. Iniciar aplicação
 ```bash
-flask run
+make run
 ```

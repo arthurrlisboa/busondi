@@ -1,6 +1,6 @@
 from sqlalchemy import Column, ForeignKey, Integer, String, Time
-
 from backend.database.config.db_base import Base
+from datetime import datetime
 
 
 class Favorites(Base):
@@ -16,3 +16,11 @@ class Favorites(Base):
 
     def __repr__(self):
         return f'Favorites {self.favorite_id}'
+
+    def __init__(self, favorite_id, email, route_id, stop_id):
+        self.favorite_id = favorite_id
+        self.email = email
+        self.route_id = route_id
+        self.stop_id = stop_id
+        self.time = datetime.now().time().replace(microsecond=0)
+        self.notification = False

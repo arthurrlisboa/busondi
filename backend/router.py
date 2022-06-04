@@ -1,4 +1,4 @@
-from backend.controllers import user_controller, route_controller, bus_stop_controller, favorite_controller, current_position_controller
+from backend.controllers import user_controller, route_controller, bus_stop_controller, favorite_controller
 from flask import jsonify, render_template, request, session, make_response
 from backend.app import app
 
@@ -61,6 +61,6 @@ def favorites():
       return make_response(jsonify({'message' : 'Login required'}), 401)
 
 # Current Position
-@app.route('/current-position/<route_id>/', methods = ['GET'])
+@app.route('/routes/<route_id>/current-position/', methods = ['GET'])
 def current_position(route_id):
-   return current_position_controller.current_position_map(route_id)
+   return route_controller.current_position_map(route_id)

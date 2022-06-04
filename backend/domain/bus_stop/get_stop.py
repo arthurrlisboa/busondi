@@ -6,3 +6,6 @@ class GetStop:
 
     def get_stop_by_id(stop_id):
         return GetStopImpl.get_stop_by_id_impl(stop_id)
+
+    def get_stops_coordinates(stops_list):
+        return GetStopImpl.get_stops_coordinates_impl(stops_list)

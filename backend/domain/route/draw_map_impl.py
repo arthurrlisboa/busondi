@@ -39,7 +39,7 @@ class DrawMapImpl:
                 'style': "open-street-map",
                 'zoom': 14})
 
-        return fig.to_html()
+        return fig.to_image(format="png")
 
     def get_lon_lat_from_tuples_list(tuple_list):
         lon = [elem[0] for elem in tuple_list]

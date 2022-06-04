@@ -10,6 +10,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 app.config['SECRET_KEY'] = 'busondi-session-key'
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=30)
+app.config['JSON_SORT_KEYS'] = False
 
 busondi_database = SQLAlchemy(app)
 

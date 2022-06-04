@@ -313,6 +313,43 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "List Routes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/routes/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"routes",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Route info and stops",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/routes/{{route-id}}/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"routes",
+						"{{route-id}}",
+						""
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
@@ -353,7 +390,7 @@
 		},
 		{
 			"key": "route-id",
-			"value": "609 03",
+			"value": "609-03",
 			"type": "default"
 		}
 	]

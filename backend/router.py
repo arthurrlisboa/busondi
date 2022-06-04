@@ -60,7 +60,15 @@ def favorites():
    else:
       return make_response(jsonify({'message' : 'Login required'}), 401)
 
-# Current Position
+# Routes
+@app.route('/routes/', methods = ['GET'])
+def routes():
+   return route_controller.list_routes()
+
+@app.route('/routes/<route_id>/', methods = ['GET'])
+def routes_route_id(route_id):
+   return route_controller.return_route_and_stops(route_id)
+
 @app.route('/routes/<route_id>/current-position/', methods = ['GET'])
-def current_position(route_id):
+def routes_route_id_current_position(route_id):
    return route_controller.current_position_map(route_id)

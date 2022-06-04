@@ -1,11 +1,11 @@
 from backend.controllers import user_controller, route_controller, bus_stop_controller, favorite_controller
-from flask import jsonify, render_template, request, session, make_response
+from flask import jsonify, request, session, make_response
 from backend.app import app
 
 # Home
 @app.route('/')
 def home():
-   return render_template("home.html")
+   return make_response(jsonify({'message' : 'Home'}), 200)
 
 # Stop
 @app.route('/stops/', methods = ['GET'])

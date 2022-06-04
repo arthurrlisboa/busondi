@@ -1,4 +1,4 @@
-from backend.domain.current_position.draw_map_impl import DrawMapImpl
+from backend.domain.route.draw_map_impl import DrawMapImpl
 
 class DrawMap:
     def draw_map_route_stops_bus_position(polygon, bus_coord, stops_coord):

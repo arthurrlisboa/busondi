@@ -3,7 +3,7 @@ from backend.domain.repositories.shapes_repository import ShapesRepository
 
 import shapely
 
-class GetPolygonImpl:
+class GetShapeImpl:
     
     def get_polygon_impl(route_id):
         route = RoutesRepository.return_one_route_by_id(route_id)

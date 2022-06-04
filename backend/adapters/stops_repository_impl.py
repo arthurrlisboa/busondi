@@ -11,3 +11,8 @@ class StopsRepositoryImpl:
         with DBConnection() as connection:
             stop = connection.session.query(BusStops).get(stop_id)
         return stop
+
+    def return_all_stops_in_list_impl(stops_list):
+        with DBConnection() as connection:
+            stops_list = connection.session.query(BusStops).filter(BusStops.stop_id.in_(stops_list)).all()
+        return stops_list

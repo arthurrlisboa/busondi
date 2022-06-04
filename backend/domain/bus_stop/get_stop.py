@@ -9,3 +9,6 @@ class GetStop:
 
     def get_stops_coordinates(stops_list):
         return GetStopImpl.get_stops_coordinates_impl(stops_list)
+
+    def get_stops_from_route(route_id):
+        return GetStopImpl.get_stops_from_route_impl(route_id)

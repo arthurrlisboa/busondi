@@ -30,3 +30,13 @@ class RoutesRepositoryImpl:
         with DBConnection() as connection:
             route = connection.session.query(RoutesConversion).filter_by(route_id=route_id).first()
         return route.route_number
+
+    def return_all_routes_impl():
+        with DBConnection() as connection:
+            all_routes = connection.session.query(Routes).all()
+        return all_routes
+
+    def return_route_by_id_impl(route_id):
+        with DBConnection() as connection:
+            route = connection.session.query(Routes).get(route_id)
+        return route        

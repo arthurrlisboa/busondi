@@ -16,3 +16,9 @@ class RoutesRepository:
     
     def return_route_conversion(route_id):
         return RoutesRepositoryImpl.return_route_conversion_impl(route_id)
+
+    def return_all_routes():
+        return RoutesRepositoryImpl.return_all_routes_impl()
+
+    def return_route_by_id(route_id):
+        return RoutesRepositoryImpl.return_route_by_id_impl(route_id)

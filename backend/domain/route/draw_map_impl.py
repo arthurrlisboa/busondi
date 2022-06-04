@@ -38,7 +38,6 @@ class DrawMapImpl:
                 'center': {"lat": center_lat, "lon": center_lon},
                 'style': "open-street-map",
                 'zoom': 14})
-        fig.show()
 
         return fig.to_html()
 

@@ -274,7 +274,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\" : \"maria@email.com\",\r\n    \"route_id\" : \"609 01\",\r\n    \"stop_id\" : \"104787000120\",\r\n    \"time\" : \"11:05:05\"\r\n}",
+					"raw": "{\r\n    \"email\" : \"maria@email.com\",\r\n    \"route_id\" : \"609 01\",\r\n    \"stop_id\" : \"104787000120\",\r\n    \"time\" : \"10:11:23\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -288,6 +288,26 @@
 					],
 					"path": [
 						"favorites",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Map bus current position",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/routes/{{route-id}}/current-position/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"routes",
+						"{{route-id}}",
+						"current-position",
 						""
 					]
 				}

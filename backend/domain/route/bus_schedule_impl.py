@@ -46,4 +46,4 @@ class BusScheduleImpl:
         # Ordena dicionário conforme timedelta
         sorted_dict = dict( sorted( timedelta_dict.items(), key= lambda x: BusScheduleImpl.get_timedelta_from_time_obj(x[1][1]) ) )
         # Retorna dicionário convertendo timedelta para string novamente
-        return dict( (x, [sorted_dict[x][0], str(sorted_dict[x][1])] ) for x in sorted_dict )
+        return dict( (x, [sorted_dict[x][0], str(sorted_dict[x][1])[11:16] ] ) for x in sorted_dict )

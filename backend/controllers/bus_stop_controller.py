@@ -1,5 +1,5 @@
 from backend.domain.bus_stop.get_stop import GetStop
-from flask import jsonify, render_template
+from flask import jsonify, make_response
 
 def list_stops():
     stops_list = GetStop.get_all_stops()
@@ -12,4 +12,4 @@ def list_stops():
             'stop_name' : stop.stop_name
         }
         
-    return render_template("stops.html", stops=jsonify(stops_dict))
+    return make_response(jsonify(stops_dict), 200)

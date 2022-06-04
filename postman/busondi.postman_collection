@@ -247,7 +247,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\" : \"maria@email.com\",\r\n    \"route_id\" : \"609 01\",\r\n    \"stop_id\" : \"104787000120\"\r\n}",
+					"raw": "{\r\n    \"email\" : \"maria@email.com\",\r\n    \"route_id\" : \"609-01\",\r\n    \"stop_id\" : \"104787000120\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -274,7 +274,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\" : \"maria@email.com\",\r\n    \"route_id\" : \"609 01\",\r\n    \"stop_id\" : \"104787000120\",\r\n    \"time\" : \"10:11:23\"\r\n}",
+					"raw": "{\r\n    \"email\" : \"maria@email.com\",\r\n    \"route_id\" : \"609-01\",\r\n    \"stop_id\" : \"104787000120\",\r\n    \"time\" : \"18:10:41\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

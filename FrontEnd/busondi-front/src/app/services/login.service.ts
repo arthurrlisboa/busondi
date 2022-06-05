@@ -4,24 +4,24 @@ import { Injectable } from '@angular/core';
 
 export class LoginService {
 
-    private logged = true;
-    private name = 'Ryan';
+    private logged = false;
+    private name = '';
     private email = '';
 
     login(email: string, password: string) :void {
         //Todo - chamada back para recuperar nome e fazer login
-        this.name='Arthur'
+
+        this.name = 'Arthur'
         this.email = email;
 
         this.logged = true;
     }
 
     unlog() :void {
-        this.name = '';
-        this.email = '';
-
         //Todo - chamada back para fazer deslogar
 
+        this.name = '';
+        this.email = '';
         this.logged = false;
     }
 

@@ -189,7 +189,7 @@ Também existem dois tipos de adaptadores:
 
 Na camada de domínio foram adotados os princípios de projeto de Domain Driven Design (DDD), que casam muito bem com a arquitetura hexagonal do sistema. A linguagem ubíqua foi usada para nomear os elementos presentes no sistema. Exemplos são as classes BusStop (ponto de ônibus) e Route (linha de ônibus). Alguns dos relacionamentos entre esses elementos podem ser mapeados, como o fato de que em um ponto de ônibus passam várias linhas de ônibus, e uma linha de ônibus faz várias viagens (Trips) por dia. Vários tipos de objetos de domínio compõem o sistema, eles podem ser vistos no diagrama a seguir:
 
-![DiagramaDDD](https://drive.google.com/file/d/1a4XM-AHivzp6sK4hGOBOHyh-2ceprAiC/view?usp=sharing)
+![DiagramaDDD](https://user-images.githubusercontent.com/42720360/172061980-6ca75396-02d3-41fc-9ec2-2d24cf0e866e.png)
 
 As entidades são objetos complexos que possuem uma identidade única, que as distingue dos demais objetos da mesma classe. Como exemplo, no nosso sistema, temos a classe BusStop que representa um ponto de ônibus. Cada instância da classe tem um ID único que a distingue das demais.
 

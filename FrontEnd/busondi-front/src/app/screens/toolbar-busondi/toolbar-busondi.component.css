@@ -1,0 +1,65 @@
+.icon-menu {
+    height: 28px;
+    left: -7px;
+    position: relative;
+}
+
+.toolbar-row {
+    height: 45px;
+}
+
+.toolbar-main {
+    min-height: 45px;
+}
+
+.login{
+    width: 100%;
+    text-align: right;
+}
+
+.login img{
+    height: 20px;
+    width: 20px;
+}
+
+.login_text{
+    color: rgb(151, 149, 149);
+    font-size: 15px;
+}
+
+.logged_text{
+    margin-top: 12px;
+    color: rgb(124, 117, 117);
+    font-size: 17px;
+}
+  
+mat-sidenav {
+    margin: 16px;
+    width: 200px;
+    border-right: none;
+    background: #f5f0f0;
+    color: rgb(20, 20, 20);
+    border-radius: 10px;
+    text-align: center;
+}
+
+mat-sidenav-container {
+    height: calc(100vh - 65px);
+}
+
+.content {
+    height: calc(100vh - 130px);
+    border-radius: 10px;
+    margin: 16px;
+    padding: 16px;
+    overflow: auto;
+    background-color: rgb(255, 255, 255);
+}
+
+.menu-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 1rem;
+}

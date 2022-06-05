@@ -6,6 +6,7 @@ import { FormBuilder, Validators } from '@angular/forms';
   templateUrl: './localizacao-linha.component.html',
   styleUrls: ['./localizacao-linha.component.css']
 })
+
 export class LocalizacaoLinhaComponent{
 
   line = '';

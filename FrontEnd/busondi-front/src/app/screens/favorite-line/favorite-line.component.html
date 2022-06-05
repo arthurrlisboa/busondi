@@ -1,0 +1,12 @@
+
+<div style="text-align: center;">
+  <img style="display: inline-block; height: 60px; width: 60px; margin-left: 10px;" src="assets/images/favorite-location.jpg">
+  <h2 style="font-size: 30px;">Linhas Favoritas</h2>
+  <ul class="favoriteLine">
+    <li *ngFor="let favoriteLine of favoriteLines">
+      <button type="button"  routerLink="/localizar-linha/resultado">
+        <span class="item">{{favoriteLine.name}} - {{favoriteLine.stopName}}</span>
+      </button>
+    </li>
+  </ul>
+</div>

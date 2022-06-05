@@ -1,0 +1,45 @@
+/* HeroesComponent's private CSS styles */
+.favoriteLine {
+    margin-top: 30px;
+    list-style-type: none;
+    padding: 0;
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto; 
+  }
+  
+  .favoriteLine li {
+    display: flex;
+  }
+  
+  .favoriteLine button {
+    flex: 1;
+    cursor: pointer;
+    left: 0;
+    background-color: rgb(206, 154, 154);
+    outline-color: rgb(206, 154, 154);;
+    margin: .5em;
+    padding: 1;
+    border-radius: 4px;
+    display: flex;
+    height: 3em;
+    color: black;
+    font-size: larger;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  
+  .favoriteLine button:hover {
+    color: black;
+    background-color: #f56464;
+    left: .1em;
+    text-align: center;
+  }
+  
+  .favoriteLine .item {
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto; 
+  }
+  

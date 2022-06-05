@@ -5,6 +5,13 @@
     text-align: center;
 }
 
+.map_route{
+  text-align: center;
+  margin: 0 auto;
+  height: 600px; 
+  width: 1000px;
+}
+
 .result_item img{
     max-width:180px;
     max-height:70px;

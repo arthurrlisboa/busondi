@@ -23,6 +23,7 @@ import { LoginComponent } from '../screens/login/login.component';
 import { RegisterComponent } from '../screens/register/register.component';
 import { DialogRegister }  from '../screens/register/register.component';
 import { ToolbarUnloggedComponent } from '../screens/toolbar-unlogged/toolbar-unlogged.component';
+import { FavoriteLineComponent } from '../screens/favorite-line/favorite-line.component';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -30,6 +31,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 @NgModule({
   declarations: [
     AppComponent,
+    FavoriteLineComponent,
     HomeComponent,
     LoginComponent,
     LocalizarLinhaComponent,

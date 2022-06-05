@@ -25,6 +25,8 @@ import { DialogRegister }  from '../screens/register/register.component';
 import { ToolbarBusondiComponent } from '../screens/toolbar-busondi/toolbar-busondi.component';
 import { FavoriteLineComponent } from '../screens/favorite-line/favorite-line.component';
 
+import { LoginService } from '../services/login.service'
+
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
@@ -57,7 +59,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatFormFieldModule,
     MatDialogModule
   ],
-  providers: [],
+  providers: [LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

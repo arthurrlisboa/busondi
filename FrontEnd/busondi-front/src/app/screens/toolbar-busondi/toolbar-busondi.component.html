@@ -9,12 +9,12 @@
         <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
       </button>
       <img style="margin-left: 8px; margin-top: 1px;" src="assets/images/busondi.png"  routerLink="/home">
-      <div *ngIf="!logged" ngClass="login">
+      <div *ngIf="!getLogged()" ngClass="login">
         <button mat-button routerLink="/login" ngClass="login_text">Login / inscrever-se</button>
       </div>
-      <div *ngIf="logged" ngClass="login">
+      <div *ngIf="getLogged()" ngClass="login">
         <div style="display: inline-block;">
-          <p ngClass="logged_text"> Olá, {{name}}</p>
+          <p ngClass="logged_text"> Olá, {{getName()}}</p>
         </div>
         <div style="display: inline-block;">
           <button mat-button ngClass="logged_text" (click)="exitApp()">

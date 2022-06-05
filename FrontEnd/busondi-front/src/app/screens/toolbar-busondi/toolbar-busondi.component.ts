@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router"
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-busondi-toolbar',
@@ -8,13 +9,15 @@ import { Router } from "@angular/router"
 })
 export class ToolbarBusondiComponent implements OnInit {
 
-  logged = false
-  name = ''
+  constructor(private router: Router, private loginService: LoginService) { }
 
-  constructor(private router: Router) {
-    this.logged = true;
-    this.name = 'Arthur';
-   }
+  getLogged(){
+    return this.loginService.getLogged();
+  }
+
+  getName(){
+    return this.loginService.getName();
+  }
 
   ngOnInit(): void {
   }
@@ -24,8 +27,8 @@ export class ToolbarBusondiComponent implements OnInit {
   }
 
   exitApp(): void {
+    this.loginService.unlog();
     this.router.navigate(['home'])
-    this.logged = false
   }
 
 }

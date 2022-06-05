@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef} from '@angular/material/dialog';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +16,18 @@ export class RegisterComponent {
     password: ['', Validators.required]
   })
 
-  constructor(private fb: FormBuilder, private dialog: MatDialog) { }
+  constructor(private fb: FormBuilder, private dialog: MatDialog, private loginService: LoginService) { }
+
+  onSubmit() {
+    let username = this.registerForm.controls['username'].value;
+    let email = this.registerForm.controls['email'].value;
+    let password = this.registerForm.controls['password'].value;;
+    
+    this.loginService.registerUser(username, email, password)
+    console.warn(this.registerForm.value);
+
+    this.openDialog();
+  }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogRegister, {
@@ -27,11 +39,6 @@ export class RegisterComponent {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
     });
-  }
-
-  onSubmit() {
-    // TODO: Use EventEmitter with form value
-    console.warn(this.registerForm.value);
   }
 
 }

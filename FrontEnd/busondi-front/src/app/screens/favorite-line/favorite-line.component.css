@@ -3,7 +3,7 @@
     margin-top: 30px;
     list-style-type: none;
     padding: 0;
-    width: 600px;
+    width: 700px;
     margin-left: auto;
     margin-right: auto; 
   }
@@ -12,7 +12,7 @@
     display: flex;
   }
   
-  .favoriteLine button {
+  .button_favorite {
     flex: 1;
     cursor: pointer;
     left: 0;
@@ -28,6 +28,23 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+    font-weight: bold;
+    border: none;
+  }
+
+  .button_remove {
+    cursor: pointer;
+    background-color: rgb(238, 228, 228);
+    outline-color: rgb(206, 154, 154);;
+    margin: .5em;
+    padding-top: 1;
+    border-radius: 4px;
+    display: flex;
+    height: 50px;
+    color: rgb(10, 10, 10);
+    width: 50px;
+    margin-top: 9px;
+    border: none;
   }
   
   .favoriteLine button:hover {

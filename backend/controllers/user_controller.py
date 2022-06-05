@@ -59,7 +59,7 @@ def user_login(info_json):
                 session['email'] = info_json['email']
                 return make_response(jsonify(response), 200)
             else:
-                return make_response(jsonify(response), 401)
+                return make_response(jsonify(response), 403)
         except:
             return make_response(jsonify({'message' : 'User not found'}), 404)
     return make_response(jsonify({'message' : 'Invalid credentials - email and password fields required'}), 400)

@@ -16,14 +16,14 @@
     flex: 1;
     cursor: pointer;
     left: 0;
-    background-color: rgb(206, 154, 154);
+    background-color: #f37e7e;
     outline-color: rgb(206, 154, 154);;
     margin: .5em;
     padding: 1;
     border-radius: 4px;
     display: flex;
     height: 3em;
-    color: black;
+    color: rgb(243, 242, 242);
     font-size: larger;
     text-overflow: ellipsis;
     overflow: hidden;

@@ -55,8 +55,8 @@ def return_route_and_stops(route_id):
     except:
         return make_response(jsonify({'message': 'Route id not found'}), 404)
 
-    stops_list = []
+    stops_list_ = []
     for stop in stops_list:
-        stops_list.append({stop.stop_id : stop.stop_name})
+        stops_list_.append({stop.stop_id : stop.stop_name})
 
-    return make_response(jsonify(stops_list), 200)
+    return make_response(jsonify({'stops' : stops_list_}), 200)

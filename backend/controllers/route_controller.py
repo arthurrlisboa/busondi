@@ -35,7 +35,7 @@ def current_position_map(route_id):
     bus_coords = GetBusCoords.get_bus_coords(route_id)
     bus_stops_coords = GetRouteStop.get_coordinates_stops_in_route(route_id)
     map = DrawMap.draw_map_route_stops_bus_position(polygon, bus_coords, bus_stops_coords)
-    return make_response(jsonify({'map' : map}), 200)
+    return make_response(map, 200)
 
 def list_routes():
     routes_list = GetRoute.get_all_routes()

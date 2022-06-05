@@ -1,5 +1,5 @@
-from backend.domain.repositories.routes_repository import RoutesRepository
-from backend.domain.route.route import Route
+from domain.repositories.routes_repository import RoutesRepository
+from domain.route.route import Route
 
 class GetRouteImpl:
 

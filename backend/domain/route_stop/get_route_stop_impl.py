@@ -1,5 +1,5 @@
-from backend.domain.repositories.route_stop_repository import RouteStopRepository
-from backend.domain.bus_stop.get_stop import GetStop
+from domain.repositories.route_stop_repository import RouteStopRepository
+from domain.bus_stop.get_stop import GetStop
 
 class GetRouteStopImpl:
     def get_coordinates_stops_in_route_impl(route_id):

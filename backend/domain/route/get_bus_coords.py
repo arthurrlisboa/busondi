@@ -1,4 +1,4 @@
-from backend.domain.route.get_bus_coords_impl import GetBusCoordsImpl
+from domain.route.get_bus_coords_impl import GetBusCoordsImpl
 
 class GetBusCoords:
     

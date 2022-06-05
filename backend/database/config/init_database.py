@@ -2,7 +2,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 
 from .db_base import Base
-from backend.database.models import bus_departures, bus_stops, routes, route_stop, shapes, user, favorites, routes_conversion
+from database.models import bus_departures, bus_stops, routes, route_stop, shapes, user, favorites, routes_conversion
 
 
 def init_database():

@@ -1,7 +1,7 @@
 from sqlalchemy import Column, String
 from geoalchemy2.types import Geometry
 
-from backend.database.config.db_base import Base
+from database.config.db_base import Base
 
 
 class Shapes(Base):

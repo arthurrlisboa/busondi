@@ -1,4 +1,4 @@
-from backend.domain.favorite.get_favorite_impl import GetFavoriteImpl
+from domain.favorite.get_favorite_impl import GetFavoriteImpl
 
 class GetFavorite:
     def get_all_user_favorites(email):

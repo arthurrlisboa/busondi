@@ -1,5 +1,5 @@
-from backend.domain.repositories.routes_repository import RoutesRepository
-from backend.domain.repositories.shapes_repository import ShapesRepository
+from domain.repositories.routes_repository import RoutesRepository
+from domain.repositories.shapes_repository import ShapesRepository
 
 import shapely
 

@@ -1,6 +1,6 @@
-from backend.domain.repositories.route_stop_repository import RouteStopRepository
-from backend.domain.repositories.stops_repository import StopsRepository
-from backend.domain.bus_stop.bus_stop import BusStop
+from domain.repositories.route_stop_repository import RouteStopRepository
+from domain.repositories.stops_repository import StopsRepository
+from domain.bus_stop.bus_stop import BusStop
 
 class GetStopImpl:
 

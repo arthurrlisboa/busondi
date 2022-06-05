@@ -1,4 +1,4 @@
-from backend.domain.user.modify_user_impl import ModifyUserImpl
+from domain.user.modify_user_impl import ModifyUserImpl
 
 class ModifyUser:
 

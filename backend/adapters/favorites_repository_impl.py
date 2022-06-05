@@ -1,5 +1,5 @@
-from backend.database.config.db_connection import DBConnection
-from backend.database.models.favorites import Favorites
+from database.config.db_connection import DBConnection
+from database.models.favorites import Favorites
 
 class FavoritesRepositoryImpl:
     def return_all_user_favorites_impl(email):

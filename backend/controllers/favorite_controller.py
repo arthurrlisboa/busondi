@@ -1,5 +1,5 @@
-from backend.domain.favorite.modify_favorite import ModifyFavorite
-from backend.domain.favorite.get_favorite import GetFavorite
+from domain.favorite.modify_favorite import ModifyFavorite
+from domain.favorite.get_favorite import GetFavorite
 from flask import jsonify, make_response
 
 def list_user_favorites(email):

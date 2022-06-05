@@ -1,5 +1,5 @@
-from backend.database.config.db_connection import DBConnection
-from backend.database.models.user import User
+from database.config.db_connection import DBConnection
+from database.models.user import User
 
 class UserRepositoryImpl:
 

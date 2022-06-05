@@ -1,4 +1,4 @@
-from backend.adapters.stops_repository_impl import StopsRepositoryImpl
+from adapters.stops_repository_impl import StopsRepositoryImpl
 
 class StopsRepository:
     

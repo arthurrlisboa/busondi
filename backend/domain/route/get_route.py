@@ -1,4 +1,4 @@
-from backend.domain.route.get_route_impl import GetRouteImpl
+from domain.route.get_route_impl import GetRouteImpl
 
 class GetRoute:
     def get_routes_from_stop(stop_id):

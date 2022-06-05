@@ -1,7 +1,7 @@
-from backend.domain.user.modify_user import ModifyUser
-from backend.domain.user.user_login import UserLogin
+from domain.user.modify_user import ModifyUser
+from domain.user.user_login import UserLogin
 from flask import jsonify, session, make_response
-from backend.domain.user.get_user import GetUser
+from domain.user.get_user import GetUser
 
 def list_users():
     user_list = GetUser.get_all_users()

@@ -1,6 +1,6 @@
-from backend.domain.bus_stop.get_stop import GetStop
-from backend.domain.repositories.favorites_repository import FavoritesRepository
-from backend.domain.route.get_route import GetRoute
+from domain.bus_stop.get_stop import GetStop
+from domain.repositories.favorites_repository import FavoritesRepository
+from domain.route.get_route import GetRoute
 
 class GetFavoriteImpl:
 

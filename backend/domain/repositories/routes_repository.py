@@ -1,4 +1,4 @@
-from backend.adapters.routes_repository_impl import RoutesRepositoryImpl
+from adapters.routes_repository_impl import RoutesRepositoryImpl
 
 class RoutesRepository:
 

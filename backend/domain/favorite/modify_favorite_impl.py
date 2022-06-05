@@ -1,5 +1,5 @@
-from backend.domain.repositories.favorites_repository import FavoritesRepository
-from backend.domain.favorite.favorite import Favorite
+from domain.repositories.favorites_repository import FavoritesRepository
+from domain.favorite.favorite import Favorite
 from datetime import datetime
 
 class ModifyFavoriteImpl:

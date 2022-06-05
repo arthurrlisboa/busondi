@@ -1,5 +1,5 @@
-from backend.database.config.db_connection import DBConnection
-from backend.database.models.route_stop import RouteStop
+from database.config.db_connection import DBConnection
+from database.models.route_stop import RouteStop
 
 class RouteStopRepositoryImpl:
 

@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Float, String, ForeignKey, Integer
 
-from backend.database.config.db_base import Base
+from database.config.db_base import Base
 
 
 class RouteStop(Base):

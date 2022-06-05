@@ -1,8 +1,8 @@
-from backend.database.models.bus_departures import BusDepartures
-from backend.database.config.db_connection import DBConnection
-from backend.database.models.route_stop import RouteStop
-from backend.database.models.routes import Routes
-from backend.database.models.routes_conversion import RoutesConversion
+from database.models.bus_departures import BusDepartures
+from database.config.db_connection import DBConnection
+from database.models.route_stop import RouteStop
+from database.models.routes import Routes
+from database.models.routes_conversion import RoutesConversion
 
 class RoutesRepositoryImpl:
 

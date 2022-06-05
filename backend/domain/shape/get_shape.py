@@ -1,4 +1,4 @@
-from backend.domain.shape.get_shape_impl import GetShapeImpl
+from domain.shape.get_shape_impl import GetShapeImpl
 
 class GetShape:
     

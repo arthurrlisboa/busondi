@@ -1,4 +1,4 @@
-from backend.domain.favorite.modify_favorite_impl import ModifyFavoriteImpl
+from domain.favorite.modify_favorite_impl import ModifyFavoriteImpl
 
 class ModifyFavorite:
 

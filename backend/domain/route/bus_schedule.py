@@ -1,4 +1,4 @@
-from backend.domain.route.bus_schedule_impl import BusScheduleImpl
+from domain.route.bus_schedule_impl import BusScheduleImpl
 
 class BusSchedule:
 

@@ -1,5 +1,5 @@
-from backend.database.config.db_connection import DBConnection
-from backend.database.models.bus_stops import BusStops
+from database.config.db_connection import DBConnection
+from database.models.bus_stops import BusStops
 
 class StopsRepositoryImpl:
     def return_all_stops_impl():

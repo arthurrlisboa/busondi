@@ -1,5 +1,5 @@
-from backend.domain.repositories.user_repository import UserRepository
-from backend.domain.user.user import User
+from domain.repositories.user_repository import UserRepository
+from domain.user.user import User
 
 class ModifyUserImpl:
 

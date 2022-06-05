@@ -1,4 +1,4 @@
-from backend.domain.bus_stop.get_stop_impl import GetStopImpl
+from domain.bus_stop.get_stop_impl import GetStopImpl
 
 class GetStop:
     def get_all_stops():

@@ -1,4 +1,4 @@
-from backend.domain.user.get_user import GetUser
+from domain.user.get_user import GetUser
 
 class UserLoginImpl:
 

@@ -1,4 +1,4 @@
-from backend.adapters.user_repository_impl import UserRepositoryImpl
+from adapters.user_repository_impl import UserRepositoryImpl
 
 class UserRepository:
 

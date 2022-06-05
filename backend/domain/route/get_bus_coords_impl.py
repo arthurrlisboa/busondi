@@ -1,4 +1,4 @@
-from backend.domain.repositories.routes_repository import RoutesRepository
+from domain.repositories.routes_repository import RoutesRepository
 
 import requests
 import pandas as pd

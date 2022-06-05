@@ -1,4 +1,4 @@
-from backend.adapters.shapes_repository_impl import ShapesRepositoryImpl
+from adapters.shapes_repository_impl import ShapesRepositoryImpl
 
 class ShapesRepository:
     

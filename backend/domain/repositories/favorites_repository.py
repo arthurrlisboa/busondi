@@ -1,4 +1,4 @@
-from backend.adapters.favorites_repository_impl import FavoritesRepositoryImpl
+from adapters.favorites_repository_impl import FavoritesRepositoryImpl
 
 class FavoritesRepository:
     def return_all_user_favorites(email):

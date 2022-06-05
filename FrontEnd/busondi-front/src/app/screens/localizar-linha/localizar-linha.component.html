@@ -16,7 +16,7 @@
                 >
             </mat-form-field>
         </div>
-        <div style="margin-top: 5px;">
+        <div style="margin-top: 5px; height: 67px;">
             <mat-form-field appearance="outline" style="width: 19%;">
                 <mat-label>Linha</mat-label>
                 <input
@@ -28,18 +28,17 @@
                 >
             </mat-form-field>
         </div>
-<!--         <div>
-            <mat-form-field ngIf="true" appearance="outline">
-                <mat-label>Salvar como favorita</mat-label>
-                <input 
-                    id="save"
-                    type="save"
-                    formControlName="save"
-                    required
-                    matInput
-                >
-            </mat-form-field>
-        </div> -->
+        <div *ngIf="logged && findForm.valid" style="text-align: center;">
+            <button ngClass="button_save" (click)="saveLine()">
+                <div style="display: inline-block;">
+                    <img *ngIf="save" ngClass="heart" src="assets/images/heart.png">
+                    <img *ngIf="!save" ngClass="heart" src="assets/images/empty-heart.png">
+                </div>
+                <div style="display: inline-block; ">
+                    <p ngClass="save_text">Salvar nos favoritos</p>
+                </div>
+            </button>
+        </div> 
         <div ngClass="button-send">
             <button mat-raised-button color="warn" 
                 style="width: 19%; height: 50px;"

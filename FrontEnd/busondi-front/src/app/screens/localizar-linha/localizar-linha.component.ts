@@ -7,6 +7,10 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./localizar-linha.component.css']
 })
 export class LocalizarLinhaComponent {
+
+  save = false
+  logged = true
+
   findForm = this.fb.group({
     line: ['', Validators.required],
     departure: ['', Validators.required]
@@ -17,6 +21,10 @@ export class LocalizarLinhaComponent {
   onSubmit() {
     // TODO: Use EventEmitter with form value
     console.warn(this.findForm.value);
+  }
+
+  saveLine() : void {
+      this.save = !this.save;
   }
 
 }

@@ -7,7 +7,10 @@ Projeto da disciplina "Prática em desenvolvimento de Software"
 - Jackson Nunes - Desenvolvedor back-end
 - Pedro Henrique Bertolini - Desenvolvedor front-end
 
-## Escopo
+<details>
+  <summary>
+    <h1>Escopo</h1>
+  </summary>
 
 ### Funcional
 
@@ -15,14 +18,22 @@ O principal objetivo do sistema é o acompanhamento de linhas de ônibus na cida
 
 ### Tecnológico
 Para a implementação do back-end do projeto serão utilizados a linguagem Python e o framework Flask, com o banco de dados sqlite. No caso do front-end, será utilizado o framework Angular, que é baseado na linguagem TypeScript.
+</details>
 
-## MVP (Minimum Viable Product)
+<details>
+  <summary>
+    <h1>MVP (Minimum Viable Product)</h1>
+  </summary>
 
 A criação de um MVP para o sistema Busondi se basearia no tipo conhecido como **Mágico de Oz**, no qual a entrega de soluções é feita manualmente, por pessoas reais. Em suma, uma interface de interação seria oferecida ao cliente, através da qual ele estaria apto a solicitar um dos dois serviços principais do sistema: o acompanhamento de uma linha de ônibus específica, oferecendo seu respectivo identificador ou a verificação de rotas possíveis, dando um endereço de partida e outro de destino. Tendo recebido os dados, uma equipe nos bastidores entraria em ação, procurando manualmente as informações em sistemas de terceiros (como na [consulta de itinerários da BHTRANS](https://prefeitura.pbh.gov.br/bhtrans/informacoes/transportes/onibus/consulta-itinerarios)) para só então retornar a resposta ao usuário. Nesse caso, não seriam fornecidos dados em tempo real, devido à complexidade para realizar tal tarefa de modo manual; seriam retornados, pois, os dados estáticos, bem como previsões de tempo de embarque e chegada. Nessa estratégia, o tempo gasto em desenvolvimento seria basicamente na parte de front-end, cuja equipe poderia fornecer uma interface simples em tempo hábil. 
 
 É válido ressaltar, no entanto, que a criação de um MVP para esse tipo de sistema talvez não seja a melhor estratégia a ser adotada, uma vez que se baseia em uma ideia já existente e amplamente utilizada no mundo real. No lugar, poderiam ser adotadas ferramentas de Product Discovery, como Jobs to be Done.
+</details>
 
-## Backlog
+<details>
+  <summary>
+    <h1>Backlog</h1>
+  </summary>
 
 ### Do Produto
 
@@ -95,7 +106,89 @@ História 6: Como usuário do sistema Busondi, quero poder ver toda a rota de um
 Tarefas: 
    - Criar endpoint `GET /routes/<route_id>` que retorna a informação de toda a rota do ônibus com seus pontos de parada [Jackson]
    - Criar interface com mapa que mostra toda a rota do ônibus com seus pontos de parada [Arthur]
+</details>
+ 
+<details>
+  <summary>
+    <h1>Arquitetura do Sistema</h1>
+  </summary>
 
+### Arquitetura Hexagonal
+A Arquitetura Hexagonal consiste em criar componentes desacoplados, cuja conexão é feita por adaptadores e portas. O sistema Busondi se beneficia desse padrão arquitetural para ter independência entre lógica de aplicação e tecnologia, o que permite a substituição de componentes individualmente sem interferir no restante do projeto, além de aumentar a testabilidade. A arquitetura completa pode ser observada na imagem a seguir:
+  
+![DiagramaArquitetura](https://user-images.githubusercontent.com/42253628/172059355-b6b91ca7-f055-417c-a6ff-30160c1c5d63.jpg)
+
+Como é possível observar, existem dois tipos de portas: 
+- **Portas de entrada:** funcionam como interfaces para as classes externas acessarem métodos da classes de domínio. Um exemplo é a porta ```GetStop```, que retorna métodos de ```GetStopImpl```.
+```python
+class GetStop:
+    def get_all_stops():
+        return GetStopImpl.get_all_stops_impl()
+
+    def get_stop_by_id(stop_id):
+        return GetStopImpl.get_stop_by_id_impl(stop_id)
+
+    def get_stops_coordinates(stops_list):
+        return GetStopImpl.get_stops_coordinates_impl(stops_list)
+
+    def get_stops_from_route(route_id):
+        return GetStopImpl.get_stops_from_route_impl(route_id)
+```
+
+- **Portas de saída:** funcionam como interfaces para classes de domínio acessarem métodos de classes externas. A classe ```StopsRepository``` desempenha essa função, chamando métodos da classe ```StopsRepositoryImpl```.
+```python
+class StopsRepository:
+    
+    def return_all_stops():
+        return StopsRepositoryImpl.return_all_stops_impl()
+
+    def return_stop_by_id(stop_id):
+        return StopsRepositoryImpl.return_stop_by_id_impl(stop_id)
+
+    def return_all_stops_in_list(stops_list):
+        return StopsRepositoryImpl.return_all_stops_in_list_impl(stops_list)
+```
+
+Também existem dois tipos de adaptadores: 
+* Aqueles que recebem requisições de fora do sistema e chamam os métodos adequados através das portas de entrada, como o ```bus_stops_controller.py```, que chama o método ```get_all_stops()``` pela ```porta GetStop```.
+```python
+  def list_stops():
+    stops_list = GetStop.get_all_stops()
+
+    stops_dict = {}
+    for stop in stops_list:
+        stops_dict[stop.stop_id] = {
+            'stop_lat' : stop.stop_lat,
+            'stop_lon': stop.stop_lon,
+            'stop_name' : stop.stop_name
+        }
+        
+    return make_response(jsonify(stops_dict), 200)
+```
+  
+* Aqueles que recebem chamadas vindas de dentro do domínio, através de uma porta de saída e realiza a conexão com um sistema externo, como por exemplo um Banco de Dados. A classe ```StopsRepositoryImpl``` desempenha essa função.
+```python
+  class StopsRepositoryImpl:
+    def return_all_stops_impl():
+        with DBConnection() as connection:
+            all_stops = connection.session.query(BusStops).all()
+        return all_stops
+
+    def return_stop_by_id_impl(stop_id):
+        with DBConnection() as connection:
+            stop = connection.session.query(BusStops).get(stop_id)
+        return stop
+
+    def return_all_stops_in_list_impl(stops_list):
+        with DBConnection() as connection:
+            stops_list = connection.session.query(BusStops).filter(BusStops.stop_id.in_(stops_list)).all()
+        return stops_list
+```
+
+### Domain-Driven Design (DDD)
+
+</details>  
+  
 ## Modelo das principais telas
 
 Disponível no [Figma](https://www.figma.com/file/hSx4UFs5TYbPq3AHop0nI1/Clickons?node-id=243%3A471).

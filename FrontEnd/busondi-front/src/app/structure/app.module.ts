@@ -29,6 +29,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { AuthService } from '../screens/login/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterService } from '../screens/register/register.service';
+import { LocalizarLinhaService } from '../screens/localizar-linha/localizar-linha.service';
+import { MatSelectModule } from '@angular/material/select';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -55,13 +58,16 @@ import { RegisterService } from '../screens/register/register.service';
     MatButtonToggleModule,
     MatDividerModule,
     MatInputModule,
+    MatSelectModule,
     MatFormFieldModule,
     MatDialogModule,
-    HttpClientModule
+    HttpClientModule,
+    MatAutocompleteModule
   ],
   providers: [
     AuthService,
     RegisterService,
+    LocalizarLinhaService,
   ],
   bootstrap: [AppComponent]
 })

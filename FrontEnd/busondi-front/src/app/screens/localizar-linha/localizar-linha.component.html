@@ -6,24 +6,29 @@
     <form [formGroup]="findForm" (ngSubmit)="onSubmit()">
         <div style="margin-top: 30px;">
             <mat-form-field appearance="outline" style="width: 19%;">
-                <mat-label>Ponto de partida</mat-label>
-                <input 
-                    id="departure"
-                    type="text"
-                    formControlName="departure"
-                    required
-                    matInput
-                >
-            </mat-form-field>
-        </div>
-        <div style="margin-top: 5px;">
-            <mat-form-field appearance="outline" style="width: 19%;">
                 <mat-label>Linha</mat-label>
-                <input
+                <input 
                     id="line"
                     type="text"
                     formControlName="line"
-                    required
+                    matInput
+                    [matAutocomplete]="auto"
+                >
+                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                    <mat-option *ngFor="let lineOption of filteredLineOptions | async" [value]="lineOption">
+                        {{lineOption.route_short_name+" - "+lineOption.route_long_name}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+            <span>{{findForm.get("line")?.value}}</span>
+        </div>
+        <div style="margin-top: 5px;">
+            <mat-form-field appearance="outline" style="width: 19%;">
+                <mat-label>Ponto de partida</mat-label>
+                <input
+                    id="departure"
+                    type="text"
+                    formControlName="departure"
                     matInput
                 >
             </mat-form-field>

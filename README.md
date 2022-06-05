@@ -187,6 +187,83 @@ Também existem dois tipos de adaptadores:
 
 ### Domain-Driven Design (DDD)
 
+Na camada de domínio foram adotados os princípios de projeto de Domain Driven Design (DDD), que casam muito bem com a arquitetura hexagonal do sistema. A linguagem ubíqua foi usada para nomear os elementos presentes no sistema. Exemplos são as classes BusStop (ponto de ônibus) e Route (linha de ônibus). Alguns dos relacionamentos entre esses elementos podem ser mapeados, como o fato de que em um ponto de ônibus passam várias linhas de ônibus, e uma linha de ônibus faz várias viagens (Trips) por dia. Vários tipos de objetos de domínio compõem o sistema, eles podem ser vistos no diagrama a seguir:
+
+![DiagramaDDD](https://drive.google.com/file/d/1a4XM-AHivzp6sK4hGOBOHyh-2ceprAiC/view?usp=sharing)
+
+As entidades são objetos complexos que possuem uma identidade única, que as distingue dos demais objetos da mesma classe. Como exemplo, no nosso sistema, temos a classe BusStop que representa um ponto de ônibus. Cada instância da classe tem um ID único que a distingue das demais.
+
+```python
+class BusStop:
+
+    stop_id = ''
+    stop_name = ''
+    stop_lat = 0.0
+    stop_lon = 0.0
+
+    def __init__(self, stop_id, stop_name, stop_lat, stop_lon):
+        self.stop_id = stop_id
+        self.stop_name = stop_name
+        self.stop_lat = stop_lat
+        self.stop_lon = stop_lon
+```
+
+Objetos de valor, ao contrário das entidades, não possuem identificadores únicos e são caracterizados por seu estado. Podemos ver um exemplo do sistema na entidade BusStop acima, que possui objetos de valor como o nome do ponto de ônibus e suas coordenadas de latitude e longitude.
+
+Serviços são objetos que agrupam operações importantes feitas sob o domínio. No sistema Busondi, temos diversos serviços, como aqueles implementados pela classe GetStopImpl. Estes incluem listar todos os pontos de ônibus, retornar os dados de um ponto específico dado seu ID, retornar apenas as coordenadas de um ponto e listar todos os pontos pelos quais uma linha passa.
+
+```python
+class GetStopImpl:
+
+    def get_all_stops_impl():
+        all_stops = StopsRepository.return_all_stops()
+        stops_list = []
+        for stop in all_stops:
+            stops_list.append(BusStop(stop.stop_id, stop.stop_name, stop.stop_lat, stop.stop_lon))
+        return stops_list
+
+    def get_stop_by_id_impl(stop_id):
+        stop_repo = StopsRepository.return_stop_by_id(stop_id)
+        stop_class = BusStop(stop_repo.stop_id, stop_repo.stop_name, stop_repo.stop_lat, stop_repo.stop_lon)
+        return stop_class
+
+    def get_stops_coordinates_impl(stops_list):
+        stops_in_list = StopsRepository.return_all_stops_in_list(stops_list)
+        coordinate_list = []
+        for stop in stops_in_list:
+            coordinate_list.append((stop.stop_lon, stop.stop_lat))
+        return coordinate_list
+
+    def get_stops_from_route_impl(route_id):
+        stops_in_route = RouteStopRepository.return_all_stops_in_route(route_id)
+        stop_id_list = [stop.stop_id for stop in stops_in_route]
+        stops = StopsRepository.return_all_stops_in_list(stop_id_list)
+        stops_list = []
+        for stop in stops:
+            stops_list.append(BusStop(stop.stop_id, stop.stop_name, stop.stop_lat, stop.stop_lon))
+        return stops_list
+```
+
+Repositórios são usados para intermediar o acesso ao banco de dados, recuperando outros objetos do domínio que estão armazenados nele. A classe StopsRepositoryImpl é um exemplo de repositório, que intermedia as consultas relacionadas a pontos de ônibus que são feitas ao banco de dados.
+
+```python
+class StopsRepositoryImpl:
+    def return_all_stops_impl():
+        with DBConnection() as connection:
+            all_stops = connection.session.query(BusStops).all()
+        return all_stops
+
+    def return_stop_by_id_impl(stop_id):
+        with DBConnection() as connection:
+            stop = connection.session.query(BusStops).get(stop_id)
+        return stop
+
+    def return_all_stops_in_list_impl(stops_list):
+        with DBConnection() as connection:
+            stops_list = connection.session.query(BusStops).filter(BusStops.stop_id.in_(stops_list)).all()
+        return stops_list
+```
+
 </details>  
   
 ## Modelo das principais telas

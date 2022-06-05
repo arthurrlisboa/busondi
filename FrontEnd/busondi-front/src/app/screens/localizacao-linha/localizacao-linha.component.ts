@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { LocationService } from 'src/app/services/location.service';
 
 @Component({
   selector: 'app-localizacao-linha',
@@ -9,20 +10,27 @@ import { FormBuilder, Validators } from '@angular/forms';
 
 export class LocalizacaoLinhaComponent{
 
-  line = '';
-  time = '';
-
   updateForm = this.fb.group({
     departure: ['', Validators.required]
   })
 
-  constructor(private fb: FormBuilder) { 
-    this.line = '1405';
-    this.time = "15 minutos e 30 segundos";
+  constructor(private fb: FormBuilder, private locationService: LocationService) { 
+    this.updateForm.controls['departure'].setValue(locationService.getDeparture());
+  }
+
+  getLine(){
+    return this.locationService.getLine();
+  }
+
+  getTime(){
+    return this.locationService.getTime();
   }
 
   onSubmit() {
-    // TODO: Use EventEmitter with form value
+    let idDeparture = 'id do departure novo';
+    let departureName = this.updateForm.controls['departure'].value;
+
+    this.locationService.updateLine(idDeparture, departureName);
     console.warn(this.updateForm.value);
   }
 

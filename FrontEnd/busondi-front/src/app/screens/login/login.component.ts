@@ -17,7 +17,7 @@ export class LoginComponent {
 
   submitForm() {
     let email = this.userForm.controls['email'].value;
-    let password = this.userForm.controls['password'].value;;
+    let password = this.userForm.controls['password'].value;
 
     this.loginService.login(email, password)
     console.warn(this.userForm.value);

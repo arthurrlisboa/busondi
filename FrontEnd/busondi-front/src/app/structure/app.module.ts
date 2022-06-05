@@ -25,10 +25,12 @@ import { DialogRegister }  from '../screens/register/register.component';
 import { ToolbarBusondiComponent } from '../screens/toolbar-busondi/toolbar-busondi.component';
 import { FavoriteLineComponent } from '../screens/favorite-line/favorite-line.component';
 
-import { LoginService } from '../services/login.service'
+import { LoginService } from '../services/login.service';
+import { LocationService } from '../services/location.service';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+
 
 @NgModule({
   declarations: [
@@ -59,7 +61,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatFormFieldModule,
     MatDialogModule
   ],
-  providers: [LoginService],
+  providers: [LoginService, LocationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

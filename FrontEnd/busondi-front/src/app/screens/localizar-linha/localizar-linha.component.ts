@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { LocationService } from 'src/app/services/location.service';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -16,7 +17,7 @@ export class LocalizarLinhaComponent {
     departure: ['', Validators.required]
   })
 
-  constructor(private fb: FormBuilder, private loginService: LoginService) {
+  constructor(private fb: FormBuilder, private loginService: LoginService, private locationservice: LocationService) {
    }
 
    getLogged(){
@@ -25,6 +26,14 @@ export class LocalizarLinhaComponent {
 
   onSubmit() {
     // TODO: Use EventEmitter with form value
+    let lineId = 'id qualquer prencher da lista';
+    let departureId = 'id do ponto para buscar horário';
+
+    let lineName = this.findForm.controls['line'].value;
+    let departureName = this.findForm.controls['departure'].value;
+  
+    this.locationservice.locateLine(lineId, departureId, lineName, departureName);
+
     console.warn(this.findForm.value);
   }
 

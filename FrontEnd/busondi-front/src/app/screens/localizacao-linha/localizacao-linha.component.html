@@ -1,6 +1,6 @@
 <div ngClass="result_item">
     <img src="assets/images/pin-map-theme.png">
-    <h2> O próximo ônibus da linha {{line}} está a {{time}} do ponto de partida  </h2>
+    <h2> O próximo ônibus da linha {{getLine()}} chegará no ponto de partida às {{getTime()}}</h2>
 </div>
 
 <div style="text-align: center; margin-top: 30px;">
@@ -21,7 +21,7 @@
             <button mat-raised-button color="warn" 
                 style="width: 19%; height: 50px;"
                 type="submit" [disabled]="!updateForm.valid"
-                routerLink="/localizar-linha/resultado" >ATUALIZAR</button>
+                routerLink="/localizar-linha/resultado" (click) = "onSubmit()">ATUALIZAR</button>
         </div>
     </form>
 </div>

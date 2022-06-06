@@ -23,6 +23,10 @@ export class FavoriteLineComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getFavoriteLines(){
+    return this.favoriteLines
+  }
+
   setConsultationParams(favoriteLine: LineQuery){
     this.service.locateLine(favoriteLine.id, favoriteLine.stopId, favoriteLine.name, favoriteLine.stopName)
   }

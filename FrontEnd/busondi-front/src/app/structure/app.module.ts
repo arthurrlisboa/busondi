@@ -27,6 +27,7 @@ import { FavoriteLineComponent } from '../screens/favorite-line/favorite-line.co
 
 import { LoginService } from '../services/login.service';
 import { LocationService } from '../services/location.service';
+import { FavoriteService } from '../services/favorites.service';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -61,7 +62,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatFormFieldModule,
     MatDialogModule
   ],
-  providers: [LoginService, LocationService],
+  providers: [LoginService, LocationService, FavoriteService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FAVORITE_LINES } from './mock-LineQuery';
 import {Inject, Injectable} from '@angular/core';
-import { LineQuery } from './LineQuery';
 import { LocationService } from '../../services/location.service';
+import { Favorite, FavoriteService } from '../../services/favorites.service';
 
 @Component({
   selector: 'app-favorite-lines',
@@ -16,23 +15,22 @@ import { LocationService } from '../../services/location.service';
 
 export class FavoriteLineComponent implements OnInit {
 
-  userEmail = '';
-  favoriteLines = FAVORITE_LINES;
-
-
-  constructor( private service: LocationService) { 
+  constructor( private service: LocationService, private favoritesService: FavoriteService) { 
   }
 
   ngOnInit(): void {
-    console.log(this.userEmail);
   }
 
-  setConsultationParams(favoriteLine: LineQuery){
+  getLines() : Favorite[]{
+    return this.favoritesService.getFavorites();
+  }
+
+  setConsultationParams(favoriteLine: Favorite){
     this.service.locateLine(favoriteLine.id, favoriteLine.stopId, favoriteLine.name, favoriteLine.stopName)
   }
 
-  removeLine(favoriteLine: LineQuery): void {
-    
+  removeLine(favoriteLine: Favorite): void {
+    this.favoritesService.removeFavorites(favoriteLine);
   }
 
 }

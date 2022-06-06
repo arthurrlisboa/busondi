@@ -23,12 +23,13 @@ export class AuthService {
   }
 
   logUser(email: string) {
-    this.logged = true;
+    this.logged = false;
     this.name = email;
     this.email = email;
   }
 
   logoutUser(): Observable<boolean> {
+    this.logged = false;
     return this.http.post<boolean>(this.logoutUrl, {});
   }
 

@@ -1,9 +1,5 @@
 <div ngClass="result_item">
     <img src="assets/images/pin-map-theme.png">
-    <!-- <span>{{json}}</span> -->
-    <span>{{line}}</span>
-    <span>StopId: {{stopId}}</span>
-    <span>StopId: {{updateForm.get('departure')?.value}}</span>
     <h2 *ngIf="data && data.stop_routes[line]"> O próximo ônibus da linha {{routeFull.route_short_name}} - {{routeFull.route_long_name}} chegará as {{data?.stop_routes[line][1]}}</h2>
     <h2 *ngIf="data && !data.stop_routes[line]"> Não existe previsao ônibus da linha {{routeFull.route_short_name}} - {{routeFull.route_long_name}}</h2>
 </div>
@@ -18,13 +14,6 @@
                         {{stop.stop_name}}
                     </mat-option>
                 </mat-select>
-                <!-- <input 
-                    id="departure"
-                    type="text"
-                    formControlName="departure"
-                    required
-                    matInput
-                > -->
             </mat-form-field>
         </div>
         <div style="margin-bottom: 10px;">

@@ -29,10 +29,16 @@
             </mat-form-field>
         </div>
         <div ngClass="button-send">
-            <button mat-raised-button color="warn" 
-                type="button" (click)="onSubmit()"
+            <button 
+                mat-raised-button
+                color="warn" 
+                type="submit"
                 style="width: 19%;"
-                type="submit" [disabled]="!userForm.valid" routerLink="/home" >ENTRAR</button>
+                type="submit"
+                [disabled]="!userForm.valid"
+            >
+                ENTRAR
+            </button>
         </div>
         <div ngClass="register-content">
             <h5>Não está registrado?</h5>

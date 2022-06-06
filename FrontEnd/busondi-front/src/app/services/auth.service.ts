@@ -22,6 +22,12 @@ export class AuthService {
     return this.http.post<boolean>(this.loginUrl, {email: email, password: password});
   }
 
+  logUser(email: string) {
+    this.logged = true;
+    this.name = email;
+    this.email = email;
+  }
+
   logoutUser(): Observable<boolean> {
     return this.http.post<boolean>(this.logoutUrl, {});
   }

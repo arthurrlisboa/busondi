@@ -25,7 +25,7 @@ export class LocationService {
 
         //Todo - pegar do tempo os segundos
         let minutos = now.getMinutes() + this.randomIntFromInterval(1,5);
-        
+
         if(minutos > 60){
             minutos = 59;
         }
@@ -52,6 +52,10 @@ export class LocationService {
         return this.time;
     }
 
+    getImageRoute(){
+        return null;
+    }
+
     locateLineOnRoute(lineId: string, lineName: string){
         console.log(lineName);
         this.lineRouteId = lineId;
@@ -63,3 +67,5 @@ export class LocationService {
     }
     
 }
+
+  

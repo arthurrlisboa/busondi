@@ -9,7 +9,7 @@ import { catchError, Observable } from 'rxjs';
 export class AuthService {
   private loginUrl = 'http://localhost:5000/login'
   private logoutUrl = 'http://localhost:5000/logout'
-  private usersUrl = 'http://localhost:5000/users'
+  private usersUrl = 'http://127.0.0.1:5000/users'
   private logged = false;
   private name = '';
   private email = '';
@@ -19,7 +19,7 @@ export class AuthService {
   ) { }
 
   loginUser(email?: string, password?: string): Observable<boolean> {
-    return this.http.post<boolean>(this.loginUrl, {email: email, passeord: password});
+    return this.http.post<boolean>(this.loginUrl, {email: email, password: password});
   }
 
   logoutUser(): Observable<boolean> {
@@ -27,7 +27,7 @@ export class AuthService {
   }
 
   createUser(email?: string, password?: string, name?: string): Observable<object> {
-    return this.http.post<object>(this.usersUrl, {email: email, passeord: password, name: name});
+    return this.http.post<responseMsg>(this.usersUrl, {email: email, password: password, name: name});
   }
 
   getLogged() :boolean{
@@ -41,4 +41,8 @@ export class AuthService {
   getEmail() :string{
       return this.email;
 }
+}
+
+interface responseMsg {
+  message: string;
 }

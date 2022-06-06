@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { MatDialog, MatDialogRef} from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { first } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -23,11 +24,27 @@ export class RegisterComponent {
     private fb: FormBuilder,
     private dialog: MatDialog,
     private authService: AuthService,
+    private router: Router,
   ) { }
 
-  openDialog(): void {
+  openDialogSuccess(): void {
     const dialogRef = this.dialog.open(DialogRegister, {
-      width: '250px'
+      width: '250px',
+      data: "Conta criada com sucesso!"
+    });
+
+    dialogRef.updatePosition({ top: '10px'});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.router.navigate(['login'])
+    });
+  }
+
+  openDialogFailure(): void {
+    const dialogRef = this.dialog.open(DialogRegister, {
+      width: '250px',
+      data: "Erro ao cadastrar usuário."
     });
 
     dialogRef.updatePosition({ top: '10px'});
@@ -45,10 +62,9 @@ export class RegisterComponent {
       this.registerForm.get('password')?.value,
       this.registerForm.get('username')?.value
     )
-      .pipe(first())
       .subscribe({
-        next: (value) => {console.warn(this.registerForm.value); this.openDialog();},
-        error: (error) => {this.loading = false}
+        next: (value) => {this.openDialogSuccess();},
+        error: (error) => {this.openDialogFailure();}
       });
   }
 
@@ -60,7 +76,8 @@ export class RegisterComponent {
 })
 export class DialogRegister {
   constructor(
-    public dialogRef: MatDialogRef<DialogRegister>
+    public dialogRef: MatDialogRef<DialogRegister>,
+    @Inject(MAT_DIALOG_DATA) public text: string
   ) {}
 
   onNoClick(): void {

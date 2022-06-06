@@ -42,9 +42,14 @@
             </mat-form-field>
         </div>
         <div ngClass="button-send">
-            <button mat-raised-button color="warn" 
+            <button
+                mat-raised-button color="warn" 
                 style="width: 19%;"
-                type="submit" [disabled]="!registerForm.valid" (click)="onSubmit()" >JUNTE-SE A NÓS</button>
+                type="submit"
+                [disabled]="!registerForm.valid"
+            >
+                JUNTE-SE A NÓS
+            </button>
         </div>
     </form>
 </div>

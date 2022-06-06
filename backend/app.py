@@ -50,13 +50,13 @@ def stops():
    data = bus_stop_controller.list_stops()
    return make_response(jsonify(data), 200)
 
-@app.route('/stops/<stop_id>/', methods = ['GET'])
+@app.route('/stops/<stop_id>', methods = ['GET'])
 @cross_origin()
 def stops_stop_id(stop_id):
    return route_controller.return_stop_and_routes(stop_id)
 
 # User
-@app.route('/users/', methods = ['GET', 'POST'])
+@app.route('/users', methods = ['GET', 'POST'])
 @cross_origin()
 def users():
    if request.method == 'GET':
@@ -65,7 +65,7 @@ def users():
       info_json = request.get_json()
       return user_controller.create_user(info_json)
 
-@app.route('/users/<email>/', methods = ['GET', 'PUT', 'DELETE'])
+@app.route('/users/<email>', methods = ['GET', 'PUT', 'DELETE'])
 @cross_origin()
 def users_user_id(email):
    if request.method == 'GET':
@@ -77,19 +77,19 @@ def users_user_id(email):
       return user_controller.delete_user(email)
 
 # Login/logout
-@app.route('/login/', methods = ['POST'])
+@app.route('/login', methods = ['POST'])
 @cross_origin()
 def login():
    info_json = request.get_json()
    return user_controller.user_login(info_json)
 
-@app.route('/logout/', methods = ['POST'])
+@app.route('/logout', methods = ['POST'])
 @cross_origin()
 def logout():
    return user_controller.user_logout()
 
 # Favorites
-@app.route('/favorites/', methods = ['GET', 'POST', 'DELETE'])
+@app.route('/favorites', methods = ['GET', 'POST', 'DELETE'])
 @cross_origin()
 def favorites():
    if 'email' in session:   

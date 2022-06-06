@@ -29,6 +29,7 @@ export class AuthService {
   }
 
   logoutUser(): Observable<boolean> {
+    this.logged = false;
     return this.http.post<boolean>(this.logoutUrl, {});
   }
 

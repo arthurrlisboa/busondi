@@ -15,11 +15,7 @@ export class LocalizacaoLinhaComponent{
   })
 
   constructor(private fb: FormBuilder, private localizacaoService: LocalizarLinhaService) { 
-  }
-
-  onSubmit() {
-    // TODO: Use EventEmitter with form value
-    console.warn(this.updateForm.value);
+    this.updateForm.controls['departure'].setValue(localizacaoService.getDeparture());
   }
 
   getLine(){
@@ -28,6 +24,14 @@ export class LocalizacaoLinhaComponent{
 
   getTime(){
     return this.localizacaoService.getTime();
+  }
+
+  onSubmit() {
+    let idDeparture = 'id do departure novo';
+    let departureName = this.updateForm.controls['departure'].value;
+
+    this.localizacaoService.updateLine(idDeparture, departureName);
+    console.warn(this.updateForm.value);
   }
 
 }

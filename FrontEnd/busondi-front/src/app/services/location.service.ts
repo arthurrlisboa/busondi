@@ -9,14 +9,20 @@ export class LocationService {
     private referencePointId = '';
     private lineId = '';
 
+
+    randomIntFromInterval(min : number, max: number) { // min and max included 
+        return Math.floor(Math.random() * (max - min + 1) + min)
+    }
+
     locateLine(lineid: string, referencePointId: string, lineName: string, referencePointName: string){
         //Todo fazer request do tempo com o id do ponto e buscar no resultado, com o id da linha, o tempo que falta - formato 
-
+        
+        let now = new Date();
         //Todo - pegar do tempo os minutos
-        let horas = '10';
+        let horas = now.getHours();;
 
         //Todo - pegar do tempo os segundos
-        let minutos = '30';
+        let minutos = now.getMinutes() + this.randomIntFromInterval(1,5);
 
         this.referencePoint = referencePointName;
         this.lineName = lineName;

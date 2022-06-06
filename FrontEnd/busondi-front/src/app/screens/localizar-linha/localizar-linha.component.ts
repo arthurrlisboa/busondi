@@ -1,7 +1,7 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { first, map, Observable, startWith } from 'rxjs';
-import { Route, Stop } from './linhas';
+import { Route, RouteFull, Stop } from './linhas';
 import { LocalizarLinhaService } from '../../services/localizar-linha.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { LocationService } from 'src/app/services/location.service';
@@ -14,8 +14,8 @@ import { FavoriteService } from '../../services/favorites.service';
 })
 export class LocalizarLinhaComponent implements OnInit {
   stopOptions = new Array<Stop>();
-  lineOptions = new Array<Route>();
-  filteredLineOptions: Observable<Route[]>;
+  lineOptions = new Array<RouteFull>();
+  filteredLineOptions: Observable<RouteFull[]>;
   save = false
   private added = false
   findForm = this.fb.group({
@@ -57,7 +57,7 @@ export class LocalizarLinhaComponent implements OnInit {
     return this.authService.getLogged();
   }
 
-  private _filter(value: string): Route[] {
+  private _filter(value: string): RouteFull[] {
     const filterValue = value.toLowerCase();
 
     let foundShort = this.lineOptions.filter(option => option.route_short_name.toLowerCase().includes(filterValue));

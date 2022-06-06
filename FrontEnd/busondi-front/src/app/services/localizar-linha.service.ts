@@ -23,7 +23,7 @@ export class LocalizarLinhaService {
   }
 
   getRoutes() {
-    return this.http.get<Array<Route>>(this.routesUrl)
+    return this.http.get<Array<RouteFull>>(this.routesUrl)
   }
 
   getRouteStops(routId: any) {

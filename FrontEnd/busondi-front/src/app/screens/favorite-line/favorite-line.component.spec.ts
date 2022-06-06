@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ToolbarUnloggedComponent } from './toolbar-unlogged.component';
+import { FavoriteLineComponent } from './favorite-line.component';
 
-describe('ToolbarUnloggedComponent', () => {
-  let component: ToolbarUnloggedComponent;
-  let fixture: ComponentFixture<ToolbarUnloggedComponent>;
+describe('FavoriteLineComponent', () => {
+  let component: FavoriteLineComponent;
+  let fixture: ComponentFixture<FavoriteLineComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ToolbarUnloggedComponent ]
+      declarations: [ FavoriteLineComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ToolbarUnloggedComponent);
+    fixture = TestBed.createComponent(FavoriteLineComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

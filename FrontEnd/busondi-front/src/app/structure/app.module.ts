@@ -22,13 +22,13 @@ import { LocalizacaoLinhaComponent } from '../screens/localizacao-linha/localiza
 import { LoginComponent } from '../screens/login/login.component';
 import { RegisterComponent } from '../screens/register/register.component';
 import { DialogRegister }  from '../screens/register/register.component';
-import { ToolbarUnloggedComponent } from '../screens/toolbar-unlogged/toolbar-unlogged.component';
+import { ToolbarBusondiComponent } from '../screens/toolbar-busondi/toolbar-busondi.component';
+import { FavoriteLineComponent } from '../screens/favorite-line/favorite-line.component';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { AuthService } from '../screens/login/auth.service';
+import { AuthService } from '../services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
-import { RegisterService } from '../screens/register/register.service';
 import { LocalizarLinhaService } from '../screens/localizar-linha/localizar-linha.service';
 import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -36,13 +36,14 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 @NgModule({
   declarations: [
     AppComponent,
+    FavoriteLineComponent,
     HomeComponent,
     LoginComponent,
     LocalizarLinhaComponent,
     LocalizacaoLinhaComponent,
     RegisterComponent,
     DialogRegister,
-    ToolbarUnloggedComponent
+    ToolbarBusondiComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +67,6 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
   ],
   providers: [
     AuthService,
-    RegisterService,
     LocalizarLinhaService,
   ],
   bootstrap: [AppComponent]

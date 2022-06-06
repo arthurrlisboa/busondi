@@ -1,0 +1,62 @@
+/* HeroesComponent's private CSS styles */
+.favoriteLine {
+    margin-top: 30px;
+    list-style-type: none;
+    padding: 0;
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto; 
+  }
+  
+  .favoriteLine li {
+    display: flex;
+  }
+  
+  .button_favorite {
+    flex: 1;
+    cursor: pointer;
+    left: 0;
+    background-color: #f37e7e;
+    outline-color: rgb(206, 154, 154);;
+    margin: .5em;
+    padding: 1;
+    border-radius: 4px;
+    display: flex;
+    height: 3em;
+    color: rgb(243, 242, 242);
+    font-size: larger;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    font-weight: bold;
+    border: none;
+  }
+
+  .button_remove {
+    cursor: pointer;
+    background-color: rgb(238, 228, 228);
+    outline-color: rgb(206, 154, 154);;
+    margin: .5em;
+    padding-top: 1;
+    border-radius: 4px;
+    display: flex;
+    height: 50px;
+    color: rgb(10, 10, 10);
+    width: 50px;
+    margin-top: 9px;
+    border: none;
+  }
+  
+  .favoriteLine button:hover {
+    color: black;
+    background-color: #f56464;
+    left: .1em;
+    text-align: center;
+  }
+  
+  .favoriteLine .item {
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto; 
+  }
+  

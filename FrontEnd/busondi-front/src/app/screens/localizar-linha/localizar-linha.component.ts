@@ -3,17 +3,19 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { first, map, Observable, startWith } from 'rxjs';
 import { Route, Stop } from './linhas';
 import { LocalizarLinhaService } from './localizar-linha.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-localizar-linha',
   templateUrl: './localizar-linha.component.html',
-  providers: [LocalizarLinhaService],
+  providers: [LocalizarLinhaService, AuthService],
   styleUrls: ['./localizar-linha.component.css']
 })
 export class LocalizarLinhaComponent implements OnInit {
   stopOptions = new Array<Stop>();
   lineOptions = new Array<Route>();
   filteredLineOptions: Observable<Route[]>;
+  save = false
   
   findForm = this.fb.group({
     line: ['', Validators.required],
@@ -23,6 +25,7 @@ export class LocalizarLinhaComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private service: LocalizarLinhaService,
+    private authService: AuthService,
   ) { }
 
   ngOnInit() {
@@ -46,6 +49,10 @@ export class LocalizarLinhaComponent implements OnInit {
     //   )
     // )
     // Ta errado, fazer funcionar
+  }
+
+  get getLogged(){
+    return this.authService.getLogged();
   }
 
   private _filter(value: string): Route[] {
@@ -73,6 +80,10 @@ export class LocalizarLinhaComponent implements OnInit {
 
   displayFn(route: Route) {
     return route && route.route_short_name ? route.route_short_name + " - " + route.route_long_name : ""
+  }
+
+  saveLine() : void {
+      this.save = !this.save;
   }
 
 }

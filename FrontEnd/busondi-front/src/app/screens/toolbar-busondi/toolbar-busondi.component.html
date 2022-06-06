@@ -1,0 +1,51 @@
+<mat-toolbar ngClass="toolbar-main">
+    <mat-toolbar-row ngClass="toolbar-row">
+      <button
+        mat-icon-button
+        *ngIf="sidenav.mode === 'over'"
+        (click)="sidenav.toggle()"
+      >
+        <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+        <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+      </button>
+      <img style="margin-left: 8px; margin-top: 1px;" src="assets/images/busondi.png"  routerLink="/home">
+      <div *ngIf="!getLogged" ngClass="login">
+        <button mat-button routerLink="/login" ngClass="login_text">Login / inscrever-se</button>
+      </div>
+      <div *ngIf="getLogged" ngClass="login">
+        <div style="display: inline-block;">
+          <p ngClass="logged_text"> Olá, {{getName}}</p>
+        </div>
+        <div style="display: inline-block;">
+          <button mat-button ngClass="logged_text" (click)="exitApp()">
+            <mat-icon style="margin-bottom: 2px; margin-right: 5px;"> exit_to_app </mat-icon>
+          </button>
+        </div>
+      </div>
+    </mat-toolbar-row>
+</mat-toolbar>
+<mat-divider></mat-divider>
+<mat-sidenav-container>
+    <mat-divider></mat-divider>
+    <mat-sidenav #sidenav class="mat-elevation-z8" style="height: 200px;">
+      <div *ngIf="!isCurrentPage('/home')">
+        <button  mat-button class="menu-button" routerLink="/home">
+          <mat-icon style="margin-right: 8px;">home</mat-icon>
+          <span>Home</span>
+        </button>
+        <mat-divider></mat-divider>
+      </div>
+      <div *ngIf="!isCurrentPage('/localizar-linha')">
+        <button mat-button class="menu-button" routerLink="/localizar-linha">
+            <mat-icon style="margin-right: 8px;">place</mat-icon>
+            <span>Localizar linha</span>
+        </button>
+        <mat-divider></mat-divider>
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="content mat-elevation-z8">
+            <ng-content></ng-content>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

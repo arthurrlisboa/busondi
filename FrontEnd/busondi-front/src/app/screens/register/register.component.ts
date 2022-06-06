@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef} from '@angular/material/dialog';
-import { RegisterService } from './register.service';
 import { first } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  providers: [RegisterService],
+  providers: [AuthService],
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
@@ -22,7 +22,7 @@ export class RegisterComponent {
   constructor(
     private fb: FormBuilder,
     private dialog: MatDialog,
-    private registerService: RegisterService,
+    private authService: AuthService,
   ) { }
 
   openDialog(): void {
@@ -40,14 +40,14 @@ export class RegisterComponent {
   onSubmit() {
     this.loading = true;
 
-    this.registerService.createUser(
+    this.authService.createUser(
       this.registerForm.get('email')?.value,
       this.registerForm.get('password')?.value,
       this.registerForm.get('username')?.value
     )
       .pipe(first())
       .subscribe({
-
+        next: (value) => {console.warn(this.registerForm.value); this.openDialog();},
         error: (error) => {this.loading = false}
       });
   }

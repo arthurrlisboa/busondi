@@ -8,9 +8,9 @@
             <mat-form-field appearance="outline" style="width: 19%;">
                 <mat-label>Email</mat-label>
                 <input 
-                    id="user-name" 
+                    id="email" 
                     type="text" 
-                    formControlName="username" 
+                    formControlName="email" 
                     required
                     matInput
                 >
@@ -30,12 +30,13 @@
         </div>
         <div ngClass="button-send">
             <button mat-raised-button color="warn" 
+                type="button" (click)="onSubmit()"
                 style="width: 19%;"
                 type="submit" [disabled]="!userForm.valid" routerLink="/home" >ENTRAR</button>
         </div>
         <div ngClass="register-content">
             <h5>Não está registrado?</h5>
-            <button routerLink="/register" >Junte-se a nós.</button>
+            <button  routerLink="/register" >Junte-se a nós.</button>
         </div>
     </form>
 </div>

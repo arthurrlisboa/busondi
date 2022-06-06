@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { first } from 'rxjs';
-import { AuthService } from './auth.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +14,7 @@ export class LoginComponent {
   loading: boolean = false;
 
   userForm = this.fb.group({
-    username: ['', Validators.required],
+    email: ['', Validators.required],
     password: ['', Validators.required]
   })
 
@@ -26,10 +26,10 @@ export class LoginComponent {
   onSubmit() {
     this.loading = true;
 
-    this.authService.authUser(this.userForm.get('username')?.value, this.userForm.get('password')?.value)
+    this.authService.loginUser(this.userForm.get('username')?.value, this.userForm.get('password')?.value)
       .pipe(first())
       .subscribe({
-        next: (auth) => {this.authorized =  auth},
+        next: (auth) => {console.warn(this.userForm.value); this.authorized =  auth},
         error: (error) => {this.loading = false}
       });
   }

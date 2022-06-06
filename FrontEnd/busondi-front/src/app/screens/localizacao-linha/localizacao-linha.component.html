@@ -2,6 +2,7 @@
     <img src="assets/images/pin-map-theme.png">
     <h2> O próximo ônibus da linha {{line}} está a {{time}} do ponto de partida  </h2>
 </div>
+
 <div style="text-align: center; margin-top: 30px;">
     <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
         <div style="margin-top: 5px;">
@@ -16,7 +17,7 @@
                 >
             </mat-form-field>
         </div>
-        <div ngClass="button-send">
+        <div style="margin-bottom: 10px;">
             <button mat-raised-button color="warn" 
                 style="width: 19%; height: 50px;"
                 type="submit" [disabled]="!updateForm.valid"

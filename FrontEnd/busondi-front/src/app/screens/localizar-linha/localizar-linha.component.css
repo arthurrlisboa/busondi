@@ -4,10 +4,6 @@ label {
     font-weight:400;
 }
 
-input {
-    width: 100%;
-}
-
 .button-send {
     justify-content: center;
     align-items: center;
@@ -33,4 +29,22 @@ input {
 
 h2 {
   font-size: 30px;
+}
+
+.heart {
+  height: 12px;
+  width: 12px;
+}
+
+.save_text {
+  color: rgb(107, 98, 98); 
+  font-size: 13px;
+  margin-left: 5px;
+}
+
+.button_save{
+  margin-top: 3px;
+  height: 40px;
+  background: none; 
+  border: none;
 }

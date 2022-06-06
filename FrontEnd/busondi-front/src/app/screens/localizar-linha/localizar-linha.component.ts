@@ -2,7 +2,7 @@ import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { first, map, Observable, startWith } from 'rxjs';
 import { Route, Stop } from './linhas';
-import { LocalizarLinhaService } from './localizar-linha.service';
+import { LocalizarLinhaService } from '../../services/localizar-linha.service';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({

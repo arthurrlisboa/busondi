@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { LocalizarLinhaService } from './localizar-linha.service';
+import { LocalizarLinhaService } from '../../services/localizar-linha.service';
 
 describe('LocalizarLinhaService', () => {
   let service: LocalizarLinhaService;

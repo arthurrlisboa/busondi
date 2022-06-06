@@ -29,7 +29,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { AuthService } from '../services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
-import { LocalizarLinhaService } from '../screens/localizar-linha/localizar-linha.service';
+import { LocalizarLinhaService } from '../services/localizar-linha.service';
 import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 

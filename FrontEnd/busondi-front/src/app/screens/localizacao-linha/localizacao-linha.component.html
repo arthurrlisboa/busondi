@@ -1,27 +1,43 @@
 <div ngClass="result_item">
     <img src="assets/images/pin-map-theme.png">
-    <h2> O próximo ônibus da linha {{line}} está a {{time}} do ponto de partida  </h2>
+    <!-- <span>{{json}}</span> -->
+    <span>{{line}}</span>
+    <span>StopId: {{stopId}}</span>
+    <span>StopId: {{updateForm.get('departure')?.value}}</span>
+    <h2 *ngIf="data && data.stop_routes[line]"> O próximo ônibus da linha {{routeFull.route_short_name}} - {{routeFull.route_long_name}} chegará as {{data?.stop_routes[line][1]}}</h2>
+    <h2 *ngIf="data && !data.stop_routes[line]"> Não existe previsao ônibus da linha {{routeFull.route_short_name}} - {{routeFull.route_long_name}}</h2>
 </div>
 
 <div style="text-align: center; margin-top: 30px;">
-    <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="updateForm">
         <div style="margin-top: 5px;">
             <mat-form-field appearance="outline" style="width: 19%;">
                 <mat-label>Ponto de partida</mat-label>
-                <input 
+                <mat-select formControlName="departure" name="StopSelect">
+                    <mat-option *ngFor="let stop of routeFull.stops" [value]="stop.stop_id">
+                        {{stop.stop_name}}
+                    </mat-option>
+                </mat-select>
+                <!-- <input 
                     id="departure"
                     type="text"
                     formControlName="departure"
                     required
                     matInput
-                >
+                > -->
             </mat-form-field>
         </div>
         <div style="margin-bottom: 10px;">
-            <button mat-raised-button color="warn" 
+            <button
+                mat-raised-button
+                color="warn" 
                 style="width: 19%; height: 50px;"
-                type="submit" [disabled]="!updateForm.valid"
-                routerLink="/localizar-linha/resultado" >ATUALIZAR</button>
+                type="button"
+                [disabled]="!updateForm.valid"
+                (click)="updateDeparture()"
+            >
+                ATUALIZAR
+            </button>
         </div>
     </form>
 </div>

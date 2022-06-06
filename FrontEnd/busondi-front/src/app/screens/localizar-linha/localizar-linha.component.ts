@@ -8,7 +8,6 @@ import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-localizar-linha',
   templateUrl: './localizar-linha.component.html',
-  providers: [LocalizarLinhaService, AuthService],
   styleUrls: ['./localizar-linha.component.css']
 })
 export class LocalizarLinhaComponent implements OnInit {

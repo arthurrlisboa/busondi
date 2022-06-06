@@ -31,9 +31,12 @@ def return_stop_and_routes(stop_id):
     return make_response(jsonify(routes_dict), 200)
 
 def current_position_map(route_id):
-    polygon = GetShape.get_polygon(route_id)
-    bus_coords = GetBusCoords.get_bus_coords(route_id)
-    bus_stops_coords = GetRouteStop.get_coordinates_stops_in_route(route_id)
+    try:
+        polygon = GetShape.get_polygon(route_id)
+        bus_coords = GetBusCoords.get_bus_coords(route_id)
+        bus_stops_coords = GetRouteStop.get_coordinates_stops_in_route(route_id)
+    except:
+        return make_response(jsonify({'message' : 'Route id not found'}), 404)
     map = DrawMap.draw_map_route_stops_bus_position(polygon, bus_coords, bus_stops_coords)
     return make_response(map, 200)
 

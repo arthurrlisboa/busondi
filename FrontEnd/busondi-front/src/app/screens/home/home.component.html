@@ -1,4 +1,4 @@
-<div *ngIf="!getLogged">
+<div *ngIf="!getLogged || favoritesIsEmpty()">
     <div ngClass="intro_item">
         <img src="assets/images/location.png">
         <h2> Localize seus ônibus de forma prática </h2>
@@ -9,6 +9,6 @@
     </div>
 </div>
 
-<div *ngIf="getLogged">
+<div *ngIf="getLogged && !favoritesIsEmpty()">
     <app-favorite-lines></app-favorite-lines>
 </div>

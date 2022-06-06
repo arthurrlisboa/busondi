@@ -23,7 +23,7 @@ export class AuthService {
   }
 
   logUser(email: string) {
-    this.logged = true;
+    this.logged = false;
     this.name = email;
     this.email = email;
   }

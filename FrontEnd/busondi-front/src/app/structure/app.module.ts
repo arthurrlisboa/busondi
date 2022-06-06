@@ -24,6 +24,8 @@ import { RegisterComponent } from '../screens/register/register.component';
 import { DialogRegister }  from '../screens/register/register.component';
 import { ToolbarBusondiComponent } from '../screens/toolbar-busondi/toolbar-busondi.component';
 import { FavoriteLineComponent } from '../screens/favorite-line/favorite-line.component';
+import { LocalizacaoRotaComponent } from '../screens/localizacao-rota/localizacao-rota.component';
+import { FavoriteService } from '../services/favorites.service';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -33,6 +35,7 @@ import { LocalizarLinhaService } from '../services/localizar-linha.service';
 import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +44,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     LoginComponent,
     LocalizarLinhaComponent,
     LocalizacaoLinhaComponent,
+    LocalizacaoRotaComponent,
     RegisterComponent,
     DialogRegister,
     ToolbarBusondiComponent
@@ -68,6 +72,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
   providers: [
     AuthService,
     LocalizarLinhaService,
+    FavoriteService,
   ],
   bootstrap: [AppComponent]
 })

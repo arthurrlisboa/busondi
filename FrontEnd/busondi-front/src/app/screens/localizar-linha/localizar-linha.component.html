@@ -48,7 +48,7 @@
             <button mat-raised-button color="warn" 
                 style="width: 19%; height: 50px;"
                 type="submit" [disabled]="!findForm.valid"
-                routerLink="/localizar-linha/resultado" >BUSCAR</button>
+                routerLink="/localizar-linha/resultado" (click)="onSubmit()" >BUSCAR</button>
         </div>
     </form>
 </div>

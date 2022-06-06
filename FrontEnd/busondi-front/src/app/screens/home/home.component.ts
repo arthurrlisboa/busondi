@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-import { FavoriteService } from 'src/app/services/favorite.service';
+import { Favorite, FavoriteService } from '../../services/favorites.service';
 
 @Component({
   selector: 'app-home',
@@ -8,21 +8,32 @@ import { FavoriteService } from 'src/app/services/favorite.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  favoriteLines = new Array<Favorite>();
 
 
   constructor(private authService: AuthService, private favoriteLinesService: FavoriteService) {
    }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.favoriteLinesService.getFavorites().subscribe({
+      next: v => {this.favoriteLines = v}
+    });
+  }
 
   get getLogged(){
     return this.authService.getLogged();
   }
 
   favoritesIsEmpty(){
-      return (this.favoriteLinesService.getFavorites().length === 0)
+      return (this.favoriteLines.length === 0)
   }
 
-  
+  showIntro(){
+     return !this.getLogged || this.favoritesIsEmpty()
+  }
+
+  showFavorites(){
+    return this.getLogged && (!this.favoritesIsEmpty())
+  }
 
 }

@@ -4,6 +4,8 @@ import { first, map, Observable, startWith } from 'rxjs';
 import { Route, Stop } from './linhas';
 import { LocalizarLinhaService } from '../../services/localizar-linha.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { LocationService } from 'src/app/services/location.service';
+import { FavoriteService } from '../../services/favorites.service';
 
 @Component({
   selector: 'app-localizar-linha',
@@ -15,7 +17,7 @@ export class LocalizarLinhaComponent implements OnInit {
   lineOptions = new Array<Route>();
   filteredLineOptions: Observable<Route[]>;
   save = false
-  
+  private added = false
   findForm = this.fb.group({
     line: ['', Validators.required],
     departure: ['', Validators.required]
@@ -25,6 +27,7 @@ export class LocalizarLinhaComponent implements OnInit {
     private fb: FormBuilder,
     private service: LocalizarLinhaService,
     private authService: AuthService,
+    private favoritesService: FavoriteService,
   ) { }
 
   ngOnInit() {
@@ -64,6 +67,7 @@ export class LocalizarLinhaComponent implements OnInit {
 
   onSubmit() {
        // TODO: Use EventEmitter with form value
+
     let lineId = 'id qualquer prencher da lista';
     let departureId = 'id do ponto para buscar horário';
 
@@ -71,6 +75,12 @@ export class LocalizarLinhaComponent implements OnInit {
     let departureName = this.findForm.controls['departure'].value;
   
     this.service.locateLine(lineId, departureId, lineName, departureName);
+
+    if(this.save === true && this.added === false){
+      this.favoritesService.createFavorite(lineId, departureId);
+      this.added = true;
+    }
+
     console.warn(this.findForm.value);
   }
 

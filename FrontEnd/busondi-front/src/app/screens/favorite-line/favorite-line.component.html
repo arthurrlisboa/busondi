@@ -1,15 +1,22 @@
-
 <div style="text-align: center;">
   <img style="display: inline-block; height: 60px; width: 60px;" src="assets/images/favorite-location.jpg">
   <h2 style="font-size: 30px;">Linhas Favoritas</h2>
   <ul class="favoriteLine">
-    <li *ngFor="let favoriteLine of getFavoriteLines()">
-      <button type="button" ngClass="button_favorite" routerLink="/localizar-linha/resultado">
-        <span class="item">{{favoriteLine.name}} - {{favoriteLine.stopName}}</span>
+    <li *ngFor="let favoriteLine of favoriteLines">
+      <button
+        type="button"
+        ngClass="button_favorite"
+        routerLink="/localizar-linha/resultado"
+        [queryParams]="{line: favoriteLine.route_id , stopId: favoriteLine.stop_id}"
+      >
+        <span class="item">{{favoriteLine.route_short_name}} - {{favoriteLine.stop_name}}</span>
       </button>
-      <button ngClass="button_remove">
-        <mat-icon style="margin: auto auto;" (click)="removeLine(favoriteLine)" routerLink="/home">delete</mat-icon>
-      </button>
+      <!-- <button ngClass="button_locate">
+        <mat-icon style="margin: auto auto;" (click)="locateLine(favoriteLine)" routerLink="/localizar-linha/rota">gps_fixed</mat-icon>
+      </button> -->
+      <!-- <button ngClass="button_remove">
+        <mat-icon style="margin: auto auto;" (click)="removeLine(favoriteLine.favorite_id)">delete</mat-icon>
+      </button> -->
     </li>
   </ul>
 </div>

@@ -9,6 +9,7 @@
         <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
       </button>
       <img style="margin-left: 8px; margin-top: 1px;" src="assets/images/busondi.png"  routerLink="/home">
+      <span>{{getLogged}}</span>
       <div *ngIf="!getLogged" ngClass="login">
         <button mat-button routerLink="/login" ngClass="login_text">Login / inscrever-se</button>
       </div>

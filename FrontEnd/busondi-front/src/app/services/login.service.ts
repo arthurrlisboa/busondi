@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 
 export class LoginService {
 
-    private logged = true;
+    private logged = false;
     private name = '';
     private email = '';
 
@@ -29,15 +29,15 @@ export class LoginService {
         //Todo - chamada back para cadastro
     }
 
-    getLogged() :boolean{
+    getLogged(): boolean{
         return this.logged;
     }
 
-    getName() :string{
+    getName(): string{
         return this.name;
     }
 
-    getEmail() :string{
+    getEmail(): string{
         return this.email;
     }
 

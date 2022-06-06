@@ -10,13 +10,6 @@ import { LineQuery, FavoriteService } from '../../services/favorites.service';
 
 export class FavoriteLineComponent implements OnInit {
 
-  favoriteLines  : LineQuery[] = [
-    { id: '1404', name: '1404', stopId: '128371937', stopName: 'Rua geraldo magela, 150' },
-    { id: '54a', name: '54 A', stopId: '128345937', stopName: 'Rua desenbargador joao neto, 160' },
-    { id: '54b', name: '54 B', stopId: '12567567', stopName: 'Rua bom retiro, 176' },
-    { id: '5628', name: '5628', stopId: '62348889', stopName: 'Avenida Abílio machado, 67' },
-  ];
-
   constructor( private service: LocationService, private favoritesService: FavoriteService) { 
   }
 
@@ -24,7 +17,7 @@ export class FavoriteLineComponent implements OnInit {
   }
 
   getFavoriteLines(){
-    return this.favoriteLines
+    return this.favoritesService.getFavorites();
   }
 
   setConsultationParams(favoriteLine: LineQuery){

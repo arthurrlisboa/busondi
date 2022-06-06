@@ -3,7 +3,8 @@
   <h2 style="font-size: 30px;">Linhas Favoritas</h2>
   <ul class="favoriteLine">
     <li *ngFor="let favoriteLine of getFavoriteLines()">
-      <button type="button" ngClass="button_favorite" routerLink="/localizar-linha/resultado">
+      <button type="button" ngClass="button_favorite" 
+        routerLink="/localizar-linha/resultado" (click) = "setConsultationParams(favoriteLine)">
         <span class="item">{{favoriteLine.name}} - {{favoriteLine.stopName}}</span>
       </button>
       <button ngClass="button_remove">

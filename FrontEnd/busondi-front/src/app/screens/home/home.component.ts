@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FavoriteService } from '../../services/favorites.service';
 import { LoginService } from '../../services/login.service'
 
 @Component({
@@ -9,13 +10,25 @@ import { LoginService } from '../../services/login.service'
 export class HomeComponent implements OnInit {
 
 
-  constructor(private loginService: LoginService) {
+  constructor(private loginService: LoginService, private favoriteService: FavoriteService) {
    }
 
   ngOnInit(): void {}
 
-  getLogged(){
+  showIntro(){
+     return !this.getLogged() || this.favoritesIsEmpty()
+  }
+
+  showFavorites(){
+    return this.getLogged() && (!this.favoritesIsEmpty())
+  }
+
+  getLogged(): boolean{
     return this.loginService.getLogged();
+  }
+
+  favoritesIsEmpty(): boolean{
+    return (this.favoriteService.getFavorites().length === 0)
   }
 
 }

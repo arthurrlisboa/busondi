@@ -13,12 +13,13 @@
         <button mat-button routerLink="/login" ngClass="login_text">Login / inscrever-se</button>
       </div>
       <div *ngIf="getLogged()" ngClass="login">
-        <div style="display: inline-block;">
+        <!-- <div style="display: inline-block;">
           <p ngClass="logged_text"> Olá, {{getName()}}</p>
-        </div>
-        <div style="display: inline-block;">
+        </div> -->
+        <!-- <div style="display: inline-block;"> -->
+        <div> 
           <button mat-button ngClass="logged_text" (click)="exitApp()">
-            <mat-icon style="margin-bottom: 2px; margin-right: 5px;"> exit_to_app </mat-icon>
+            <mat-icon style="margin-bottom: 5px; margin-right: 5px;"> exit_to_app </mat-icon>
           </button>
         </div>
       </div>

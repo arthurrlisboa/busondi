@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 
 export class LoginService {
 
-    private logged = false;
+    private logged = true;
     private name = '';
     private email = '';
 

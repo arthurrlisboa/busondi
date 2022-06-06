@@ -32,7 +32,7 @@ export class FavoriteLineComponent implements OnInit {
   }
 
   removeLine(favoriteLine: LineQuery): void {
-
+    
   }
 
 }

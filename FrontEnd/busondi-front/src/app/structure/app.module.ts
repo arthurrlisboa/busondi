@@ -24,6 +24,7 @@ import { RegisterComponent } from '../screens/register/register.component';
 import { DialogRegister }  from '../screens/register/register.component';
 import { ToolbarBusondiComponent } from '../screens/toolbar-busondi/toolbar-busondi.component';
 import { FavoriteLineComponent } from '../screens/favorite-line/favorite-line.component';
+import { LocalizacaoRotaComponent } from '../screens/localizacao-rota/localizacao-rota.component';
 
 import { LoginService } from '../services/login.service';
 import { LocationService } from '../services/location.service';
@@ -41,6 +42,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     LoginComponent,
     LocalizarLinhaComponent,
     LocalizacaoLinhaComponent,
+    LocalizacaoRotaComponent,
     RegisterComponent,
     DialogRegister,
     ToolbarBusondiComponent

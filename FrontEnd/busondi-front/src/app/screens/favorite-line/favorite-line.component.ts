@@ -28,4 +28,9 @@ export class FavoriteLineComponent implements OnInit {
     this.favoritesService.removeFavorites(favoriteLine);
   }
 
+  locateLine(favoriteLine: LineQuery) {
+    console.log(favoriteLine.name)
+    this.service.locateLineOnRoute(favoriteLine.id, favoriteLine.name);
+  }
+
 }

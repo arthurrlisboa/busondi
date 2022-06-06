@@ -32,6 +32,21 @@
     border: none;
   }
 
+  .button_locate {
+    cursor: pointer;
+    background-color: rgb(238, 228, 228);
+    outline-color: rgb(37, 35, 35);;
+    margin: .5em;
+    padding-top: 1;
+    border-radius: 4px;
+    display: flex;
+    height: 50px;
+    color: rgb(10, 10, 10);
+    width: 50px;
+    margin-top: 9px;
+    border: none;
+  }
+
   .button_remove {
     cursor: pointer;
     background-color: rgb(238, 228, 228);

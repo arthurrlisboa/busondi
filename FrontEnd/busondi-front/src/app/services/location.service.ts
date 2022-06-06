@@ -8,6 +8,8 @@ export class LocationService {
     private lineName = '';
     private referencePointId = '';
     private lineId = '';
+    private lineRouteId = '';
+    private lineRouteName = '';
 
 
     randomIntFromInterval(min : number, max: number) { // min and max included 
@@ -23,6 +25,10 @@ export class LocationService {
 
         //Todo - pegar do tempo os segundos
         let minutos = now.getMinutes() + this.randomIntFromInterval(1,5);
+        
+        if(minutos > 60){
+            minutos = 59;
+        }
 
         this.referencePoint = referencePointName;
         this.lineName = lineName;
@@ -44,6 +50,16 @@ export class LocationService {
 
     getTime(){
         return this.time;
+    }
+
+    locateLineOnRoute(lineId: string, lineName: string){
+        console.log(lineName);
+        this.lineRouteId = lineId;
+        this.lineRouteName = lineName
+    }
+
+    getLineRoute(){
+        return this.lineRouteName;
     }
     
 }

@@ -63,7 +63,14 @@ export class LocalizarLinhaComponent implements OnInit {
   }
 
   onSubmit() {
-    // TODO: Use EventEmitter with form value
+       // TODO: Use EventEmitter with form value
+    let lineId = 'id qualquer prencher da lista';
+    let departureId = 'id do ponto para buscar horário';
+
+    let lineName = this.findForm.controls['line'].value;
+    let departureName = this.findForm.controls['departure'].value;
+  
+    this.service.locateLine(lineId, departureId, lineName, departureName);
     console.warn(this.findForm.value);
   }
 

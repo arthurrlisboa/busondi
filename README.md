@@ -116,7 +116,7 @@ Tarefas:
 ### Arquitetura Hexagonal
 A Arquitetura Hexagonal consiste em criar componentes desacoplados, cuja conexão é feita por adaptadores e portas. O sistema Busondi se beneficia desse padrão arquitetural para ter independência entre lógica de aplicação e tecnologia, o que permite a substituição de componentes individualmente sem interferir no restante do projeto, além de aumentar a testabilidade. A arquitetura completa pode ser observada na imagem a seguir:
   
-![DiagramaArquitetura](https://user-images.githubusercontent.com/42253628/172059355-b6b91ca7-f055-417c-a6ff-30160c1c5d63.jpg)
+![DiagramaArquitetura (1)](https://user-images.githubusercontent.com/42253628/172080823-3c524ba5-41da-4698-afaf-c01a922fed0d.jpg)
 
 Como é possível observar, existem dois tipos de portas: 
 - **Portas de entrada:** funcionam como interfaces para as classes externas acessarem métodos da classes de domínio. Um exemplo é a porta ```GetStop```, que retorna métodos de ```GetStopImpl```.

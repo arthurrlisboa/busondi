@@ -18,3 +18,19 @@ export interface Route {
 export interface RouteFull extends Route {
     stops: Array<Stop>
 }
+
+
+//Resposta pra busca de horário
+export interface ResponseStopDepertureTimes {
+    stop_id: string;
+    stop_name: string;
+    stop_lat: number,
+    stop_lon: number,
+    stop_routes: RouteResponse[]
+}
+
+export interface RouteResponse {
+    route_id: string,
+    route_name: string,
+    time: string,
+}

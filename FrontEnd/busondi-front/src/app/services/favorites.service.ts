@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,23 +17,29 @@ export class FavoriteService {
   ];
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private authService: AuthService
   ) { }
 
   getFavorites() {
-      return this.http.get<any>(this.favoritesUrl);
+      return this.http.get<Favorite[]>(this.favoritesUrl);
   }
 
-  createFavorite(route_id?: any, stop_id?: any) {
-    this.http.post(this.favoritesUrl, {route_id: route_id, stop_id: stop_id});
+  deleteFavorite(favorite: Favorite) {
+    var options = {
+      body: {
+        email: this.authService.getEmail(),
+        route_id: favorite.route_id,
+        stop_id: favorite.stop_id,
+        time: favorite.time
+      },
+    };
+
+    return this.http.delete(this.favoritesUrl, options);
   }
 
-  deleteFavorite(route_id: any, stop_id: any, time: any) {
-    return this.http.delete(this.favoritesUrl);
-  }
-
-  addFavorite(id: string, stopId: string, name: string, stopName: string){
-    this.favoriteLines.push({id: id, name: name, stopId: stopId, stopName: stopName});
+  addFavorite(id: string, stopId: string){
+    this.http.post(this.favoritesUrl, {email: this.authService.getEmail(), route_id: id, stop_id: stopId});
   }
 
   removeFavorites( favorite: LineQuery){

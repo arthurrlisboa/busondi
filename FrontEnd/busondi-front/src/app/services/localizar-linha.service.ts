@@ -47,6 +47,9 @@ export class LocalizarLinhaService {
     //Todo - pegar do tempo os segundos
     let minutos = '30';
 
+    this.referencePointId = '';
+    this.lineId = '';
+
     this.referencePoint = referencePointName;
     this.lineName = lineName;
 

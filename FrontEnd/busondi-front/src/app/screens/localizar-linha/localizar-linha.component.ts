@@ -40,7 +40,7 @@ export class LocalizarLinhaComponent {
     let departureName = this.findForm.controls['departure'].value;
 
     if(this.save === true && this.added === false){
-      this.favoritesService.addFavorite(lineId, departureId, lineName, departureName);
+      this.favoritesService.addFavorite(lineId, departureId);
       this.added = true;
     }
   

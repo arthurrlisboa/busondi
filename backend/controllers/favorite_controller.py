@@ -4,7 +4,10 @@ from flask import jsonify, make_response
 
 def list_user_favorites(email):
     user_favorites = GetFavorite.get_all_user_favorites(email)
-    return make_response(jsonify(user_favorites), 200)
+    favorites_dict = {
+        'user_favorites' : user_favorites
+    }
+    return make_response(jsonify(favorites_dict), 200)
 
 def create_favorite(email, info_json):
     if 'route_id' in info_json and 'stop_id' in info_json:

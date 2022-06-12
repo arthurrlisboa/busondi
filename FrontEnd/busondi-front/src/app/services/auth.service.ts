@@ -23,8 +23,10 @@ export class AuthService {
   }
 
   logUser(email: string) {
+    var name = email.split("@")[0];
+
     this.logged = true;
-    this.name = email;
+    this.name = name;
     this.email = email;
   }
 

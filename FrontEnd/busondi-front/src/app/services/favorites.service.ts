@@ -20,7 +20,7 @@ export class FavoriteService {
   ) { }
 
   getFavorites() {
-      return this.http.get<Array<Favorite>>(this.favoritesUrl);
+      return this.http.get<any>(this.favoritesUrl);
   }
 
   createFavorite(route_id?: any, stop_id?: any) {

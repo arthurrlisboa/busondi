@@ -13,6 +13,8 @@ export class LocalizarLinhaService {
   private lineName = '';
   private referencePointId = '';
   private lineId = '';
+  private lineRouteId = '';
+  private lineRouteName = '';
 
   constructor(
     private http: HttpClient
@@ -66,6 +68,16 @@ export class LocalizarLinhaService {
   getTime(){
       return this.time;
   }
+
+  locateLineOnRoute(lineId: string, lineName: string){
+    console.log(lineName);
+    this.lineRouteId = lineId;
+    this.lineRouteName = lineName
+}
+
+getLineRoute(){
+    return this.lineRouteName;
+}
 
 }
 

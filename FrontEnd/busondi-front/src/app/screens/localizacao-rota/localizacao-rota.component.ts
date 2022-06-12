@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LocalizarLinhaService } from 'src/app/services/localizar-linha.service';
 import { LocationService } from '../../services/location.service'
 
 @Component({
@@ -10,7 +11,7 @@ export class LocalizacaoRotaComponent implements OnInit {
 
   line = '';
 
-  constructor( private locationService: LocationService) { 
+  constructor( private locationService: LocalizarLinhaService) { 
     this.line = locationService.getLineRoute()
   }
 

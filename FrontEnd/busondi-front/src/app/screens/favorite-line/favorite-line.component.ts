@@ -49,4 +49,8 @@ export class FavoriteLineComponent implements OnInit {
     this.service.locateLineOnRoute(favoriteLine.route_id, favoriteLine.route_short_name);
   }
 
+  setConsultationParams(favoriteLine: Favorite){
+    this.service.locateLine(favoriteLine.route_id, favoriteLine.stop_id, favoriteLine.route_short_name, favoriteLine.stop_name)
+  }
+
 }

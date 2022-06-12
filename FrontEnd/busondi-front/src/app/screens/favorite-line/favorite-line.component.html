@@ -7,7 +7,7 @@
         type="button"
         ngClass="button_favorite"
         routerLink="/localizar-linha/resultado"
-        [queryParams]="{line: favoriteLine.route_id , stopId: favoriteLine.stop_id}"
+        (click) = "setConsultationParams(favoriteLine)"
       >
         <span class="item">{{favoriteLine.route_short_name}} - {{favoriteLine.stop_name}}</span>
       </button>

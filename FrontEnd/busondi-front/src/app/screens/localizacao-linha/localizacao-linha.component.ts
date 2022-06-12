@@ -1,8 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
 import { LocalizarLinhaService } from 'src/app/services/localizar-linha.service';
-import { RouteFull, StopFull } from '../localizar-linha/linhas';
+import { LocationService } from 'src/app/services/location.service';
 
 @Component({
   selector: 'app-localizacao-linha',
@@ -10,48 +9,29 @@ import { RouteFull, StopFull } from '../localizar-linha/linhas';
   styleUrls: ['./localizacao-linha.component.css']
 })
 
-export class LocalizacaoLinhaComponent implements OnInit {
-  data: StopFull = {};
-  routeFull: any; 
-  json: any;
-  line = '';
-  stopId = '';
-  time = '';
+export class LocalizacaoLinhaComponent{
 
   updateForm = this.fb.group({
     departure: ['', Validators.required]
   })
 
-  constructor(
-    private fb: FormBuilder,
-    private localizarService: LocalizarLinhaService,
-    private route: ActivatedRoute,
-  ) { 
+  constructor(private fb: FormBuilder, private locationService: LocalizarLinhaService) { 
+    this.updateForm.controls['departure'].setValue(locationService.getDeparture());
   }
 
-  updateDeparture() {
-    this.localizarService.getStopWithBusTime(this.updateForm.get('departure')?.value).subscribe({
-      next: (v) => {this.data = v; this.json = JSON.stringify(this.data.stop_routes);}
-    })
+  getLine(){
+    return this.locationService.getLine();
   }
 
-  ngOnInit() {
-    this.route.queryParams.subscribe({
-      next: params => {
-        this.line = params['line'].toString().replace("_", "-");
-        this.stopId = params['stopId'];
-        this.updateForm.patchValue({
-          departure: this.stopId
-        })
-        this.localizarService.getStopWithBusTime(this.updateForm.get('departure')?.value).subscribe({
-          next: (v) => {this.data = v; this.json = JSON.stringify(this.data.stop_routes);}
-        })
-        this.localizarService.getRouteStops(this.line).subscribe({
-          next: (v) => {this.routeFull = v;}
-        })
-      }
-    })
-    
+  getTime(){
+    return this.locationService.getTime();
   }
 
+  onSubmit() {
+    let idDeparture = 'id do departure novo';
+    let departureName = this.updateForm.controls['departure'].value;
+
+    this.locationService.updateLine(idDeparture, departureName);
+    console.warn(this.updateForm.value);
+  }
 }

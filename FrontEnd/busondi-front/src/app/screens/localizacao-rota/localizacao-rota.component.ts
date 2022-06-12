@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalizarLinhaService } from 'src/app/services/localizar-linha.service';
-import { LocationService } from '../../services/location.service'
 
 @Component({
   selector: 'app-localizacao-rota',

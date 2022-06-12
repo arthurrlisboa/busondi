@@ -15,9 +15,9 @@ export class HomeComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    // this.favoriteLinesService.getFavorites().subscribe({
-    //   next: v => {this.favoriteLines = v}
-    // });
+    this.favoriteLinesService.getFavorites().subscribe({
+      next: v => {this.favoriteLines = v}
+    });
   }
 
   get getLogged(){
@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
   }
 
   favoritesIsEmpty(){
-      return (false)
+      return (this.favoriteLines.length === 0)
   }
 
   showIntro(){

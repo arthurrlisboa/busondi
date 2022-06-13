@@ -46,7 +46,7 @@ export class FavoriteLineComponent implements OnInit {
       () =>{
         console.log("Route removed successfully");
         this.ngOnInit();
-        this.reloadComponent()
+        this.reloadComponent();
       })
   
   }

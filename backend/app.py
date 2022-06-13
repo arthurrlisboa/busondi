@@ -105,12 +105,12 @@ def favorites():
    #   return make_response(jsonify({'message' : 'Login required'}), 401) 
    info_json = request.get_json()
    if request.method == 'GET':
-      return favorite_controller.list_user_favorites(info_json['email'])
+      email = request.headers.get('email')
+      return favorite_controller.list_user_favorites(email)
    if request.method == 'POST':
       return favorite_controller.create_favorite(info_json['email'], info_json)
    if request.method == 'DELETE':
       return favorite_controller.delete_favorite(info_json['email'], info_json)
-
 
 ########################
 

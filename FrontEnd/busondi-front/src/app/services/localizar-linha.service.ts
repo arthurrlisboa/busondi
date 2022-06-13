@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Route, RouteFull, Stop, StopFull } from '../screens/localizar-linha/linhas';
+import { RouteFull, Stop, StopFull } from '../screens/localizar-linha/linhas';
 
 @Injectable({
   providedIn: 'root'
@@ -76,11 +76,11 @@ export class LocalizarLinhaService {
     console.log(lineName);
     this.lineRouteId = lineId;
     this.lineRouteName = lineName
-}
+  }
 
-getLineRoute(){
-    return this.lineRouteName;
-}
+  getLineRoute(){
+      return this.lineRouteName;
+  }
 
 }
 

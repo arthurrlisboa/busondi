@@ -2,7 +2,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
-import { EmailValidator } from '@angular/forms';
 @Injectable({
   providedIn: 'root'
 })

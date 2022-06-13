@@ -42,8 +42,6 @@ export class LocalizarLinhaComponent {
     }
   
     this.locationservice.locateLine(lineId, departureId, lineName, departureName);
-
-    console.warn(this.findForm.value);
   }
 
   saveLine() : void {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FavoriteService, Favorite } from '../../services/favorites.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 import { LocalizarLinhaService } from 'src/app/services/localizar-linha.service';
 
 @Component({
@@ -11,8 +12,13 @@ import { LocalizarLinhaService } from 'src/app/services/localizar-linha.service'
 
 export class FavoriteLineComponent implements OnInit {
   favoriteLines = new Array<Favorite>();
+  private deleted = false;
 
-  constructor( private service: LocalizarLinhaService, private favoritesService: FavoriteService, private authService: AuthService) { 
+  constructor( 
+    private router: Router,
+    private service: LocalizarLinhaService,
+    private favoritesService: FavoriteService,
+    ) { 
   }
 
   ngOnInit(): void {
@@ -21,16 +27,26 @@ export class FavoriteLineComponent implements OnInit {
   
   getFavoriteLines(){
     this.favoritesService.getFavorites().subscribe({
-      next: v => {this.favoriteLines = v.user_favorites}
+      next: v => {this.favoriteLines = v.user_favorites;}
     });
   }
 
+  reloadComponent(){
+    let currentUrl = this.router.url;
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate([currentUrl]);
+  }
+
   removeLine(favorite: Favorite): void {
+    this.deleted = true;
+
     this.favoritesService.deleteFavorite(favorite)
     .subscribe( 
       () =>{
         console.log("Route removed successfully");
         this.ngOnInit();
+        this.reloadComponent()
       })
   
   }

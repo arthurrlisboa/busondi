@@ -21,7 +21,7 @@ export class FavoriteLineComponent implements OnInit {
   
   getFavoriteLines(){
     this.favoritesService.getFavorites().subscribe({
-      next: v => {this.favoriteLines = v}
+      next: v => {this.favoriteLines = v.user_favorites}
     });
   }
 

@@ -7,15 +7,15 @@ import { AuthService } from './auth.service';
 })
 
 export class FavoriteService {
-  private favoritesUrl = 'http://localhost:5000/favorites';
+  private favoritesUrl = 'http://127.0.0.1:5000/favorites';
 
   constructor(
     private http: HttpClient,
     private authService: AuthService
   ) { }
 
-  getFavorites() {
-      return this.http.get<Favorite[]>(this.favoritesUrl);
+  getFavorites(){
+      return this.http.get<FavoritesResponse>(this.favoritesUrl);
   }
 
   deleteFavorite(favorite: Favorite) {
@@ -32,16 +32,17 @@ export class FavoriteService {
   }
 
   addFavorite(id: string, stopId: string){
-    this.http.post(this.favoritesUrl, {email: this.authService.getEmail(), route_id: id, stop_id: stopId});
+    var options = {
+      body: {
+        email: this.authService.getEmail(),
+        route_id: id,
+        stop_id: stopId
+      },
+    };
+
+    this.http.post<boolean>(this.favoritesUrl, options);
   }
 
-}
-
-export interface LineQuery {
-    id: string;
-    name: string;
-    stopId: string;
-    stopName: string; 
 }
 
 export interface Favorite {
@@ -51,4 +52,8 @@ export interface Favorite {
   stop_id: string;
   stop_name: string;
   time: string;
+}
+
+export interface FavoritesResponse {
+  user_favorites: Favorite[]
 }

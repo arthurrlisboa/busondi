@@ -12,7 +12,6 @@ import { FavoriteService } from '../../services/favorites.service';
 })
 export class LocalizarLinhaComponent {
 
-  private added = false
   save = false
 
   findForm = this.fb.group({
@@ -32,16 +31,14 @@ export class LocalizarLinhaComponent {
    }
 
   onSubmit() {
-
-    let lineId = '';
-    let departureId = '';
+    let lineId = '620-01';
+    let departureId = '101544000238';
 
     let lineName = this.findForm.controls['line'].value;
     let departureName = this.findForm.controls['departure'].value;
 
-    if(this.save === true && this.added === false){
+    if(this.save === true){
       this.favoritesService.addFavorite(lineId, departureId);
-      this.added = true;
     }
   
     this.locationservice.locateLine(lineId, departureId, lineName, departureName);

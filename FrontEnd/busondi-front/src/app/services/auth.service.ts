@@ -7,8 +7,8 @@ import { catchError, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private loginUrl = 'http://localhost:5000/login'
-  private logoutUrl = 'http://localhost:5000/logout'
+  private loginUrl = 'http://127.0.0.1:5000/login'
+  private logoutUrl = 'http://127.0.0.1:5000/logout'
   private usersUrl = 'http://127.0.0.1:5000/users'
   private logged = false;
   private name = '';

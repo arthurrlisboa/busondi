@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.favoriteLinesService.getFavorites().subscribe({
-      next: v => {this.favoriteLines = v}
+      next: v => {this.favoriteLines = v.user_favorites}
     });
   }
 

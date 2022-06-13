@@ -63,13 +63,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{url}}/users/",
+					"raw": "{{url}}/users",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
-						"users",
-						""
+						"users"
 					]
 				}
 			},
@@ -90,13 +89,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{url}}/users/",
+					"raw": "{{url}}/users",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
-						"users",
-						""
+						"users"
 					]
 				}
 			},
@@ -108,14 +106,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{url}}/users/{{user-email}}/",
+					"raw": "{{url}}/users/{{user-email}}",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"users",
-						"{{user-email}}",
-						""
+						"{{user-email}}"
 					]
 				}
 			},
@@ -136,14 +133,13 @@
 					}
 				},
 				"url": {
-					"raw": "{{url}}/users/{{user-email}}/",
+					"raw": "{{url}}/users/{{user-email}}",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"users",
-						"{{user-email}}",
-						""
+						"{{user-email}}"
 					]
 				}
 			},
@@ -155,14 +151,13 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{url}}/users/{{user-email}}/",
+					"raw": "{{url}}/users/{{user-email}}",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"users",
-						"{{user-email}}",
-						""
+						"{{user-email}}"
 					]
 				}
 			},
@@ -183,13 +178,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{url}}/login/",
+					"raw": "{{url}}/login",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
-						"login",
-						""
+						"login"
 					]
 				}
 			},
@@ -210,13 +204,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{url}}/logout/",
+					"raw": "{{url}}/logout",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
-						"logout",
-						""
+						"logout"
 					]
 				}
 			},
@@ -224,17 +217,28 @@
 		},
 		{
 			"name": "List User favorites",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\" : \"maria@email.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "{{url}}/favorites/",
+					"raw": "{{url}}/favorites",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
-						"favorites",
-						""
+						"favorites"
 					]
 				}
 			},
@@ -274,7 +278,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\" : \"maria@email.com\",\r\n    \"route_id\" : \"609-01\",\r\n    \"stop_id\" : \"104787000120\",\r\n    \"time\" : \"18:10:41\"\r\n}",
+					"raw": "{\r\n    \"email\" : \"maria@email.com\",\r\n    \"route_id\" : \"609-01\",\r\n    \"stop_id\" : \"104787000120\",\r\n    \"time\" : \"16:13:22\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -282,13 +286,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{url}}/favorites/",
+					"raw": "{{url}}/favorites",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
-						"favorites",
-						""
+						"favorites"
 					]
 				}
 			},
@@ -320,13 +323,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{url}}/routes/",
+					"raw": "{{url}}/routes",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
-						"routes",
-						""
+						"routes"
 					]
 				}
 			},

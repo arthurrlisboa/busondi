@@ -92,17 +92,24 @@ def logout():
 @app.route('/favorites', methods = ['GET', 'POST', 'DELETE'])
 @cross_origin()
 def favorites():
-   if 'email' in session:   
-      if request.method == 'GET':
-         return favorite_controller.list_user_favorites(session['email'])
-      if request.method == 'POST':
-         info_json = request.get_json()
-         return favorite_controller.create_favorite(session['email'], info_json)
-      if request.method == 'DELETE':
-         info_json = request.get_json()
-         return favorite_controller.delete_favorite(session['email'], info_json)
-   else:
-      return make_response(jsonify({'message' : 'Login required'}), 401)
+   #if 'email' in session:   
+   #   if request.method == 'GET':
+   #      return favorite_controller.list_user_favorites(session['email'])
+   #   if request.method == 'POST':
+   #      info_json = request.get_json()
+   #      return favorite_controller.create_favorite(session['email'], info_json)
+   #   if request.method == 'DELETE':
+   #      info_json = request.get_json()
+   #      return favorite_controller.delete_favorite(session['email'], info_json)
+   #else:
+   #   return make_response(jsonify({'message' : 'Login required'}), 401) 
+   info_json = request.get_json()
+   if request.method == 'GET':
+      return favorite_controller.list_user_favorites(info_json['email'])
+   if request.method == 'POST':
+      return favorite_controller.create_favorite(info_json['email'], info_json)
+   if request.method == 'DELETE':
+      return favorite_controller.delete_favorite(info_json['email'], info_json)
 
 
 ########################

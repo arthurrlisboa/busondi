@@ -26,8 +26,13 @@ export class FavoriteLineComponent implements OnInit {
   }
 
   removeLine(favorite: Favorite): void {
-    this.favoritesService.deleteFavorite(favorite);
-    this.getFavoriteLines()
+    this.favoritesService.deleteFavorite(favorite)
+    .subscribe( 
+      () =>{
+        console.log("Route removed successfully");
+        this.ngOnInit();
+      })
+  
   }
 
   locateLine(favoriteLine: Favorite) {

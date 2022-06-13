@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { LocalizarLinhaService } from 'src/app/services/localizar-linha.service';
-import { LocationService } from 'src/app/services/location.service';
 import { FavoriteService } from '../../services/favorites.service';
 
 @Component({
@@ -31,14 +30,15 @@ export class LocalizarLinhaComponent {
    }
 
   onSubmit() {
-    let lineId = '620-01';
-    let departureId = '101544000238';
+    let lineId = '609-03';
+    let departureId = '105785500166';
 
     let lineName = this.findForm.controls['line'].value;
     let departureName = this.findForm.controls['departure'].value;
 
     if(this.save === true){
-      this.favoritesService.addFavorite(lineId, departureId);
+      this.favoritesService.addFavorite(lineId, departureId)
+      .subscribe(() => console.log("Route added to favorites successfully"));
     }
   
     this.locationservice.locateLine(lineId, departureId, lineName, departureName);

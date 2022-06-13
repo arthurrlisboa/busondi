@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
-
+import { Router } from '@angular/router';
+import { EmailValidator } from '@angular/forms';
 @Injectable({
   providedIn: 'root'
 })
@@ -11,11 +12,15 @@ export class FavoriteService {
 
   constructor(
     private http: HttpClient,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   getFavorites(){
-      return this.http.get<FavoritesResponse>(this.favoritesUrl);
+      var email = this.authService.getEmail()
+      let headers = new HttpHeaders();
+      headers = headers.append("email", email);
+      return this.http.get<FavoritesResponse>(this.favoritesUrl, {headers: headers});
   }
 
   deleteFavorite(favorite: Favorite) {
@@ -27,20 +32,11 @@ export class FavoriteService {
         time: favorite.time
       },
     };
-
-    return this.http.delete(this.favoritesUrl, options);
+    return this.http.delete(this.favoritesUrl, options)
   }
 
   addFavorite(id: string, stopId: string){
-    var options = {
-      body: {
-        email: this.authService.getEmail(),
-        route_id: id,
-        stop_id: stopId
-      },
-    };
-
-    this.http.post<boolean>(this.favoritesUrl, options);
+    return this.http.post<boolean>(this.favoritesUrl, {email: this.authService.getEmail(), route_id: id, stop_id: stopId })
   }
 
 }

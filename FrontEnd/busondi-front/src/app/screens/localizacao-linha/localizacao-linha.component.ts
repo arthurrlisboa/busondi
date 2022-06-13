@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { LocalizarLinhaService } from 'src/app/services/localizar-linha.service';
-import { LocationService } from 'src/app/services/location.service';
 
 @Component({
   selector: 'app-localizacao-linha',

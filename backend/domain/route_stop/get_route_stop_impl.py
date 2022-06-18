@@ -7,5 +7,5 @@ class GetRouteStopImpl:
         stops_list = []
         for rs in route_stops_list:
             stops_list.append(rs.stop_id)
-        stop_coordinates = GetStop.get_stops_coordinates(stops_list)
+        stop_coordinates = GetStop().get_stops_coordinates(stops_list)
         return stop_coordinates

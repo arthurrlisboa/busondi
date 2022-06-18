@@ -9,7 +9,7 @@ from flask import jsonify, make_response
 
 def return_stop_and_routes(stop_id):
     try:
-        stop = GetStop.get_stop_by_id(stop_id)
+        stop = GetStop().get_stop_by_id(stop_id)
     except:
         return make_response(jsonify({'message': 'Stop id not found'}), 404)
 
@@ -61,7 +61,7 @@ def return_route_and_stops(route_id):
     try:
         route = GetRoute.get_route_by_id(route_id)
 
-        stops_list = GetStop.get_stops_from_route(route_id)
+        stops_list = GetStop().get_stops_from_route(route_id)
     except:
         return make_response(jsonify({'message': 'Route id not found'}), 404)
 

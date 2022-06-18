@@ -2,7 +2,7 @@ from backend.domain.bus_stop.get_stop import GetStop
 from flask import jsonify, make_response
 
 def list_stops():
-    stops_list = GetStop.get_all_stops()
+    stops_list = GetStop().get_all_stops()
 
     # stops_dict = {}
     # for stop in stops_list:

@@ -9,3 +9,4 @@ shapely==1.8.2
 plotly==5.8.0
 numpy==1.22.4
 kaleido==0.2.1
+coverage

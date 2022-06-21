@@ -35,4 +35,6 @@ jobs:
           coverage run -m unittest discover
           coverage xml
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v2
+        uses: |
+          CODECOV_TOKEN='e97cad43-25b4-49f0-8207-6c2a92004999' 
+          codecov/codecov-action@v2

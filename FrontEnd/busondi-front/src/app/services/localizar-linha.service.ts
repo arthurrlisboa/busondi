@@ -64,12 +64,12 @@ export class LocalizarLinhaService {
     else{
       //Todo - pegar do tempo os minutos
       let horas = '10';
-
       //Todo - pegar do tempo os segundos
       let minutos = '30';
 
       this.time = horas + ' horas e ' + minutos + ' minutos';
     }
+
   }
 
   updateLine(referencePointId: string, referencePointName: string){

@@ -1,6 +1,7 @@
 from backend.domain.bus_stop.get_stop_impl import GetStopImpl
 
 class GetStop:
+    
     def __init__(self):
         self.impl = GetStopImpl()
 

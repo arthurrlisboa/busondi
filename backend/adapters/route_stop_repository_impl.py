@@ -2,6 +2,7 @@ from backend.database.config.db_connection import DBConnection
 from backend.database.models.route_stop import RouteStop
 
 class RouteStopRepositoryImpl:
+    
     def __init__(self):
         self.conn = DBConnection()
 

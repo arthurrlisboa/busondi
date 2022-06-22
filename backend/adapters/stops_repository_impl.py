@@ -2,6 +2,7 @@ from backend.database.config.db_connection import DBConnection
 from backend.database.models.bus_stops import BusStops
 
 class StopsRepositoryImpl:
+    
     def __init__(self):
         self.conn = DBConnection()
 

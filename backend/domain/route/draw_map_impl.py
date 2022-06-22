@@ -3,6 +3,7 @@ import base64
 import numpy as np
 
 class DrawMapImpl:
+    
     def draw_map_route_stops_bus_position_impl(polygon, bus_coord, stops_coord):
         poly_lon, poly_lat = polygon.exterior.coords.xy
         bus_lon, bus_lat = DrawMapImpl.get_lon_lat_from_tuples_list(bus_coord)

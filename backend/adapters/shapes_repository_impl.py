@@ -3,7 +3,10 @@ from backend.database.models.shapes import Shapes
 
 class ShapesRepositoryImpl:
 
-    def return_shape_by_id_impl(shape_id):
-        with DBConnection() as connection:
+    def __init__(self):
+        self.conn = DBConnection()
+
+    def return_shape_by_id_impl(self, shape_id):
+        with self.conn as connection:
             shape = connection.session.query(Shapes).filter_by(shape_id=shape_id).first()
         return shape.polygon

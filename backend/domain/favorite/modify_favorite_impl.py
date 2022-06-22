@@ -4,13 +4,19 @@ from datetime import datetime
 
 class ModifyFavoriteImpl:
 
-    def new_favorite_impl(email, route_id, stop_id):
+    def __init__(self, favorites_repo=None):
+        if(favorites_repo is None):
+            self.favorites_repo = FavoritesRepository()
+        else:
+            self.favorites_repo = favorites_repo
+
+    def new_favorite_impl(self, email, route_id, stop_id):
         new_favorite = Favorite(email, route_id, stop_id)
-        FavoritesRepository.add_favorite(new_favorite)
+        self.favorites_repo.add_favorite(new_favorite)
         return {'message' : 'success: favorite created'}
 
-    def exclude_favorite_impl(email, route_id, stop_id, time):
+    def exclude_favorite_impl(self, email, route_id, stop_id, time):
         time_ = datetime.strptime(time, '%H:%M:%S').time()
         favorite = Favorite(email, route_id, stop_id, None, time_)
-        FavoritesRepository.remove_favorite(favorite)
+        self.favorites_repo.remove_favorite(favorite)
         return {'message' : 'success: favorite deleted'}        

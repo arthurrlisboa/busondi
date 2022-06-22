@@ -30,7 +30,7 @@ export class LocalizarLinhaComponent {
    }
 
   onSubmit() {
-    let lineId = '609-03';
+    let lineId = '619-05';
     let departureId = '105785500166';
 
     let lineName = this.findForm.controls['line'].value;

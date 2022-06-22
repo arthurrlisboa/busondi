@@ -34,26 +34,42 @@ export class LocalizarLinhaService {
   }
 
   getStopWithBusTime(stopId: any) {
-    return this.http.get<StopFull>(this.stopsUrl+"/"+stopId)
-    // return this.http.get<StopFull>(this.stopsUrl+"/100446103230")
+    return this.http.get<RouteInfoResponse>(this.stopsUrl+"/"+stopId)
   }
 
   locateLine(lineid: string, referencePointId: string, lineName: string, referencePointName: string){
-    //Todo fazer request do tempo com o id do ponto e buscar no resultado, com o id da linha, o tempo que falta - formato 
-
-    //Todo - pegar do tempo os minutos
-    let horas = '10';
-
-    //Todo - pegar do tempo os segundos
-    let minutos = '30';
-
-    this.referencePointId = '';
-    this.lineId = '';
-
     this.referencePoint = referencePointName;
     this.lineName = lineName;
+    this.referencePointId = referencePointName;
+    this.lineId = lineid;
 
-    this.time = horas + ' horas e ' + minutos + ' minutos';
+    this.referencePoint = referencePointName;
+
+    this.getStopWithBusTime(referencePointId).subscribe({
+      next: v => { this.getLineDepartureTime(v.stop_routes, "609"); console.log(v)}
+    });
+  }
+
+  getLineDepartureTime(routes: RouteInfo[], lineName: String){
+    routes = routes.filter(function(obj) {return obj.route_name === lineName});
+
+    if (routes.length > 0){
+      console.log(routes)
+      console.log(`Usou o nome ${lineName} para fazer a busca`)
+      let routeInfo = routes[0]
+      let timeArray = routeInfo.time.split(":")
+      this.time = timeArray[0] + ' horas e ' + timeArray[1] + ' minutos';
+    }
+
+    else{
+      //Todo - pegar do tempo os minutos
+      let horas = '10';
+
+      //Todo - pegar do tempo os segundos
+      let minutos = '30';
+
+      this.time = horas + ' horas e ' + minutos + ' minutos';
+    }
   }
 
   updateLine(referencePointId: string, referencePointName: string){
@@ -82,5 +98,13 @@ export class LocalizarLinhaService {
       return this.lineRouteName;
   }
 
+}
+export interface RouteInfo {
+  route_id: string,
+  route_name: string,
+  time: string
+}
+export interface RouteInfoResponse {
+  stop_routes: RouteInfo[]
 }
 

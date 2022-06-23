@@ -42,17 +42,11 @@ def current_position_map(route_id):
 def list_routes():
     routes_list = GetRoute.get_all_routes()
 
-    # routes_dict = {}
-    # for route in routes_list:
-    #     routes_dict[route.route_id] = {
-    #         'route_short_name' : route.route_short_name,
-    #         'route_long_name': route.route_long_name
-    #     }
-
     routes_new_list = [{
         'route_id': route.route_id,
         'route_short_name' : route.route_short_name,
-        'route_long_name': route.route_long_name
+        'route_long_name': route.route_long_name,
+        'stops': [item.to_dict() for item in GetStop().get_stops_from_route(route.route_id)]
     } for route in routes_list]
 
     return routes_new_list

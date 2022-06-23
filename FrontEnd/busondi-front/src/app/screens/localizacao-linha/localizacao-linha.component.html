@@ -14,7 +14,13 @@
                     formControlName="departure"
                     required
                     matInput
+                    [matAutocomplete]="autoDeparture"
                 >
+                <mat-autocomplete #autoDeparture="matAutocomplete" autoActiveFirstOption [displayWith]="displayFnStop">
+                    <mat-option *ngFor="let departureOption of filteredDepartureOptions | async" [value]="departureOption">
+                        {{departureOption.stop_name}}
+                    </mat-option>
+                </mat-autocomplete>
             </mat-form-field>
         </div>
         <div style="margin-bottom: 10px;">

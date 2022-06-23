@@ -15,7 +15,9 @@ class RoutesRepositoryMock:
         return 'Invalid Route'
     
     def return_route_conversion_impl(self, route_id):
-        return 0
+        if(route_id == '5102-01'):
+            return 394
+        return 'Invalid Route'
 
     def return_all_routes_impl(self):
         return [

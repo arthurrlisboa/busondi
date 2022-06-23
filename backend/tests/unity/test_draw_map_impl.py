@@ -12,7 +12,7 @@ class TestDrawMapImpl(unittest.TestCase):
         map = DrawMapImpl.draw_map_route_stops_bus_position_impl(polygon, bus_coords, stops_coords)
         with open('backend/tests/mock/draw_map_return.txt', 'r') as file:
             expected_return = str.encode(file.read())
-        self.assertAlmostEqual(map, expected_return)
+        self.assertEqual(ascii(map), ascii(expected_return))
 
     def test_get_lon_lat_from_tuples_list(self):
         lon, lat = DrawMapImpl.get_lon_lat_from_tuples_list([(-43.937921, -19.934238), (-43.979214, -19.885677), (-43.97923, -19.884855), (-43.975711, -19.876461), (-43.959153, -19.908332), (-43.960059, -19.86411)])

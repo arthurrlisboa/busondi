@@ -1,9 +1,4 @@
 class Favorite:
-    id = ''
-    email = ''
-    route_id = ''
-    stop_id = ''
-    time = ''
 
     def __init__(self, email, route_id, stop_id, id=None, time=None):
         self.email = email

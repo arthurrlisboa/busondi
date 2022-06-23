@@ -1,12 +1,5 @@
 class Route:
 
-    route_id = ''
-    route_short_name = ''
-    route_long_name = ''
-    shape_id = ''
-    initial_stop_id = ''
-    final_stop_id = ''
-
     def __init__(self, route_id, route_short_name=None, route_long_name=None, shape_id=None, initial_stop_id=None, final_stop_id=None):
         self.route_id = route_id
 

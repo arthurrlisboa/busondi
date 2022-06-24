@@ -1,5 +1,4 @@
 from plotly import graph_objects as go
-import base64
 import numpy as np
 
 class DrawMapImpl:
@@ -40,8 +39,8 @@ class DrawMapImpl:
                 'center': {"lat": center_lat, "lon": center_lon},
                 'style': "open-street-map",
                 'zoom': 14})
-        
-        return base64.b64encode(fig.to_image(format="png",width=600, height=350, scale=2))
+
+        return fig
 
     def get_lon_lat_from_tuples_list(tuple_list):
         lon = [elem[0] for elem in tuple_list]

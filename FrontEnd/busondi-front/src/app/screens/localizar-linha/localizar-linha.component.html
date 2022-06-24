@@ -15,7 +15,7 @@
                     [matAutocomplete]="auto"
                 >
                 <mat-autocomplete #auto="matAutocomplete" autoActiveFirstOption [displayWith]="displayFn">
-                    <mat-option *ngFor="let lineOption of filteredLineOptions | async" [value]="lineOption" (onSelectionChange)="changeDeparture($event,lineOption.stops)">
+                    <mat-option *ngFor="let lineOption of filteredLineOptions | async" [value]="lineOption" (onSelectionChange)="changeDeparture($event,lineOption.route_id)">
                         {{lineOption.route_short_name+" - "+lineOption.route_long_name}}
                     </mat-option>
                 </mat-autocomplete>

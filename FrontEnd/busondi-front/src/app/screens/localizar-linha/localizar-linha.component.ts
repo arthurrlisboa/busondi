@@ -48,7 +48,7 @@ export class LocalizarLinhaComponent implements OnInit {
       .pipe(first())
       .subscribe({
         next: (itens) => {
-          this.lineOptions = itens;       
+          this.lineOptions = itens;    
         }
       });
   }
@@ -74,8 +74,16 @@ export class LocalizarLinhaComponent implements OnInit {
     else return []
   }
 
-  changeDeparture(event: MatOptionSelectionChange, stops: Stop[]) {
-    this.stopOptions = stops;
+  changeDeparture(event: MatOptionSelectionChange, routeId: string) {
+    this.service.getRouteStops(routeId)
+    .pipe(first())
+    .subscribe({
+      next: (itens) => {
+        console.log(itens)
+        this.stopOptions = itens.stops;
+        console.log(this.stopOptions);       
+      }
+    });
   }
 
   onSubmit() {

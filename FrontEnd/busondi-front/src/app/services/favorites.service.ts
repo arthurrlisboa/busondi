@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 })
 
 export class FavoriteService {
-  private favoritesUrl = 'http://127.0.0.1:5000/favorites';
+  private favoritesUrl = 'http://127.0.0.1:5000/api/favorites';
 
   constructor(
     private http: HttpClient,

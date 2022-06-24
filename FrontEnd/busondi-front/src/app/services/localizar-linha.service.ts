@@ -6,8 +6,8 @@ import { RouteFull, Stop, StopFull } from '../screens/localizar-linha/linhas';
   providedIn: 'root'
 })
 export class LocalizarLinhaService {
-  private stopsUrl = "http://localhost:5000/stops"
-  private routesUrl = "http://localhost:5000/routes"
+  private stopsUrl = "http://localhost:5000/api/stops"
+  private routesUrl = "http://localhost:5000/api/routes"
   private time = ''
   private referencePoint = ''
   private lineName = '';
@@ -29,8 +29,7 @@ export class LocalizarLinhaService {
   }
 
   getRouteStops(routId: any) {
-    return this.http.get<RouteFull>(`${this.routesUrl}/${routId}`)
-    // return this.http.get<RouteFull>(this.routesUrl+"/9550_01")
+    return this.http.get<RouteFull>(this.routesUrl+"/"+routId)
   }
 
   getStopWithBusTime(stopId: any) {
@@ -55,7 +54,6 @@ export class LocalizarLinhaService {
 
     if (routes.length > 0){
       console.log(routes)
-      console.log(`Usou o nome ${lineName} para fazer a busca`)
       let routeInfo = routes[0]
       let timeArray = routeInfo.time.split(":")
       this.time = timeArray[0] + ' horas e ' + timeArray[1] + ' minutos';

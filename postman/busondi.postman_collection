@@ -351,7 +351,7 @@
 	"variable": [
 		{
 			"key": "url",
-			"value": "http://127.0.0.1:5000",
+			"value": "http://127.0.0.1:5000/api",
 			"type": "default"
 		},
 		{

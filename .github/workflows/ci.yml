@@ -32,7 +32,7 @@ jobs:
         run: python -m unittest discover backend/tests/system/
       - name: Run coverage
         run: |
-          coverage run --source=backend --omit=backend/tests/* -m unittest discover
+          coverage run --source=backend --omit=backend/tests/* -m unittest discover backend/tests/unity/
           coverage xml
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2

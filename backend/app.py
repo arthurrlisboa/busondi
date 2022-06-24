@@ -28,8 +28,7 @@ def routes():
 @app.route('/api/routes/<route_id>', methods = ['GET'])
 @cross_origin()
 def routes_route_id(route_id):
-   data = route_controller.return_route_and_stops(route_id)
-   return make_response(jsonify(data), 200)
+   return route_controller.return_route_and_stops(route_id)
 
 @app.route('/api/routes/<route_id>/current-position', methods = ['GET'])
 @cross_origin()

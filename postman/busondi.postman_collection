@@ -6,23 +6,6 @@
 	},
 	"item": [
 		{
-			"name": "Home",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{url}}/",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "List Stops",
 			"request": {
 				"method": "GET",
@@ -253,13 +236,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{url}}/favorites/",
+					"raw": "{{url}}/favorites",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
-						"favorites",
-						""
+						"favorites"
 					]
 				}
 			},
@@ -272,7 +254,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\" : \"maria@email.com\",\r\n    \"route_id\" : \"609-01\",\r\n    \"stop_id\" : \"104787000120\",\r\n    \"time\" : \"16:13:22\"\r\n}",
+					"raw": "{\r\n    \"email\" : \"maria@email.com\",\r\n    \"route_id\" : \"609-01\",\r\n    \"stop_id\" : \"104787000120\",\r\n    \"time\" : \"20:55:46\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -297,15 +279,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{url}}/routes/{{route-id}}/current-position/",
+					"raw": "{{url}}/routes/5102-01/current-position",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"routes",
-						"{{route-id}}",
-						"current-position",
-						""
+						"5102-01",
+						"current-position"
 					]
 				}
 			},
@@ -334,14 +315,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{url}}/routes/{{route-id}}/",
+					"raw": "{{url}}/routes/{{route-id}}",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"routes",
-						"{{route-id}}",
-						""
+						"{{route-id}}"
 					]
 				}
 			},

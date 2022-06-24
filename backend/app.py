@@ -16,47 +16,40 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 
 busondi_database = SQLAlchemy(app)
 
-
 ########################
 
-
-# Home
-@app.route('/')
-def home():
-   return make_response(jsonify({'message' : 'Home'}), 200)
-
 # Routes
-@app.route('/routes', methods = ['GET'])
+@app.route('/api/routes', methods = ['GET'])
 @cross_origin()
 def routes():
    data = route_controller.list_routes()
    return make_response(jsonify(data), 200)
 
-@app.route('/routes/<route_id>/', methods = ['GET'])
+@app.route('/api/routes/<route_id>', methods = ['GET'])
 @cross_origin()
 def routes_route_id(route_id):
    data = route_controller.return_route_and_stops(route_id)
    return make_response(jsonify(data), 200)
 
-@app.route('/routes/<route_id>/current-position/', methods = ['GET'])
+@app.route('/api/routes/<route_id>/current-position', methods = ['GET'])
 @cross_origin()
 def routes_route_id_current_position(route_id):
    return route_controller.current_position_map(route_id)
 
 # Stop
-@app.route('/stops', methods = ['GET'])
+@app.route('/api/stops', methods = ['GET'])
 @cross_origin()
 def stops():
    data = bus_stop_controller.list_stops()
    return make_response(jsonify(data), 200)
 
-@app.route('/stops/<stop_id>', methods = ['GET'])
+@app.route('/api/stops/<stop_id>', methods = ['GET'])
 @cross_origin()
 def stops_stop_id(stop_id):
    return route_controller.return_stop_and_routes(stop_id)
 
 # User
-@app.route('/users', methods = ['GET', 'POST'])
+@app.route('/api/users', methods = ['GET', 'POST'])
 @cross_origin()
 def users():
    if request.method == 'GET':
@@ -65,7 +58,7 @@ def users():
       info_json = request.get_json()
       return user_controller.create_user(info_json)
 
-@app.route('/users/<email>', methods = ['GET', 'PUT', 'DELETE'])
+@app.route('/api/users/<email>', methods = ['GET', 'PUT', 'DELETE'])
 @cross_origin()
 def users_user_id(email):
    if request.method == 'GET':
@@ -77,19 +70,19 @@ def users_user_id(email):
       return user_controller.delete_user(email)
 
 # Login/logout
-@app.route('/login', methods = ['POST'])
+@app.route('/api/login', methods = ['POST'])
 @cross_origin()
 def login():
    info_json = request.get_json()
    return user_controller.user_login(info_json)
 
-@app.route('/logout', methods = ['POST'])
+@app.route('/api/logout', methods = ['POST'])
 @cross_origin()
 def logout():
    return user_controller.user_logout()
 
 # Favorites
-@app.route('/favorites', methods = ['GET', 'POST', 'DELETE'])
+@app.route('/api/favorites', methods = ['GET', 'POST', 'DELETE'])
 @cross_origin()
 def favorites():
    #if 'email' in session:   
@@ -114,7 +107,6 @@ def favorites():
       return favorite_controller.delete_favorite(info_json['email'], info_json)
 
 ########################
-
 
 if __name__ == '__main__':
     app.run()

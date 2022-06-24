@@ -6,8 +6,8 @@ import { RouteFull, Stop, StopFull } from '../screens/localizar-linha/linhas';
   providedIn: 'root'
 })
 export class LocalizarLinhaService {
-  private stopsUrl = "http://127.0.0.1:5000/stops"
-  private routesUrl = "http://127.0.0.1:5000/routes"
+  private stopsUrl = "http://localhost:5000/stops"
+  private routesUrl = "http://localhost:5000/routes"
   private time = ''
   private referencePoint = ''
   private lineName = '';
@@ -29,7 +29,7 @@ export class LocalizarLinhaService {
   }
 
   getRouteStops(routId: any) {
-    return this.http.get<RouteFull>(`${this.routesUrl}/${routId.replace("-", "_")}`)
+    return this.http.get<RouteFull>(`${this.routesUrl}/${routId}`)
     // return this.http.get<RouteFull>(this.routesUrl+"/9550_01")
   }
 
@@ -40,13 +40,13 @@ export class LocalizarLinhaService {
   locateLine(lineid: string, referencePointId: string, lineName: string, referencePointName: string){
     this.referencePoint = referencePointName;
     this.lineName = lineName;
-    this.referencePointId = referencePointName;
+    this.referencePointId = referencePointId;
     this.lineId = lineid;
 
     this.referencePoint = referencePointName;
 
     this.getStopWithBusTime(referencePointId).subscribe({
-      next: v => { this.getLineDepartureTime(v.stop_routes, "609"); console.log(v)}
+      next: v => { this.getLineDepartureTime(v.stop_routes, lineName); console.log(v)}
     });
   }
 
@@ -78,8 +78,16 @@ export class LocalizarLinhaService {
       return this.referencePoint;
   }
 
+  getDepartureId(){
+    return this.referencePointId;
+}
+
   getLine(){
       return this.lineName;
+  }
+
+  getLineId(){
+    return this.lineId;
   }
 
   getTime(){

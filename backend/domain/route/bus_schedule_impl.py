@@ -7,7 +7,7 @@ MEAN_BUS_VELOCITY = 4.7  # velocity in m/s
 
 class BusScheduleImpl:
 
-    def __init__(self, routes_repo=None, route_stop_repo=None):
+    def __init__(self, routes_repo=None, route_stop_repo=None, mock=None):
         if(routes_repo is None):
             self.routes_repo = RoutesRepository()
         else:
@@ -18,6 +18,11 @@ class BusScheduleImpl:
         else:
             self.route_stop_repo = route_stop_repo
 
+        if(mock is None):
+            self.mock = False
+        else:
+            self.mock = mock
+
     def get_travel_time_timedelta(self, stop_id, route_id):
         route_stop = self.route_stop_repo.return_route_stop_by_id(stop_id, route_id)
         if not route_stop.traveled_time: 
@@ -27,6 +32,9 @@ class BusScheduleImpl:
         return datetime.timedelta(seconds=round(travel_time,2))
 
     def get_current_time_timedelta(self):
+        if(self.mock):
+            return datetime.timedelta(hours=9, minutes=0, seconds=0)
+            
         cur_datetime = datetime.datetime.now()
         return datetime.timedelta(hours=cur_datetime.hour, 
                                 minutes=cur_datetime.minute, 

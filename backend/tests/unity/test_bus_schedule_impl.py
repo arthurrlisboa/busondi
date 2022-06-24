@@ -9,7 +9,7 @@ class TestBusScheduleImpl(unittest.TestCase):
     def setUp(self):
         routes_repo = RoutesRepository(RoutesRepositoryMock())
         route_stop_repo = RouteStopRepository(RouteStopRepositoryMock())
-        self.bus_schedule = BusScheduleImpl(routes_repo, route_stop_repo)
+        self.bus_schedule = BusScheduleImpl(routes_repo, route_stop_repo, True)
 
     def test_get_arrival_time_impl(self):
         arrival_time = self.bus_schedule.get_arrival_time_impl('104787000120', '609-01')

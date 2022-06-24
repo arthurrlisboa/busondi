@@ -21,4 +21,6 @@ class RouteStopRepositoryMock:
         return 'Invalid Stop ID'
       
     def return_route_stop_by_id_impl(self, stop_id, route_id):
-        return 0
+        if(stop_id == '104787000120' and route_id == '609-01'):
+            return RouteStop('609-01', 43, None, 7983.46, 18401, '104787000120')
+        return 'Invalid Route or Stop'

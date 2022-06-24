@@ -1,10 +1,18 @@
+from backend.domain.route.bus_departure import BusDeparture
 from backend.domain.route.route import Route
+import datetime
 
 class RoutesRepositoryMock:
     
     def return_trips_from_route_impl(self, route_id):
-        return 0
-    
+        if(route_id == '609-01'):
+            return [
+                BusDeparture(datetime.time(7, 10), '609-01', '112845400545', '609   011010130710'),
+                BusDeparture(datetime.time(9, 10), '609-01', '112845400545', '609   011010130910'),
+                BusDeparture(datetime.time(14, 40), '609-01', '112845400545', '609   011010130910')
+            ]
+        return 'Invalid Route'
+
     def return_one_route_by_id_impl(self, route_id):
         if(route_id == '609-01'):
             return Route('609-01', '609', 'Serra Verde/Santa Monica (Principal)', '609-01I', '112845400545', '112845400545')

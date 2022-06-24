@@ -89,4 +89,4 @@ def return_route_and_stops(route_id):
         'stops' : new_stops_list
     }
 
-    return route_stops_dict
+    return make_response(jsonify(route_stops_dict), 200)

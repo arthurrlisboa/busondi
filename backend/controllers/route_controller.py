@@ -6,6 +6,7 @@ from backend.domain.route.get_route import GetRoute
 from backend.domain.shape.get_shape import GetShape
 from backend.domain.route.draw_map import DrawMap
 from flask import jsonify, make_response
+import base64
 
 def return_stop_and_routes(stop_id):
     try:
@@ -37,7 +38,8 @@ def current_position_map(route_id):
     except:
         return make_response(jsonify({'message' : 'Route id not found'}), 404)
     map = DrawMap.draw_map_route_stops_bus_position(polygon, bus_coords, bus_stops_coords)
-    return make_response(map, 200)
+    image = base64.b64encode(map.to_image(format="png",width=600, height=350, scale=2))
+    return make_response(image, 200)
 
 def list_routes():
     routes_list = GetRoute().get_all_routes()

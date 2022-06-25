@@ -58,10 +58,10 @@ export class LocalizacaoLinhaComponent implements OnInit{
   }
 
   onSubmit() {
-    let idDeparture = 'id do departure novo';
-    let departureName = this.updateForm.controls['departure'].value;
+    let departureId = this.updateForm.controls['departure'].value.stop_id;
+    let departureName = this.updateForm.controls['departure'].value.stop_name;
 
-    this.locationService.updateLine(idDeparture, departureName);
+    this.locationService.updateLine(departureId, departureName);
     console.warn(this.updateForm.value);
   }
 }

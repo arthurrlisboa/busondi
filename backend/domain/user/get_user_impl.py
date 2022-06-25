@@ -1,13 +1,9 @@
-from backend.domain.repositories.user_repository import UserRepository
 from backend.domain.user.user import User
 
 class GetUserImpl:
 
-    def __init__(self, user_repo=None):
-        if(user_repo is None):
-            self.user_repo = UserRepository()
-        else:
-            self.user_repo = user_repo
+    def __init__(self, user_repo):
+        self.user_repo = user_repo
 
     def get_all_users_impl(self):
         all_users = self.user_repo.return_all_users()

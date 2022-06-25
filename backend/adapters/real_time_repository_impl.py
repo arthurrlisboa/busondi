@@ -24,7 +24,7 @@ class RealTimeRepositoryImpl:
                 # Columns names: ['EV', 'HR', 'LT', 'LG', 'NV', 'VL', 'NL', 'DG', 'SV', 'DT']
                 real_time_data = real_time_data.rename(columns=lambda x: x.strip())
                 bus_data = real_time_data.loc[real_time_data['NL'] == route_number]
-                return RealTimeRepositoryImpl().extract_bus_coords_from_dataframe(bus_data)
+                return self.extract_bus_coords_from_dataframe(bus_data)
             except:
                 # HTTP Error 502: Bad Gateway
                 sleep(1)

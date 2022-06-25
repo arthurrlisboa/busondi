@@ -1,14 +1,10 @@
-from backend.domain.repositories.favorites_repository import FavoritesRepository
 from backend.domain.favorite.favorite import Favorite
 from datetime import datetime
 
 class ModifyFavoriteImpl:
 
-    def __init__(self, favorites_repo=None):
-        if(favorites_repo is None):
-            self.favorites_repo = FavoritesRepository()
-        else:
-            self.favorites_repo = favorites_repo
+    def __init__(self, favorites_repo):
+        self.favorites_repo = favorites_repo
 
     def new_favorite_impl(self, email, route_id, stop_id):
         new_favorite = Favorite(email, route_id, stop_id)

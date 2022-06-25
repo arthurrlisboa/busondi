@@ -3,16 +3,9 @@ from backend.domain.repositories.routes_repository import RoutesRepository
 
 class GetBusCoordsImpl:
 
-    def __init__(self, routes_repo=None, real_time_repo=None):
-        if(routes_repo is None):
-            self.routes_repo = RoutesRepository()
-        else:
-            self.routes_repo = routes_repo
-
-        if(real_time_repo is None):
-            self.real_time_repo = RealTimeRepository()
-        else:
-            self.real_time_repo = real_time_repo
+    def __init__(self, routes_repo, real_time_repo):
+        self.routes_repo = routes_repo
+        self.real_time_repo = real_time_repo
 
     def get_bus_coords_impl(self, route_id):
         route_number = self.routes_repo.return_route_conversion(route_id)

@@ -13,5 +13,5 @@ class BusSchedule:
     def get_arrival_time(self, stop_id, route_id):
         return self.impl.get_arrival_time_impl(stop_id, route_id)
 
-    def order_by_arrival_time(self, stop_routes):
-        return self.impl.order_by_arrival_time_impl(stop_routes)
+    #def order_by_arrival_time(self, stop_routes):
+        #return self.impl.order_by_arrival_time_impl(stop_routes)

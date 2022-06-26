@@ -1,19 +1,10 @@
-from backend.domain.repositories.routes_repository import RoutesRepository
-from backend.domain.repositories.route_stop_repository import RouteStopRepository
 from backend.domain.route.route import Route
 
 class GetRouteImpl:
 
-    def __init__(self, routes_repo=None, route_stop_repo=None):
-        if(routes_repo is None):
-            self.routes_repo = RoutesRepository()
-        else:
-            self.routes_repo = routes_repo
-
-        if(route_stop_repo is None):
-            self.route_stop_repo = RouteStopRepository()
-        else:
-            self.route_stop_repo = route_stop_repo
+    def __init__(self, routes_repo, route_stop_repo):
+        self.routes_repo = routes_repo
+        self.route_stop_repo = route_stop_repo
 
     def get_routes_from_stop_impl(self, stop_id):
         stop_routes_list = []

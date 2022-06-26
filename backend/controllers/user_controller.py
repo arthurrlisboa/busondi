@@ -54,7 +54,7 @@ def user_login(info_json):
     if 'email' in info_json and 'password' in info_json:
       if info_json['email'] and info_json['password']:
         try:
-            response = UserLogin.do_login(info_json['email'], info_json['password'])
+            response = UserLogin().do_login(info_json['email'], info_json['password'])
             if response == {'message' : 'You are logged in'}:
                 session['email'] = info_json['email']
                 return make_response(jsonify(response), 200)

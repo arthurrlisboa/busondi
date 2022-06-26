@@ -1,27 +1,13 @@
-from backend.domain.repositories.routes_repository import RoutesRepository
-from backend.domain.repositories.route_stop_repository import RouteStopRepository
-
 import datetime
 
 MEAN_BUS_VELOCITY = 4.7  # velocity in m/s
 
 class BusScheduleImpl:
 
-    def __init__(self, routes_repo=None, route_stop_repo=None, mock=None):
-        if(routes_repo is None):
-            self.routes_repo = RoutesRepository()
-        else:
-            self.routes_repo = routes_repo
-
-        if(route_stop_repo is None):
-            self.route_stop_repo = RouteStopRepository()
-        else:
-            self.route_stop_repo = route_stop_repo
-
-        if(mock is None):
-            self.mock = False
-        else:
-            self.mock = mock
+    def __init__(self, routes_repo, route_stop_repo, mock):
+        self.routes_repo = routes_repo
+        self.route_stop_repo = route_stop_repo
+        self.mock = mock
 
     def get_travel_time_timedelta(self, stop_id, route_id):
         route_stop = self.route_stop_repo.return_route_stop_by_id(stop_id, route_id)

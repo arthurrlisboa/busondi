@@ -1,13 +1,9 @@
-from backend.domain.repositories.user_repository import UserRepository
 from backend.domain.user.user import User
 
 class ModifyUserImpl:
 
-    def __init__(self, user_repo=None):
-        if(user_repo is None):
-            self.user_repo = UserRepository()
-        else:
-            self.user_repo = user_repo
+    def __init__(self, user_repo):
+        self.user_repo = user_repo
 
     def new_user_impl(self, email, password, name):
         new_user = User(email, password, name)

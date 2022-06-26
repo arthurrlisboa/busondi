@@ -1,19 +1,10 @@
-from backend.domain.repositories.route_stop_repository import RouteStopRepository
-from backend.domain.repositories.stops_repository import StopsRepository
 from backend.domain.bus_stop.bus_stop import BusStop
 
 class GetStopImpl:
 
-    def __init__(self, stops_repo=None, route_stop_repo=None):
-        if(stops_repo is None):
-            self.stops_repo = StopsRepository()
-        else:
-            self.stops_repo = stops_repo
-
-        if(route_stop_repo is None):
-            self.route_stop_repo = RouteStopRepository()
-        else:
-            self.route_stop_repo = route_stop_repo
+    def __init__(self, stops_repo, route_stop_repo):
+        self.stops_repo = stops_repo
+        self.route_stop_repo = route_stop_repo
 
     def get_all_stops_impl(self):
         all_stops = self.stops_repo.return_all_stops()

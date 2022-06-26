@@ -21,7 +21,7 @@ class StopsRepositoryMock:
         if stops_list == ['10100130600640', '10100446100580']:
             mock_response = [
                 BusStop('10100130600640', 'Estacao Move  Barreiro', -19.97477301931237, -44.0220132041767),
-            BusStop('10100446100580', 'Estacao Move Senai', -19.90639647366688, -43.94348498583775)
+                BusStop('10100446100580', 'Estacao Move Senai', -19.90639647366688, -43.94348498583775)
             ]
         else:
             mock_response = 'Invalid Stop ID'

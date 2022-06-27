@@ -5,7 +5,7 @@ from datetime import datetime
 class ModifyFavoriteImpl:
 
     def __init__(self, favorites_repo=None):
-        if(favorites_repo is None):
+        if favorites_repo is None:
             self.favorites_repo = FavoritesRepository()
         else:
             self.favorites_repo = favorites_repo
@@ -19,4 +19,5 @@ class ModifyFavoriteImpl:
         time_ = datetime.strptime(time, '%H:%M:%S').time()
         favorite = Favorite(email, route_id, stop_id, None, time_)
         self.favorites_repo.remove_favorite(favorite)
-        return {'message' : 'success: favorite deleted'}        
+        return {'message' : 'success: favorite deleted'}
+    

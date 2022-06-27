@@ -1,11 +1,11 @@
 import unittest
 from unittest.mock import MagicMock, patch
+from backend.domain.favorite.modify_favorite import ModifyFavorite
 
-from backend.domain.favorite.modify_favorite_impl import ModifyFavoriteImpl
 from backend.domain.repositories.favorites_repository import FavoritesRepository
 
 
-class TestsModifyFavoriteImpl(unittest.TestCase):
+class TestsModifyFavorite(unittest.TestCase):
     @patch.object(FavoritesRepository, "add_favorite")
     def test_new_favorite(self, mock_add_favorite: MagicMock):
         """Test create new favorite when default behaviour"""
@@ -16,7 +16,7 @@ class TestsModifyFavoriteImpl(unittest.TestCase):
         stop_id = "2"
 
         # then
-        result = ModifyFavoriteImpl().new_favorite_impl(email, route_id, stop_id)
+        result = ModifyFavorite().new_favorite(email, route_id, stop_id)
 
         # assert
         mock_add_favorite.assert_called_once()
@@ -33,9 +33,7 @@ class TestsModifyFavoriteImpl(unittest.TestCase):
         time = "11:22:33"
 
         # then
-        result = ModifyFavoriteImpl().exclude_favorite_impl(
-            email, route_id, stop_id, time
-        )
+        result = ModifyFavorite().exclude_favorite(email, route_id, stop_id, time)
 
         # assert
         mock_remove_favorite.assert_called_once()

@@ -2,19 +2,19 @@ import unittest
 from backend.domain.repositories.real_time_repository import RealTimeRepository
 
 from backend.domain.repositories.routes_repository import RoutesRepository
-from backend.domain.route.get_bus_coords_impl import GetBusCoordsImpl
+from backend.domain.route.get_bus_coords import GetBusCoords
 from backend.tests.mock.real_time_repository_mock import RealTimeRepositoryMock
 from backend.tests.mock.routes_repository_mock import RoutesRepositoryMock
 
-class TestGetBusCoordsImpl(unittest.TestCase):
+class TestGetBusCoords(unittest.TestCase):
 
     def setUp(self):
         routes_repo = RoutesRepository(RoutesRepositoryMock())
         real_time_repo = RealTimeRepository(RealTimeRepositoryMock())
-        self.get_bus_coords = GetBusCoordsImpl(routes_repo, real_time_repo)
+        self.get_bus_coords = GetBusCoords(routes_repo, real_time_repo)
 
-    def test_get_bus_coords_impl(self):
-        bus_coords = self.get_bus_coords.get_bus_coords_impl('5102-01')
+    def test_get_bus_coords(self):
+        bus_coords = self.get_bus_coords.get_bus_coords('5102-01')
 
         self.assertEqual(bus_coords, [
             (-43.962638, -19.908195), 

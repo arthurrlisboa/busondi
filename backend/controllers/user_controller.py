@@ -37,8 +37,8 @@ def update_user(email, info_json):
     if 'password' not in info_json or not info_json['password']:
         make_response(jsonify({'message' : 'Invalid Credentials - password field required'}), 400)
     try:
-        ModifyUser().update_user_password(email, info_json['password'])
-        return return_user(email)
+        response = ModifyUser().update_user_password(email, info_json['password'])
+        return make_response(jsonify(response), 200)
     except: 
         return make_response(jsonify({'message' : 'User not found'}), 404)
 
@@ -54,7 +54,7 @@ def user_login(info_json):
     if 'email' in info_json and 'password' in info_json:
       if info_json['email'] and info_json['password']:
         try:
-            response = UserLogin.do_login(info_json['email'], info_json['password'])
+            response = UserLogin().do_login(info_json['email'], info_json['password'])
             if response == {'message' : 'You are logged in'}:
                 session['email'] = info_json['email']
                 return make_response(jsonify(response), 200)

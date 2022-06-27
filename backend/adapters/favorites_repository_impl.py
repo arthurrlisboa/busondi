@@ -12,7 +12,7 @@ class FavoritesRepositoryImpl:
         return favorites
 
     def add_favorite_impl(self, favorite):
-        id = FavoritesRepositoryImpl().generate_new_favorite_id()
+        id = self.generate_new_favorite_id()
         new_favorite = Favorites(id, favorite.email, favorite.route_id, favorite.stop_id)
         with self.conn as connection:
             connection.session.add(new_favorite)

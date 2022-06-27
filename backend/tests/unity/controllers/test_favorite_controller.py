@@ -1,13 +1,12 @@
 from http import HTTPStatus
 import json
-import unittest
 from unittest.mock import MagicMock, patch
-from backend.controllers import favorite_controller
 from backend.domain.favorite.get_favorite import GetFavorite
 from backend.domain.favorite.modify_favorite import ModifyFavorite
 from backend.tests import PATH_TEST
 
 from backend.tests.unity.utils.test_base import TestBase
+
 
 class TestFavoriteController(TestBase):
     @patch.object(ModifyFavorite, "new_favorite")
@@ -16,11 +15,7 @@ class TestFavoriteController(TestBase):
 
         # when
         email = "valid@mail.com"
-        data = {
-            "email": email,
-            "route_id": "routeId",
-            "stop_id": "stopId"
-        }
+        data = {"email": email, "route_id": "routeId", "stop_id": "stopId"}
 
         # mock
         mock_create.return_value = {"value": "return"}
@@ -30,12 +25,14 @@ class TestFavoriteController(TestBase):
             PATH_TEST + "/favorites",
             follow_redirects=True,
             headers={"Content-Type": "application/json"},
-            data=json.dumps(data)
+            data=json.dumps(data),
         )
 
         # assert
         self.assertEqual(response.status_code, HTTPStatus.OK)
-        mock_create.assert_called_once_with(email, data.get("route_id"), data.get("stop_id"))
+        mock_create.assert_called_once_with(
+            email, data.get("route_id"), data.get("stop_id")
+        )
 
     @patch.object(ModifyFavorite, "new_favorite")
     def test_create_favorite_No_Route_id(self, mock_create: MagicMock):
@@ -43,17 +40,14 @@ class TestFavoriteController(TestBase):
 
         # when
         email = "valid@mail.com"
-        data = {
-            "email": email,
-            "stop_id": "stopId"
-        }
+        data = {"email": email, "stop_id": "stopId"}
 
         # then
         response = self.app.post(
             PATH_TEST + "/favorites",
             follow_redirects=True,
             headers={"Content-Type": "application/json"},
-            data=json.dumps(data)
+            data=json.dumps(data),
         )
 
         # assert
@@ -66,17 +60,14 @@ class TestFavoriteController(TestBase):
 
         # when
         email = "valid@mail.com"
-        data = {
-            "email": email,
-            "route_id": "routeId"
-        }
+        data = {"email": email, "route_id": "routeId"}
 
         # then
         response = self.app.post(
             PATH_TEST + "/favorites",
             follow_redirects=True,
             headers={"Content-Type": "application/json"},
-            data=json.dumps(data)
+            data=json.dumps(data),
         )
 
         # assert
@@ -93,7 +84,7 @@ class TestFavoriteController(TestBase):
             "email": email,
             "route_id": "routeId",
             "stop_id": "stopId",
-            "time": "11:22:33"
+            "time": "11:22:33",
         }
 
         # mock
@@ -104,12 +95,14 @@ class TestFavoriteController(TestBase):
             PATH_TEST + "/favorites",
             follow_redirects=True,
             headers={"Content-Type": "application/json"},
-            data=json.dumps(data)
+            data=json.dumps(data),
         )
 
         # assert
         self.assertEqual(response.status_code, HTTPStatus.OK)
-        mock_delete.assert_called_once_with(email, data.get("route_id"), data.get("stop_id"), data.get("time"))
+        mock_delete.assert_called_once_with(
+            email, data.get("route_id"), data.get("stop_id"), data.get("time")
+        )
 
     @patch.object(ModifyFavorite, "exclude_favorite")
     def test_delete_favorite_No_Route_id(self, mock_delete: MagicMock):
@@ -117,18 +110,14 @@ class TestFavoriteController(TestBase):
 
         # when
         email = "valid@mail.com"
-        data = {
-            "email": email,
-            "stop_id": "stopId",
-            "time": "11:22:33"
-        }
+        data = {"email": email, "stop_id": "stopId", "time": "11:22:33"}
 
         # then
         response = self.app.delete(
             PATH_TEST + "/favorites",
             follow_redirects=True,
             headers={"Content-Type": "application/json"},
-            data=json.dumps(data)
+            data=json.dumps(data),
         )
 
         # assert
@@ -141,18 +130,14 @@ class TestFavoriteController(TestBase):
 
         # when
         email = "valid@mail.com"
-        data = {
-            "email": email,
-            "route_id": "routeId",
-            "time": "11:22:33"
-        }
+        data = {"email": email, "route_id": "routeId", "time": "11:22:33"}
 
         # then
         response = self.app.delete(
             PATH_TEST + "/favorites",
             follow_redirects=True,
             headers={"Content-Type": "application/json"},
-            data=json.dumps(data)
+            data=json.dumps(data),
         )
 
         # assert
@@ -165,18 +150,14 @@ class TestFavoriteController(TestBase):
 
         # when
         email = "valid@mail.com"
-        data = {
-            "email": email,
-            "route_id": "routeId",
-            "stop_id": "stopId"
-        }
+        data = {"email": email, "route_id": "routeId", "stop_id": "stopId"}
 
         # then
         response = self.app.delete(
             PATH_TEST + "/favorites",
             follow_redirects=True,
             headers={"Content-Type": "application/json"},
-            data=json.dumps(data)
+            data=json.dumps(data),
         )
 
         # assert
@@ -193,7 +174,7 @@ class TestFavoriteController(TestBase):
             "email": email,
             "route_id": "routeId",
             "stop_id": "stopId",
-            "time": "11:22:33"
+            "time": "11:22:33",
         }
 
         # mock
@@ -204,12 +185,14 @@ class TestFavoriteController(TestBase):
             PATH_TEST + "/favorites",
             follow_redirects=True,
             headers={"Content-Type": "application/json"},
-            data=json.dumps(data)
+            data=json.dumps(data),
         )
 
         # assert
         self.assertEqual(response.status_code, HTTPStatus.NOT_FOUND)
-        mock_delete.assert_called_once_with(email, data.get("route_id"), data.get("stop_id"), data.get("time"))
+        mock_delete.assert_called_once_with(
+            email, data.get("route_id"), data.get("stop_id"), data.get("time")
+        )
 
     @patch.object(GetFavorite, "get_all_user_favorites")
     def test_get_favorite(self, mock_get: MagicMock):
@@ -225,7 +208,7 @@ class TestFavoriteController(TestBase):
         response = self.app.get(
             PATH_TEST + "/favorites",
             follow_redirects=True,
-            headers={"Content-Type": "application/json", "email": email}
+            headers={"Content-Type": "application/json", "email": email},
         )
 
         # assert

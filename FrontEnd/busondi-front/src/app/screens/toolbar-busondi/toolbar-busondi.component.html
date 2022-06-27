@@ -1,6 +1,7 @@
 <mat-toolbar ngClass="toolbar-main">
     <mat-toolbar-row ngClass="toolbar-row">
       <button
+        data-cy="menu"
         mat-icon-button
         *ngIf="sidenav.mode === 'over'"
         (click)="sidenav.toggle()"
@@ -36,7 +37,7 @@
         <mat-divider></mat-divider>
       </div>
       <div *ngIf="!isCurrentPage('/localizar-linha')">
-        <button mat-button class="menu-button" routerLink="/localizar-linha">
+        <button data-cy="locate-line" mat-button class="menu-button" routerLink="/localizar-linha">
             <mat-icon style="margin-right: 8px;">place</mat-icon>
             <span>Localizar linha</span>
         </button>

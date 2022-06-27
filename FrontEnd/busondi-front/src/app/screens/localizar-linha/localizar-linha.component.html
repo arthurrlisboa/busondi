@@ -8,6 +8,7 @@
             <mat-form-field appearance="outline" style="width: 25%;">
                 <mat-label>Linha</mat-label>
                 <input 
+                    data-cy="line"
                     id="line"
                     type="text"
                     formControlName="line"
@@ -25,6 +26,7 @@
             <mat-form-field appearance="outline" style="width: 25%;">
                 <mat-label>Ponto de partida</mat-label>
                 <input
+                    data-cy="departure"
                     id="departure"
                     type="text"
                     formControlName="departure"
@@ -51,6 +53,7 @@
         </div> 
         <div ngClass="button-send">
             <button mat-raised-button color="warn" 
+                data-cy="submit"
                 style="width: 19%; height: 50px;"
                 type="submit" [disabled]="!findForm.valid"
                 >BUSCAR</button>

@@ -9,6 +9,7 @@
             <mat-form-field appearance="outline" style="width: 19%;">
                 <mat-label>Ponto de partida</mat-label>
                 <input 
+                    data-cy="departure"
                     id="departure"
                     type="text"
                     formControlName="departure"
@@ -25,6 +26,7 @@
         </div>
         <div style="margin-bottom: 10px;">
             <button mat-raised-button color="warn" 
+                data-cy="submit"
                 style="width: 19%; height: 50px;"
                 type="submit" [disabled]="!updateForm.valid"
                 routerLink="/localizar-linha/resultado" (click) = "onSubmit()">ATUALIZAR</button>

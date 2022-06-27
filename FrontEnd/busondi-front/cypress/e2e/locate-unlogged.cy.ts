@@ -1,18 +1,18 @@
 
 describe('Search line departure time', () => {
-  it('Visits the initial project page', () => {
+  it('Visits the home page with an unlogged user', () => {
     cy.visit('/')
     cy.contains('Localize seus ônibus de forma prática')
     cy.contains('Salve e acesse facilmente suas linhas favoritas')
   })
 
-  it('Visits the locate line page', () => {
+  it('Visits the line location page', () => {
     cy.get('[data-cy=menu]').click()
     cy.get('[data-cy=locate-line]').click()
     cy.get('[data-cy=menu]').click()
   });
 
-  it('Locate the line departure time', () => {
+  it('Fetch the the line departure time', () => {
     cy.get('[data-cy=line]').type("1404")
     cy.contains('1404A - Palmeiras / Alipio De Melo (Principal)').click()
     cy.get('[data-cy=departure]').type("Rua")
@@ -20,7 +20,7 @@ describe('Search line departure time', () => {
     cy.get('[data-cy=submit]').click()
   });
 
-  it('Check resulta page', () => {
+  it('Checks the location result page', () => {
     cy.contains('O próximo ônibus da linha 1404A chegará no ponto de partida às')
   })
 

@@ -285,6 +285,7 @@ Disponível no [Figma](https://www.figma.com/file/hSx4UFs5TYbPq3AHop0nI1/Clickon
 Para os testes de unidade, usamos unittest de Python. Testamos todo o domínio, desde as portas de entrada, até as portas de saída. Foi necessário criar "mocks" para os adaptadores que faziam a comunicação com o banco de dados e com a API que fornece a posição dos ônibus em tempo real. Também testamos uma parte dos controllers, que são adaptadores que fazem a comunicação com a interface web. Para isso, usamos o MagicMock do unittest.
 
 ### Integração
+Os testes de integração também foram implementados com o unittest e se baseiam em exercitar dois comportamentos: primeiro a sequência de chamadas feitas a partir de uma requisição em algum endpoint do sistema, através de um cliente de testes do próprio framework Flask; e segundo a conexão com a API fornecida pela BH Trans, cujo objetivo é testar se a conexão é feita com sucesso e os dados extraídos corretamente.
 
 ### Sistema
 

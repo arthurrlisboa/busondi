@@ -1,0 +1,35 @@
+<div ngClass="result_item">
+    <img src="assets/images/pin-map-theme.png">
+    <h2> O próximo ônibus da linha {{getLine()}} chegará no ponto de partida às {{getTime()}}</h2>
+</div>
+
+<div style="text-align: center; margin-top: 30px;">
+    <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+        <div style="margin-top: 5px;">
+            <mat-form-field appearance="outline" style="width: 19%;">
+                <mat-label>Ponto de partida</mat-label>
+                <input 
+                    data-cy="departure"
+                    id="departure"
+                    type="text"
+                    formControlName="departure"
+                    required
+                    matInput
+                    [matAutocomplete]="autoDeparture"
+                >
+                <mat-autocomplete #autoDeparture="matAutocomplete" autoActiveFirstOption [displayWith]="displayFnStop">
+                    <mat-option *ngFor="let departureOption of filteredDepartureOptions | async" [value]="departureOption">
+                        {{departureOption.stop_name}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+        </div>
+        <div style="margin-bottom: 10px;">
+            <button mat-raised-button color="warn" 
+                data-cy="submit"
+                style="width: 19%; height: 50px;"
+                type="submit" [disabled]="!updateForm.valid"
+                routerLink="/localizar-linha/resultado" (click) = "onSubmit()">ATUALIZAR</button>
+        </div>
+    </form>
+</div>

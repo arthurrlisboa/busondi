@@ -1,0 +1,29 @@
+.result_item{
+    margin-top: 40px;
+    margin: 0 auto;
+    width: 45em;
+    text-align: center;
+}
+
+.result_item img{
+    max-width:120px;
+    max-height:80px;
+    width: auto;
+    height: auto;
+}
+
+.map {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.map img{
+    margin-left: 100px;
+    margin-top: 20px;
+    height: 700px;
+    width: 1000px;
+}
+
+h2 {
+    font-size: 26px;
+}

@@ -1,0 +1,13 @@
+<div *ngIf="showIntro()">
+    <div ngClass="intro_item">
+        <img src="assets/images/location.png">
+        <h2> Localize seus ônibus de forma prática </h2>
+    </div>
+    <div ngClass="intro_item">
+        <img src="assets/images/like.png">
+        <h2> Salve e acesse facilmente suas linhas favoritas </h2>
+    </div>
+</div>
+<div *ngIf="showFavorites()">
+    <app-favorite-lines></app-favorite-lines>
+</div>

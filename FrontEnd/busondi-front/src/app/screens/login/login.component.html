@@ -1,0 +1,51 @@
+<div ngClass = "login_style">
+    <div ngClass="intro_item">
+        <img src="assets/images/route-pin.png">
+        <h2 style="margin-top: 10px;">Acesse sua conta e localize suas linhas de ônibus favoritas</h2>
+    </div>
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <div>
+            <mat-form-field appearance="outline" style="width: 19%;">
+                <mat-label>Email</mat-label>
+                <input 
+                    id="email" 
+                    data-cy="email_login"
+                    type="text" 
+                    formControlName="email" 
+                    required
+                    matInput
+                >
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="outline" style="width: 19%;">
+                <mat-label>Senha</mat-label>
+                <input 
+                    id="password"
+                    data-cy="password_login"
+                    type="password"
+                    formControlName="password"
+                    required
+                    matInput
+                >
+            </mat-form-field>
+        </div>
+        <div ngClass="button-send">
+            <button 
+                data-cy="login_request"
+                mat-raised-button
+                color="warn" 
+                type="submit"
+                style="width: 19%;"
+                type="submit"
+                [disabled]="!userForm.valid"
+            >
+                ENTRAR
+            </button>
+        </div>
+        <div ngClass="register-content">
+            <h5>Não está registrado?</h5>
+            <button data-cy="register" routerLink="/register" >Junte-se a nós.</button>
+        </div>
+    </form>
+</div>

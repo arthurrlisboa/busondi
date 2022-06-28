@@ -1,0 +1,62 @@
+<div style="text-align: center;">
+    <div ngClass="intro_item">
+        <img src="assets/images/locate-map-cartoon.png">
+        <h2 > Localizar linha de ônibus </h2>
+    </div>
+    <form [formGroup]="findForm" (ngSubmit)="onSubmit()">
+        <div style="margin-top: 30px;">
+            <mat-form-field appearance="outline" style="width: 25%;">
+                <mat-label>Linha</mat-label>
+                <input 
+                    data-cy="line"
+                    id="line"
+                    type="text"
+                    formControlName="line"
+                    matInput
+                    [matAutocomplete]="auto"
+                >
+                <mat-autocomplete #auto="matAutocomplete" autoActiveFirstOption [displayWith]="displayFn">
+                    <mat-option *ngFor="let lineOption of filteredLineOptions | async" [value]="lineOption" (onSelectionChange)="changeDeparture($event,lineOption.route_id)">
+                        {{lineOption.route_short_name+" - "+lineOption.route_long_name}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+        </div>
+        <div style="margin-top: 5px; height: 67px;">
+            <mat-form-field appearance="outline" style="width: 25%;">
+                <mat-label>Ponto de partida</mat-label>
+                <input
+                    data-cy="departure"
+                    id="departure"
+                    type="text"
+                    formControlName="departure"
+                    matInput
+                    [matAutocomplete]="autoDeparture"
+                >
+                <mat-autocomplete #autoDeparture="matAutocomplete" autoActiveFirstOption [displayWith]="displayFnStop">
+                    <mat-option *ngFor="let departureOption of filteredDepartureOptions | async" [value]="departureOption">
+                        {{departureOption.stop_name}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+        </div>
+        <div *ngIf="getLogged && findForm.valid" style="text-align: center;">
+            <button data-cy="save" ngClass="button_save" (click)="saveLine()" type="button">
+                <div style="display: inline-block;">
+                    <img *ngIf="save" ngClass="heart" src="assets/images/heart.png">
+                    <img *ngIf="!save" ngClass="heart" src="assets/images/empty-heart.png">
+                </div>
+                <div style="display: inline-block; ">
+                    <p ngClass="save_text">Salvar nos favoritos</p>
+                </div>
+            </button>
+        </div> 
+        <div ngClass="button-send">
+            <button mat-raised-button color="warn" 
+                data-cy="submit"
+                style="width: 19%; height: 50px;"
+                type="submit" [disabled]="!findForm.valid"
+                >BUSCAR</button>
+        </div>
+    </form>
+</div>

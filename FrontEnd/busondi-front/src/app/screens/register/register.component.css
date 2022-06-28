@@ -1,0 +1,68 @@
+.register-content {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.register-content button{
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  /*optional*/
+  font-family: arial, sans-serif;
+  /*input has OS specific font-family*/
+  color: rgb(10, 10, 10);
+  text-decoration: underline;
+  cursor: pointer;
+  margin-bottom: 14px;
+  margin-left: 3px;
+  font-size: 12px;
+}
+
+.intro_item{
+    margin: 0 auto;
+    margin-top: 20px;
+    text-align: center;
+    width: 25em;
+  }
+
+  h2{
+    font-size: 25px;
+  }
+
+  h4{
+      color: rgb(87, 85, 85);
+  }
+
+  .register_style{
+    text-align: center;
+  }
+
+  .register_style img {
+    max-width:100px;
+    max-height:130px;
+    width: auto;
+    height: auto;
+}
+
+label {
+    display: block;
+    margin: .5em 0;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+}
+
+.button-send {
+    justify-content: center;
+    align-items: center;
+    margin: 8px 0;
+    display: flex;
+}
+
+.button-send button{
+  width: 19%; 
+  height: 48px;
+}

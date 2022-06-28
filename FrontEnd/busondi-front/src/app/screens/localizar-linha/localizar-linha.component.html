@@ -41,7 +41,7 @@
             </mat-form-field>
         </div>
         <div *ngIf="getLogged && findForm.valid" style="text-align: center;">
-            <button ngClass="button_save" (click)="saveLine()" type="button">
+            <button data-cy="save" ngClass="button_save" (click)="saveLine()" type="button">
                 <div style="display: inline-block;">
                     <img *ngIf="save" ngClass="heart" src="assets/images/heart.png">
                     <img *ngIf="!save" ngClass="heart" src="assets/images/empty-heart.png">

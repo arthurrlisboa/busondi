@@ -9,6 +9,7 @@
                 <mat-label>Email</mat-label>
                 <input 
                     id="email" 
+                    data-cy="email_login"
                     type="text" 
                     formControlName="email" 
                     required
@@ -21,6 +22,7 @@
                 <mat-label>Senha</mat-label>
                 <input 
                     id="password"
+                    data-cy="password_login"
                     type="password"
                     formControlName="password"
                     required
@@ -30,6 +32,7 @@
         </div>
         <div ngClass="button-send">
             <button 
+                data-cy="login_request"
                 mat-raised-button
                 color="warn" 
                 type="submit"
@@ -42,7 +45,7 @@
         </div>
         <div ngClass="register-content">
             <h5>Não está registrado?</h5>
-            <button  routerLink="/register" >Junte-se a nós.</button>
+            <button data-cy="register" routerLink="/register" >Junte-se a nós.</button>
         </div>
     </form>
 </div>

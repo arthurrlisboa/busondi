@@ -9,6 +9,9 @@ class TestRealTimeAPI(unittest.TestCase):
             data = connection.get_data()
 
         bus_coords = RealTimeRepositoryImpl().extract_bus_coords(data)
+        coord = bus_coords[0]
 
         self.assertEqual(list, type(bus_coords))
-        self.assertEqual(tuple, type(bus_coords[0]))
+        self.assertEqual(tuple, type(coord))
+        self.assertEqual(float, type(coord[0]))
+        self.assertEqual(float, type(coord[1]))

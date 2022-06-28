@@ -275,3 +275,20 @@ Disponível no [Figma](https://www.figma.com/file/hSx4UFs5TYbPq3AHop0nI1/Clickon
 [GTFS Estático do Sistema Convencional](https://dados.pbh.gov.br/dataset/gtfs-estatico-do-sistema-convencional)
 
 [Tempo Real Ônibus - Coordenada atualizada](https://dados.pbh.gov.br/dataset/tempo_real_onibus_-_coordenada)
+
+<details>
+  <summary>
+    <h1>Testes e cobertura</h1>
+  </summary>
+
+### Unidade
+Para os testes de unidade, usamos unittest de Python. Testamos todo o domínio, desde as portas de entrada, até as portas de saída. Foi necessário criar "mocks" para os adaptadores que faziam a comunicação com o banco de dados e com a API que fornece a posição dos ônibus em tempo real. Também testamos uma parte dos controllers, que são adaptadores que fazem a comunicação com a interface web. Para isso, usamos o MagicMock do unittest.
+
+### Integração
+
+### Sistema
+
+### Cobertura
+A cobertura foi calculada por meio do módulo Coverage de python. Além disso, fizemos o upload dos [resultados](https://app.codecov.io/gh/arthurrlisboa/busondi) para o Codecov, para gerar relatórios interativos da cobertura.
+
+</details>

@@ -26,8 +26,6 @@ jobs:
           pip install -r backend/requirements.txt
       - name: Unity Tests
         run: python -m unittest discover backend/tests/unity/
-      - name: Integration Tests
-        run: python -m unittest discover backend/tests/integration/
       - name: Run coverage
         run: |
           coverage run --source=backend --omit=backend/tests/* -m unittest discover backend/tests/unity/
